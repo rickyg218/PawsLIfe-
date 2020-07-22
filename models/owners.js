@@ -39,13 +39,13 @@ module.exports = function(sequelize, DataTypes) {
         }
       }
     });  
-    Owner.associate = function(models) {
+   /* Owner.associate = function(models) {
       Owner.hasMany(models.Pets, {
         onDelete: "cascade"
       });
       Owner.hasMany(models.Ratings, {
         onDelete: "cascade"
       });
-    };
+    };*/
     return Owner;
   };
