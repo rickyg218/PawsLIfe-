@@ -3,13 +3,21 @@ var express = require("express");
 
 var router = express.Router();
 
-var db = require("../models/");
+var db = require("../models");
 
 
-// router.get("/", function(req, res) {
+router.get("/", function(req, res) {
+ 
   
-//   res.redirect("/burgers");
-// });
+  return res.render("index");
+});
+router.get("/user", function(req, res) {
+ 
+  
+  return res.render("user");
+});
+
+
 
 
 // router.get("/burgers", function(req, res) {
