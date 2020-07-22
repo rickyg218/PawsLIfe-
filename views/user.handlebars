@@ -1,0 +1,264 @@
+<h1>paws life</h1>
+<!-- OWNER -->
+<h2>owner</h2>
+    <br>
+    <br>
+    <br>    
+ <h2>profile</h2>
+    <div class="profile">this will contain user profile info</div>
+
+    <br>
+    <br>
+    <br>
+
+{{!--create a pet --}}
+<h2>add a pet</h2>
+    <ul>
+       <button> dogs</button>
+       <button> cats</button>
+    </ul> 
+    <br>
+    <br>
+    <br>
+
+<h2>dogs</h2>
+    {{!-- pet name --}}
+    <form >
+        <label for="dog-name">what is the name?</label>
+            <input type="text" name="dog-name"> 
+    </form>
+    <br>
+    {{!-- pet breed --}}
+    <form >
+        <label for="dog-breed">what breed?</label>
+            <input type="text" name="dog-breed"> 
+    </form>
+    <br>
+    {{!-- pet size --}}
+    <form>
+        <label for="dog-size">dog size</label>
+            <input list="dog-size" name="dog-size">
+            <datalist id="dog-size">
+                <option value="petit pup (0-15lbs)">
+                <option value="medium pup (15lbs-25lbs)">
+                <option value="large pup (25lbs-40lbs)">
+                <option value="xlarge pup (40lbs-65lbs)">
+                <option value="mega pup (65lbs +)">
+            </datalist> 
+    </form> 
+    <br>
+    {{!-- pet temperment --}}  
+    <form>
+        <label for="dog-temperment">dog temperment</label>
+            <input list="dog-temperment" name="dog-temperment">
+            <datalist id="dog-temperment">
+                <option value="friendly">
+                <option value="aggressive">
+                <option value="calm">
+                <option value="nervous">
+            </datalist>  
+        
+    </form>
+    {{!-- pet special care --}}
+    <form >
+        <label for="dog-care">are there any special care items for your pet?</label>
+            <input type="text" name="dog-care"> 
+    </form>
+    <br>
+        <input type="submit" value="submit">
+    <br>
+    <br>
+    <br>
+    <br>
+
+<h2>cats</h2>
+  {{!-- pet name --}}
+    <form >
+        <label for="cat-name">what is the name?</label>
+            <input type="text" name="cat-name"> 
+    </form>
+    <br>
+    <form >
+        {{!-- pet breed --}}
+        <label for="cat-breed">what breed?</label>
+            <input type="text" name="cat-breed"> 
+        <br>
+        {{!-- pet size --}}
+        <label for="cat-size">cat size</label>
+            <input list="cat-size" name="cat-size">
+            <datalist id="cat-size">
+                <option value="petit pup (0-15lbs)">
+                <option value="medium pup (15lbs-25lbs)">
+                <option value="large pup (25lbs-40lbs)">
+                <option value="xlarge pup (40lbs-65lbs)">
+                <option value="mega pup (65lbs +)">
+            </datalist>  
+        <br>
+        {{!-- pet temperment --}}  
+        <label for="cat-temperment">cat temperment</label>
+            <input list="cat-temperment" name="cat-temperment">
+            <datalist id="cat-temperment">
+                <option value="friendly">
+                <option value="aggressive">
+                <option value="calm">
+                <option value="nervous">
+            </datalist>  
+            <br>
+        {{!-- pet special care --}}
+        <form >
+        <label for="dog-care">are there any special care items for your pet?</label>
+            <input type="text" name="dog-care"> 
+        </form>
+        <br>
+        <input type="submit" value="submit">
+    </form>
+    <br>
+    <br>
+    <br>
+
+<h2>pet family</h2>
+<div class="pet-family">this will have the pets displayed as cards in the users profile</div>
+    <br>
+    <br>
+    <br>
+
+<h1>paws life</h1>
+
+<!-- PROFESSIONAL -->
+<h2>professional</h2>
+    <br>
+    <br>
+    <br>
+<h2>profile</h2>
+    <h3>name</h3>
+    <h3>location</h3>
+    <h3>on pawslife for how many years</h3>
+    <h3>number of bookings</h3>
+    <h3>ratings</h3>
+    <h3>bio</h3>
+   
+    <br>
+    <br>
+    <br>
+
+<!-- create an offer  -->
+<h2>create a posting</h2>
+    <ul>
+        <button>for dogs</button>
+        <button>for cats</button>
+    </ul> 
+    <br>
+    <br>
+    <br>
+
+<h2>dogs</h2>
+    {{!-- service tile --}}
+    <form >
+        <label for="title">title of post?</label>
+            <input type="text" name="title"> 
+    </form>
+    <br>
+    {{!-- service text --}}
+    <form >
+        <label for="text">what do you want to say about your listing?</label>
+            <input type="text" name="text"> 
+    </form>
+    <br>
+    <!-- service type dog -->
+    <form >
+      <label for="service-dogs">choose a service type for dogs</label>
+        <input list="service-dogs" name="service-dogs">
+        <datalist id="service-dogs">
+            <option value="dog walker">
+            <option value="dog sitter">
+            <option value="dog washer">
+        </datalist>    
+    </form>
+    <br>
+    <!-- dog size-->
+    <form >
+      <label for="size-dogs">choose a dog size</label>
+        <input list="size-dogs" name="size-dogs">
+        <datalist id="size-dogs">
+            <option value="petit pup (0-15lbs)">
+            <option value="medium pup (15lbs-25lbs)">
+            <option value="large pup (25lbs-40lbs)">
+            <option value="xlarge pup (40lbs-65lbs)">
+            <option value="mega pup (65lbs +)">
+        </datalist>  
+    <br>
+     {{!-- duration --}}
+    <form >
+        <label for="duration">duration of service?</label>
+            <input type="text" name="duration"> 
+    </form>
+     {{!-- cost --}}
+    <form >
+        <label for="cost">cost of service?</label>
+            <input type="text" name="cost"> 
+    </form>
+    <br>
+    <input type="submit" value="submit">  
+    </form>
+    <br>
+    <br>
+<h2>cats</h2>
+    {{!-- service tile --}}
+    <form >
+        <label for="title">title of post?</label>
+            <input type="text" name="title"> 
+    </form>
+    <br>
+    {{!-- service text --}}
+    <form >
+        <label for="text">what do you want to say about your listing?</label>
+            <input type="text" name="text"> 
+    </form>
+    <br>
+    <!-- service for cats -->
+    <form >
+    <label for="service-cats">choose a service type for cats</label>
+        <input list="service-cats" name="service-cats">
+        <datalist id="service-cats">
+            <option value="cat groomer">
+            <option value="cat sitter">
+        </datalist>    
+    </form>
+    <br>
+    <!-- cat size-->
+    <form >
+      <label for="size-dogs">choose a dog size</label>
+        <input list="size-dogs" name="size-dogs">
+        <datalist id="size-dogs">
+            <option value="petit pup (0-15lbs)">
+            <option value="medium pup (15lbs-25lbs)">
+            <option value="large pup (25lbs-40lbs)">
+            <option value="xlarge pup (40lbs-65lbs)">
+            <option value="mega pup (65lbs +)">
+        </datalist>  
+        <br>
+    {{!-- duration --}}
+    <form >
+        <label for="duration">duration of service?</label>
+            <input type="text" name="duration"> 
+    </form>
+     {{!-- cost --}}
+    <form >
+        <label for="cost">cost of service?</label>
+            <input type="text" name="cost"> 
+    </form>
+    <br>
+        <input type="submit" value="submit">  
+    </form>
+    <br>
+    <br>
+    <br>
+    
+<h2>active postings</h2>
+<div class="active-postings">this will have the listings displayed as cards in the users profile</div>
+
+    
+
+
+
+
