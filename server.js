@@ -20,7 +20,7 @@ app.set("view engine", "handlebars");
 
 var routes = require("./controllers/paws_controller.js");
 
-app.use(routes);
+// app.use(routes);
 
 
 var PORT = process.env.PORT || 3000;
