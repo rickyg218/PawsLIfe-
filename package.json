@@ -1,0 +1,30 @@
+{
+  "name": "pawslife-",
+  "version": "1.0.0",
+  "description": "Pawslife",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rickyg218/PawsLIfe-.git"
+  },
+  "keywords": [
+    "pets"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rickyg218/PawsLIfe-/issues"
+  },
+  "homepage": "https://github.com/rickyg218/PawsLIfe-#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.1.0",
+    "nanoid": "^3.1.10",
+    "sequelize": "^6.3.3"
+  }
+}
