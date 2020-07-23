@@ -5,6 +5,19 @@ var router = express.Router();
 
 var db = require("../models");
 
+
+// router.get("/provider", function(req, res) {
+
+// //   db.Provider.findAll()
+
+//     .then(function(dbProvider) {
+//       console.log(dbProvider);
+//       const dbProviderJson = dbProvider.map(Provider=>Provider.toJSON());
+//       var allProvider = { Provider: dbProviderJson };
+//       return res.render("index", allProvider);
+//     });
+// });
+
 //main route welcome
 router.get("/", function(req, res) {
   return res.render("index");
@@ -43,6 +56,62 @@ router.get("/user/account-profile", function(req, res) {
 
 
 
+//TODO: provider creation
+// router.post("/provider/create", function (req, res) {
+//   db.Provider.create({
+//   }).then(function (dbProvider) {
+//     console.log(dbProvider);
+//     res.redirect("/provider");
+//   });
+// });
+
+
+router.post("/User/create", function(req, res) {
+  db.User.create({
+    user_name: req.body.user_name,
+    first_name: req.body.first_name,
+    last_name:req.body.last_name,
+    email:req.body.email,
+    password:req.body.password,
+    phone: req.body.phone,
+    lat: req.body.lat,
+    long: req.body.long
+  }).then(function(dbUser) {
+      console.log(dbUser);
+      // res.redirect("/Users");
+      res.json("success")
+    }).catch(function(err){
+      res.status(500).json(err);
+    });
+    
+});
+
+
+
+// router.put("/Users/update/:id", function(req, res) {
+//   db.Users.update({
+//     Created: true
+//   },
+//   {
+//     where: {
+//       id: req.params.id
+//     }
+//   }
+//   ).then(function(dbUsers) {
+//     res.json("/");
+//   });
+// });
+
+// router.delete("/Users/:id", function (req, res) {
+//   db.Users.destroy({
+//     where: {
+//       id: req.params.id
+//     }
+//   }).then(function (dbUsers) {
+//     res.json(dbUsers);
+//   });
+// });
+
 
 
 
@@ -71,16 +140,16 @@ router.get("/user/account-profile", function(req, res) {
 // //=========================HERE BEGIN THE ROUTES FOR THE OFFER POSTS ==============
 //TO CHECK cannot
 //offer_posts CREATE NEW POST TODO: test/finish this route
-router.post("/offer_posts/create", function(req,res) {
-  console.log(req.body)
-  db.offer_post.create(req.body)
-  .then(function(dbPost) {
-      console.log(dbPost);
-      //TODO: decide where this redirect will go, ask Nicole. for now will refresh the total posts page.
-      // res.redirect("/offer_posts");
-      res.json("good job, post posted")
-    });
-});
+// router.post("/offer_posts/create", function(req,res) {
+//   console.log(req.body)
+//   db.offer_post.create(req.body)
+//   .then(function(dbPost) {
+//       console.log(dbPost);
+//       //TODO: decide where this redirect will go, ask Nicole. for now will refresh the total posts page.
+//       // res.redirect("/offer_posts");
+//       res.json("good job, post posted")
+//     });
+// });
 
 // //offer_posts READ ALL TODO: test this route/finish
 // router.get("/offer_posts", function(req,res) {
@@ -198,6 +267,28 @@ router.post("/offer_posts/create", function(req,res) {
 //       // res.redirect("/pets");
 //       res.json(console.log("good boy, pet made"));
 //     });
+// router.put("/provider/update/:id", function (req, res) {
+//   db.Provider.update({
+//     Created: true
+//   },
+//     {
+//       where: {
+//         id: req.params.id
+//       }
+//     }
+//   ).then(function (dbProvider) {
+//     res.json("/");
+//   });
+// });
+
+// router.delete("/provider/:id", function (req, res) {
+//   db.Providers.destroy({
+//     where: {
+//       id: req.params.id
+//     }
+//   }).then(function (dbProvider) {
+//     res.json(dbProvider);
+//   });
 // });
 
 // //pets READ: go get the pets belonging to the owner. how will we pass the owner data into the pet search? will we send the owner id to the url and grab it from there? let's ask Joe and Denis! restful convention says don't hang ONTO the data. look into login status. TODO: untested!
@@ -254,6 +345,7 @@ router.post("/offer_posts/create", function(req,res) {
 //  });
 // //TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:
 // //=====================HERE END THE ROUTES FOR THE PETS===========================
+
 
 
 

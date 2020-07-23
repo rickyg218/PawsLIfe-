@@ -26,9 +26,9 @@ module.exports = function(sequelize, DataTypes) {
           allowNull: false,
           validate: {
             len: [8, 16],
-            isInt: true,
-            isLowercase: true,       
-            isUppercase: true
+            // isInt: true,
+            // isLowercase: true,       
+            // isUppercase: true
           }
       },
        phone: {
