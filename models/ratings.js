@@ -1,10 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-
-
-
-
-
-    var Rating = sequelize.define("Rating", {
+   var Rating = sequelize.define("Rating", {
       service_name: {
           type:DataTypes.STRING,
           allowNull: false,
@@ -29,26 +24,21 @@ module.exports = function(sequelize, DataTypes) {
       }
       }); 
       Rating.associate = function(models) {
+        Rating.belongsTo(models.Provider, {
+          foreignKey: {
+            allowNull: true
+          }
+        });
+        Rating.belongsTo(models.Pet, {
+          foreignKey: {
+            allowNull: true
+          }
+        });
         Rating.belongsTo(models.User, {
           foreignKey: {
             allowNull: false
           }
-        })
-      }
-      Rating.associate = function(models) {
-        Rating.belongsTo(models.Pet, {
-          foreignKey: {
-            allowNull: false
-          }
-        })
-      }
-      Rating.associate = function(models) {
-        Rating.belongsTo(models.Provider, {
-          foreignKey: {
-            allowNull: false
-          }
-        })
-      }
-    
+        });
+      };
      return Rating;
    };

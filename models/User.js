@@ -1,5 +1,3 @@
-const { Sequelize } = require(".");
-
 module.exports = function(sequelize, DataTypes) {
     var User = sequelize.define("User", {
       first_name: {
@@ -47,16 +45,26 @@ module.exports = function(sequelize, DataTypes) {
           isEmail: true,
         }
       },
-      //lat: Sequelize.DECIMAL,
-      //long: Sequelize.DECIMAL
-    });  
-   /* Owner.associate = function(models) {
-      Owner.hasMany(models.Pets, {
+      lat: {
+        type:DataTypes.DECIMAL,
+        allowNull: false,
+      },
+      long: {
+        type:DataTypes.DECIMAL,
+        allowNull: false,
+      },
+    });
+    User.associate = function(models) {
+      User.hasMany(models.Customer, {
         onDelete: "cascade"
       });
-      Owner.hasMany(models.Ratings, {
+      User.hasMany(models.Provider, {
         onDelete: "cascade"
       });
-    };*/
+      User.hasMany(models.Rating, {
+        onDelete: "cascade"
+      });
+    };
+    console.table(User);
     return User;
   };
