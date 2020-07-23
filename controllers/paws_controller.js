@@ -36,16 +36,16 @@ router.post("/offer_posts/create", function(req,res) {
 //offer_posts READ ALL
 router.get("/offer_posts", function(req,res) {
   
-  db.offerPost.findAll()
+  // db.offerPost.findAll()
   
-  .then(function(dbPost) {
-    console.log(dbPosts);
-    const dbPostsJson = dbPosts.map(post=>post.toJSON());
-    let hbrsObj = { offer_post : dbPostsJson };
-    // return res.render("offer_post", hbrsObj);
-    //TODO: convert the below to above line when post.handlebars exists
-    return res.json(hbrsObj);
-  })
+  // .then(function(dbPost) {
+  //   console.log(dbPosts);
+  //   const dbPostsJson = dbPosts.map(post=>post.toJSON());
+  //   let hbrsObj = { offer_post : dbPostsJson };
+  //   // return res.render("offer_post", hbrsObj);
+  //   //TODO: convert the below to above line when post.handlebars exists
+  //   return res.json(hbrsObj);
+  // })
 })
 
 //TODO: add in several more findAll() WHERE: range < X will be trickier than normal - we will have to do a find all, then filter and calculate in a for loop. might be able to do that? or maybe just inputing a value range limit 
@@ -69,8 +69,8 @@ router.put("offer_posts/update:id", function (req,res) {
   {where: {
     id: req.params.id
   }})
-}).then(function(dbPosts){
-  res.json(`changed the post with id of ${req.params.id}`)
+  .then(function(dbPosts){
+    res.json(`changed the post with id of ${req.params.id}`)
 })
 
 
