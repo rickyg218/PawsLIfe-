@@ -31,10 +31,27 @@ nav{
 .professional-page{
     display: none;
 }
+
+.service-dogs-page{
+    display: none;
+}
+.service-cats-page{
+    display: none;
+}
+
 /* owner page */
 .owner-page{
     display: none;
 }
+
+.add-dog-page{
+    display: none;
+}
+
+.add-cat-page{
+    display: none;
+}
+
 
 /* index page */
 .search-bar{

@@ -1,59 +1,57 @@
-// var instance = M.Tabs.init(el, options);
-var toggleProfessional = false
-var togglePetOwner = false
-
-var info = $("#info")
+// var toggleProfessional = false
+// var togglePetOwner = false
 
 
-
+//EVENT LISTENERS
+//when the user clicks the pet owner button it will direct them to their pet owner page
 $(".pet-owner").click(function(event){
   event.preventDefault();
-  // petOwner();
   // togglePetOwner = !togglePetOwner
   $(".professional-page").hide();
   $(".owner-page").toggle();
   console.log(" clicked owner")
 })
+
+//when the user clicks the professional button it will direct them to their professional page
 $(".professional").click(function(event){
   event.preventDefault();
   $(".professional-page").toggle();
   $(".owner-page").hide();
-  // petProfessional();
   // toggleProfessional = !toggleProfessional
   console.log(" clicked professional")
 })
 
-
+//when the user clicks on add dog, they will be redirected to an add dog page with a form
 $(".add-dog").click(function(event){
   event.preventDefault();
-  petProfessional();
+  $(".add-dog-page").toggle();
+  $(".add-cat-page").hide();
+
   console.log(" clicked add dog")
 })
+
+//when the user clicks on add cat, they will be redirected to an add cat page with a form
 $(".add-cat").click(function(event){
   event.preventDefault();
-  petProfessional();
+  $(".add-dog-page").hide();
+  $(".add-cat-page").toggle();
   console.log(" clicked add cat")
 })
 
-//fuction to retrieve pet owner info
-// function petOwner(){
-//   console.log("pet owner")
-//   const petOwnerInfo= `<h2>create a posting</h2>
-//                     <ul>
-//                         <button>for dogs</button>
-//                         <button>for cats</button>
-//                     </ul> 
-//                     `
-//   info.html(petOwnerInfo)
-// }
-// //fuction to retrieve professional info
-// function petProfessional(){
-//   console.log("professional")
-//   const professionalInfo = ` <h2>add a pet</h2>
-//   <ul>
-//   <button> dogs</button>
-//   <button> cats</button>
-//   </ul> 
-//  `
-//   info.html(professionalInfo)
-// }
+//when the user clicks on service dog, they will be redirected to a service dog page with a form
+$(".service-dog").click(function(event){
+  event.preventDefault();
+  $(".service-dogs-page").toggle();
+  $(".service-cats-page").hide();
+
+  console.log(" clicked service dog")
+})
+
+//when the user clicks on service cat, they will be redirected to a service cat page with a form
+$(".service-cat").click(function(event){
+  event.preventDefault();
+  $(".service-dogs-page").hide();
+  $(".service-cats-page").toggle();
+  console.log(" clicked service cat")
+})
+
