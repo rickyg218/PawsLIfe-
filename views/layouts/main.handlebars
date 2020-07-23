@@ -4,14 +4,73 @@
   <title>paws life</title>
   <meta charset="UTF-8">
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
 </head>
 
 <body>
+  <nav class="nav-extended">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">paws life</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/signin">sign in</a></li>
+        <li><a href="/createaccount">create account</a></li>
+        <li><a href="/user">my account</a></li>
+        <li><a href="/">home</a></li>
+      </ul>
+    </div>
+    <div class="nav-content"></div>
+      <h4></h4>
+    </div>
+  </nav>
+  
+    <div class="container logo flex">
+      <h3>PAWS LIFE. we paws life so you don't have to.</h3>
+    </div>
+ 
+  
   {{{ body }}} 
+
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col l4 s12">
+          <h5 class="white-text">paws life</h5>
+          <p class="grey-text text-lighten-4">we paws life so you don't have to.</p>
+        </div>
+        <div class="col l4  s12">
+          <h5 class="white-text">git hub</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">Evan</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Michael</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Nicole</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Ricky</a></li>
+          </ul>
+        </div>
+        <div class="col l4  s12">
+          <h5 class="white-text">linkedin</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">Evan</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Michael</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Nicole</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Ricky</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      © 2020 Copyright Text
+      <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+      </div>
+    </div>
+  </footer>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script src="/assets/js/script.js"></script>
+  {{!-- <script src="/assets/js/script.js"></script> --}}
+  <script src="/assets/js/index_hb.js"></script>
+  <script src="/assets/js/signin_hb.js"></script>
+  <script src="/assets/js/createaccount_hb.js"></script>
+  <script src="/assets/js/user_hb.js"></script>
 </body>
 
 </HTML>

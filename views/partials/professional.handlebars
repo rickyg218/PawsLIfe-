@@ -1,0 +1,25 @@
+<!-- CREATE AN OFFER  -->
+ <div class="professional">
+    <h2>create a posting</h2>
+    <ul>
+        {{!-- choose for cat or dog  --}}
+        <button class="service-dog">for dogs</button>
+        <button class="service-cat">for cats</button>
+    </ul>
+
+    {{!-- show either servicedog or servicecat handlebar  --}}
+    <div class= "col s12" id="info-service">{{>servicedog}}</div>
+    <div class= "col s12" id="info-service">{{>servicecat}}</div>
+
+    {{!-- show professional bookings --}}
+    <h2>booked postings</h2>
+    <div class="booked-postings">this will have the booked listings displayed as cards in the users profile</div>
+        <br>
+        <br>
+        <br>
+
+    {{!-- show professional active listings  --}}
+    <h2>active postings</h2>
+    <div class="active-postings">this will have the active listings displayed as cards in the users profile</div> 
+</div>
+    

@@ -1,0 +1,73 @@
+ {{!-- LIST A DOG SERVICE --}}
+<div class="service-dogs-page">  
+    <h2>dogs</h2>
+        {{!-- service title --}}
+        <form >
+            <label for="title">title of post?</label>
+                <input type="text" name="title"> 
+        </form>
+        <br>
+
+        {{!-- service text --}}
+        <form >
+            <label for="text">what do you want to say about your listing?</label>
+                <input type="text" name="text"> 
+        </form>
+        <br>
+
+        <!-- service type dog -->
+        <form >
+        <label for="service-dogs">choose a service type for dogs</label>
+            <input list="service-dogs" name="service-dogs">
+            <datalist id="service-dogs">
+                <option value="dog walker">
+                <option value="dog sitter">
+                <option value="dog washer">
+            </datalist>    
+        </form>
+        <br>
+
+        <!-- dog size-->
+        <form >
+        <label for="size-dogs">choose a dog size</label>
+            <input list="size-dogs" name="size-dogs">
+            <datalist id="size-dogs">
+                <option value="petit pup (0-15lbs)">
+                <option value="medium pup (15lbs-25lbs)">
+                <option value="large pup (25lbs-40lbs)">
+                <option value="xlarge pup (40lbs-65lbs)">
+                <option value="mega pup (65lbs +)">
+            </datalist>  
+        </form>
+        <br>
+
+        <!-- location radius-->
+        <form >
+        <label for="location-dogs">choose a location radius</label>
+            <input list="location-dogs" name="location-dogs">
+            <datalist id="location-dogs">
+                <option value="0-2 miles">
+                <option value="2-5 miles">
+            </datalist>  
+        </form>
+        <br>
+
+        {{!-- duration --}}
+        <form >
+            <label for="duration">duration of service?</label>
+                <input type="text" name="duration"> 
+        </form>
+        <br>
+
+        {{!-- cost --}}
+        <form >
+            <label for="cost">cost of service?</label>
+                <input type="text" name="cost"> 
+        </form>
+        <br>
+
+        {{!-- submit dog --}}
+        <form>
+            <input type="submit" value="submit">  
+        </form>
+</div>
