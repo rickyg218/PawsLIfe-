@@ -52,8 +52,8 @@ module.exports = function(sequelize, DataTypes) {
       },
 
     });  
-    Post.associate = function(models) {
-        Post.belongsTo(models.Provider, {
+    offerPost.associate = function(models) {
+        offerPost.belongsTo(models.Provider, {
           foreignKey: {
             allowNull: false
           }
