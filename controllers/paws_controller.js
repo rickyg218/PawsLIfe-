@@ -37,7 +37,15 @@ router.get("/user/owner", function(req, res) {
 
 //gets user account profile. this route will need to include a :id at the end so it goes to the specific user page
 router.get("/user/account-profile", function(req, res) {
-  return res.render("account-profile", {name:"nicole"});
+  return res.render("account-profile", 
+  {name:"nicole"},
+  // {firstname:"nicole"},
+  // {lastname:"remy"},
+  // {username:"nicole2839"},
+  // {password:"password"},
+  // {phone:"2837381973"},
+  // {email:"nicole@remy.com"},
+  );
 });
 
 
