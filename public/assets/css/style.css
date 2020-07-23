@@ -7,7 +7,11 @@ body {
 }
 
 main {
-flex: 1 0 auto;
+    flex: 1 0 auto;
+}
+
+.page-footer{
+    background-color: #EAA82A;
 }
 
 /* headers */
@@ -23,6 +27,15 @@ nav{
     background-color: #EAA82A;
 }
 
+/* professional page */
+.professional-page{
+    display: none;
+}
+/* owner page */
+.owner-page{
+    display: none;
+}
+
 /* index page */
 .search-bar{
     margin-top: 30px;
@@ -35,5 +48,8 @@ nav{
 
 /* main page */
 .logo{
-    background-color: purple;
+    background-color: #F1E16E;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
 }

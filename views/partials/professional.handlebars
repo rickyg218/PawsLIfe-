@@ -1,0 +1,149 @@
+<div class="professional-page"
+<h2>add a pet</h2>
+<ul>
+    <button class="add-dog"> dogs</button>
+    <button class="add-cat"> cats</button>
+</ul> 
+
+
+ <!-- CREATE AN OFFER  -->
+ 
+    <h2>create a posting</h2>
+    <ul>
+        <button class="">for dogs</button>
+        <button>for cats</button>
+    </ul>
+    {{!-- LIST A DOG SERVICE --}}
+    <h2>dogs</h2>
+        {{!-- service tile --}}
+        <form >
+            <label for="title">title of post?</label>
+                <input type="text" name="title"> 
+        </form>
+        <br>
+
+        {{!-- service text --}}
+        <form >
+            <label for="text">what do you want to say about your listing?</label>
+                <input type="text" name="text"> 
+        </form>
+        <br>
+
+        <!-- service type dog -->
+        <form >
+        <label for="service-dogs">choose a service type for dogs</label>
+            <input list="service-dogs" name="service-dogs">
+            <datalist id="service-dogs">
+                <option value="dog walker">
+                <option value="dog sitter">
+                <option value="dog washer">
+            </datalist>    
+        </form>
+        <br>
+
+        <!-- dog size-->
+        <form >
+        <label for="size-dogs">choose a dog size</label>
+            <input list="size-dogs" name="size-dogs">
+            <datalist id="size-dogs">
+                <option value="petit pup (0-15lbs)">
+                <option value="medium pup (15lbs-25lbs)">
+                <option value="large pup (25lbs-40lbs)">
+                <option value="xlarge pup (40lbs-65lbs)">
+                <option value="mega pup (65lbs +)">
+            </datalist>  
+        <br>
+
+        {{!-- duration --}}
+        <form >
+            <label for="duration">duration of service?</label>
+                <input type="text" name="duration"> 
+        </form>
+
+        {{!-- cost --}}
+        <form >
+            <label for="cost">cost of service?</label>
+                <input type="text" name="cost"> 
+        </form>
+        <br>
+
+        {{!-- submit dog --}}
+        <form>
+            <input type="submit" value="submit">  
+        </form>
+        <br>
+        <br>
+
+
+    {{!-- LIST A CAT SERVICE --}}
+    <h2>cats</h2>
+        {{!-- service tile --}}
+        <form >
+            <label for="title">title of post?</label>
+                <input type="text" name="title"> 
+        </form>
+        <br>
+
+        {{!-- service text --}}
+        <form >
+            <label for="text">what do you want to say about your listing?</label>
+                <input type="text" name="text"> 
+        </form>
+        <br>
+
+        <!-- service for cats -->
+        <form >
+        <label for="service-cats">choose a service type for cats</label>
+            <input list="service-cats" name="service-cats">
+            <datalist id="service-cats">
+                <option value="cat groomer">
+                <option value="cat sitter">
+            </datalist>    
+        </form>
+        <br>
+
+        <!-- cat size-->
+        <form >
+        <label for="size-cats">choose a dog size</label>
+            <input list="size-cats" name="size-cats">
+            <datalist id="size-cats">
+                <option value="petit kitty (0-15lbs)">
+                <option value="medium kitty (15lbs-25lbs)">
+                <option value="large kitty (25lbs-40lbs)">
+                <option value="xlarge kitty (40lbs-65lbs)">
+                <option value="mega kitty (65lbs +)">
+            </datalist>  
+            <br>
+        </form>
+
+        {{!-- duration --}}
+        <form >
+            <label for="duration">duration of service?</label>
+                <input type="text" name="duration"> 
+        </form>
+
+        {{!-- cost --}}
+        <form >
+            <label for="cost">cost of service?</label>
+                <input type="text" name="cost"> 
+        </form>
+        <br>
+
+        {{!-- submit a cat --}}
+        <form>
+            <input type="submit" value="submit">  
+        </form>
+        <br>
+        <br>
+        <br>
+        
+    <h2>booked postings</h2>
+    <div class="booked-postings">this will have the booked listings displayed as cards in the users profile</div>
+        <br>
+        <br>
+        <br>
+
+    <h2>active postings</h2>
+    <div class="active-postings">this will have the active listings displayed as cards in the users profile</div> --}}
+</div>
+    

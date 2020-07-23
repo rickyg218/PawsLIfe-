@@ -11,7 +11,7 @@ router.get("/", function(req, res) {
 });
 
 router.get("/user", function(req, res) {
-  return res.render("user");
+  return res.render("user", {name:"nicole"});
 });
 
 router.get("/signin", function(req, res) {
