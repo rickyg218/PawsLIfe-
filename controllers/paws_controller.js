@@ -6,54 +6,96 @@ var router = express.Router();
 var db = require("../models");
 
 
-router.get("/", function(req, res) {
- 
-  
-  return res.render("index");
+router.get("/providers", function(req, res) {
+
+  db.Providers.findAll()
+
+    .then(function(dbProviders) {
+      console.log(dbProviders);
+      const dbProvidersJson = dbProviders.map(Providers=>Providers.toJSON());
+      var allProviders = { Providers: dbProvidersJson };
+      return res.render("index", allProviders);
+    });
 });
-router.get("/user", function(req, res) {
- 
-  
-  return res.render("user");
+
+
+
+router.post("/providers/create", function (req, res) {
+  db.Providers.create({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
+    phone: req.body.phone
+  }).then(function (dbProviders) {
+    console.log(dbProviders);
+    res.redirect("/providers");
+  });
+});
+
+
+router.put("/providers/update/:id", function (req, res) {
+  db.Providers.update({
+    Created: true
+  },
+    {
+      where: {
+        id: req.params.id
+      }
+    }
+  ).then(function (dbProviders) {
+    res.json("/");
+  });
+});
+
+router.delete("/providers/:id", function (req, res) {
+  db.Providers.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(function (dbProviders) {
+    res.json(dbProviders);
+  });
 });
 
 
 
-
-// router.get("/burgers", function(req, res) {
-
-//   db.Burger.findAll()
-
-//     .then(function(dbBurger) {
-//       console.log(dbBurger);
-//       const dbBurgersJson = dbBurger.map(burger=>burger.toJSON());
-//       var hbsObject = { burger: dbBurgersJson };
-//       return res.render("index", hbsObject);
-//     });
-// });
-
-// router.post("/burgers/create", function(req, res) {
-//   db.Burger.create({
-//     burger_name: req.body.burger_name
-//   }).then(function(dbBurger) {
-//       console.log(dbBurger);
-//       res.redirect("/");
-//     });
-// });
+router.post("/Users/create", function(req, res) {
+  db.Users.create({
+    name: req.body.name,
+    email:req.body.email,
+    password:req.body.password,
+    phone: req.body.phone
+  }).then(function(dbUsers) {
+      console.log(dbUsers);
+      res.redirect("/Users");
+    });
+});
 
 
-// router.put("/burgers/update/:id", function(req, res) {
-//   db.Burger.update({
-//     devoured: true
-//   },
-//   {
-//     where: {
-//       id: req.params.id
-//     }
-//   }
-//   ).then(function(dbBurger) {
-//     res.json("/");
-//   });
-// });
+router.put("/Users/update/:id", function(req, res) {
+  db.Users.update({
+    Created: true
+  },
+  {
+    where: {
+      id: req.params.id
+    }
+  }
+  ).then(function(dbUsers) {
+    res.json("/");
+  });
+});
+
+router.delete("/Users/:id", function (req, res) {
+  db.Users.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(function (dbUsers) {
+    res.json(dbUsers);
+  });
+});
+
+
 
 module.exports = router;

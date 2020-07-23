@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Owner = sequelize.define("Owner", {
+    var Users = sequelize.define("Users", {
       name: {
           type:DataTypes.STRING,
           allowNull: false,
@@ -47,5 +47,5 @@ module.exports = function(sequelize, DataTypes) {
         onDelete: "cascade"
       });
     };*/
-    return Owner;
+    return Users;
   };
