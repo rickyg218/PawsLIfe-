@@ -6,27 +6,17 @@ var router = express.Router();
 var db = require("../models");
 
 
-// router.get("/provider", function(req, res) {
-
-// //   db.Provider.findAll()
-
-//     .then(function(dbProvider) {
-//       console.log(dbProvider);
-//       const dbProviderJson = dbProvider.map(Provider=>Provider.toJSON());
-//       var allProvider = { Provider: dbProviderJson };
-//       return res.render("index", allProvider);
-//     });
-// });
-
 //main route welcome
 router.get("/", function(req, res) {
   return res.render("index");
 });
 
+
 //redirects you to the user owner page as a default and will need the user :id param
 router.get("/user", function(req, res) {
-  return res.redirect("/user/owner");
-});
+    return res.redirect("/user/owner");
+  });
+  
 
 //takes you to the sign in page
 router.get("/signin", function(req, res) {
@@ -54,19 +44,9 @@ router.get("/user/account-profile", function(req, res) {
 });
 
 
-
-
-//TODO: provider creation
-// router.post("/provider/create", function (req, res) {
-//   db.Provider.create({
-//   }).then(function (dbProvider) {
-//     console.log(dbProvider);
-//     res.redirect("/provider");
-//   });
-// });
-
-
-router.post("/User/create", function(req, res) {
+//~~~~~~~~~~~~~~~~~~~~~~~~HERE BEGIN THE ROUTES FOR USERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//TODO: users
+router.post("/users/create", function(req, res) {
   db.User.create({
     user_name: req.body.user_name,
     first_name: req.body.first_name,
@@ -86,70 +66,166 @@ router.post("/User/create", function(req, res) {
     
 });
 
+//this route pulls a specific user based on their ID, will be useful in redirecting user to their page after account creation as well as user selecting themselves/logging in
+router.get("/users/:id", function(req, res) {
+  db.User.findOne({
+    where: {id: req.params.id}
+  }).then(function(dbUser) {
+    console.log(dbUser);
+    // res.json(dbUser, `retrieved user with id: ${req.params.id}`);
+    res.json("whatever")
+    //TODO: check in with nicole where this will route to, pulling functional record correctly based on user id.
+  }).catch(function(err){
+    res.status(500).json(err);
+  });
+});
 
+//this update route for users works, just needs to be res redirected properly via Nicole's plan
+router.put("/users/update/:id", function(req, res) {
+  db.User.update(req.body,
+  {
+    where: {
+      id: req.params.id
+    }
+  }
+  ).then(function(dbUsers) {
+    //this should redirect us to homepage, may have to edit.
+    // res.json("/");
+    res.json("test for user update, nice job");
+  }).catch(function(err){
+    res.status(500).json(err);
+  });
+});
 
-// router.put("/Users/update/:id", function(req, res) {
-//   db.Users.update({
-//     Created: true
-//   },
-//   {
-//     where: {
-//       id: req.params.id
-//     }
-//   }
-//   ).then(function(dbUsers) {
-//     res.json("/");
-//   });
-// });
-
-// router.delete("/Users/:id", function (req, res) {
-//   db.Users.destroy({
-//     where: {
-//       id: req.params.id
-//     }
-//   }).then(function (dbUsers) {
-//     res.json(dbUsers);
-//   });
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+router.delete("/users/delete/:id", function (req, res) {
+  db.User.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(function (dbUsers) {
+    // res.json(dbUsers);
+    res.json(`destroyed the user account with id of ${req.params.id}`);
+  }).catch(function(err){
+    res.status(500).json(err);
+  });
+});
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~HERE END THE ROUTES FOR USERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
+//==========================HERE BEGIN THE TODO: customer ROUTES======================================
 
-// //=========================HERE BEGIN THE ROUTES FOR THE OFFER POSTS ==============
+router.post("/customers/create", function (req, res) {
+  db.Customer.create({
+    UserId : req.body.id
+  }).then(function (dbCustomer) {
+        console.log(dbCustomer);
+        // res.redirect("/customer");
+        //TODO: link this properly with the frontend, both on req.body having an id key (or whatever it's called)
+        res.json("we made you that customer");
+      }).catch(function(err){
+        res.status(500).json(err);
+      });
+    });
+
+router.get("/customers", function (req,res) {
+  db.Customer.findAll({
+    include: [db.User]
+  }).then(function (dbCustomer){
+    console.log(dbCustomer)
+    // const dbCustomerJson = (dbCustomer=>Customer.toJSON());
+    //   var allCustomer = { Customer: dbCustomerJson };
+    //   //TODO: make sure this render is correct
+    //   return res.render("index", allCustomer);
+    return res.json(dbCustomer)
+  }).catch(function(err){
+    res.status(500).json(err);
+  });
+})
+
+
+router.get("/customers/:id", function (req,res) {
+  db.Customer.findOne({
+    where: {id: req.params.id}
+  })
+  .then(function(dbCustomer) {
+    const dbCustomerJson = (dbCustomer=>Customer.toJSON());
+    var oneCustomer = { Customer: dbCustomerJson };
+    //TODO: make sure this render is correct
+    return res.render("index", oneCustomer);
+  })
+  .catch(function(err){
+    res.status(500).json(err);
+  });
+})
+
+
+
+
+//==========================HERE BEGIN THE TODO: customer ROUTES======================================
+
+
+//================================HERE BEGIN THE PROVIDER ROUTES======================================
+router.post("/providers/create", function (req, res) {
+    db.Provider.create({
+      UserId : req.body.id
+    }).then(function (dbProvider) {
+          console.log(dbProvider);
+          // res.redirect("/provider");
+          //TODO: link this properly with the frontend, both on req.body having an id key (or whatever it's called)
+          res.json("we made you that provider");
+        }).catch(function(err){
+          res.status(500).json(err);
+        });
+      });
+
+  router.get("/providers", function(req, res) {
+
+  db.Provider.findAll({})
+    .then(function(dbProvider) {
+      console.log({dbProvider});
+      //TODO: make sure this returns what frontend needs
+      return res.json(dbProvider);
+    }).catch(function(err){
+      console.log("THIS IS THE ERROR ON 191", err)
+      res.status(500).json(err);
+    });
+});
+
+router.get("/providers/:id", function (req,res) {
+  db.Provider.findOne({
+    where: {id: req.params.id}
+  })
+  .then(function(dbProvider) {
+    console.log(dbProvider)
+    
+   
+    //TODO: make sure we are rendering properly or sending back to the right place for frontend
+    return res.json(dbProvider)
+    // return res.render("index", oneProvider);
+  })
+  .catch(function(err){
+    res.status(500).json(err);
+  });
+})
+
+//==============================HERE END THE PROVIDER ROUTES===========================================
+
+
+
+// //=========================HERE BEGIN THE ROUTES FOR THE OFFER POSTS ========================
 //TO CHECK cannot
 //offer_posts CREATE NEW POST TODO: test/finish this route
-// router.post("/offer_posts/create", function(req,res) {
-//   console.log(req.body)
-//   db.offer_post.create(req.body)
-//   .then(function(dbPost) {
-//       console.log(dbPost);
-//       //TODO: decide where this redirect will go, ask Nicole. for now will refresh the total posts page.
-//       // res.redirect("/offer_posts");
-//       res.json("good job, post posted")
-//     });
-// });
+router.post("/offer_posts/create", function(req,res) {
+  console.log(req.body)
+  db.offer_post.create(req.body)
+  .then(function(dbPost) {
+      console.log(dbPost);
+      //TODO: decide where this redirect will go, ask Nicole. for now will refresh the total posts page.
+      // res.redirect("/offer_posts");
+      res.json("good job, post posted")
+    });
+});
 
 // //offer_posts READ ALL TODO: test this route/finish
 // router.get("/offer_posts", function(req,res) {
@@ -344,7 +420,7 @@ router.post("/User/create", function(req, res) {
 //      );
 //  });
 // //TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:
-// //=====================HERE END THE ROUTES FOR THE PETS===========================
+// //=====================HERE END THE ROUTES FOR THE PETS===================================
 
 
 

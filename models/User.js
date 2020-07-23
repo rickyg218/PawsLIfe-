@@ -34,9 +34,9 @@ module.exports = function(sequelize, DataTypes) {
        phone: {
           type:DataTypes.INTEGER,
           allowNull: false,
-          validate: {
-            len: [10, 10],
-          }
+          // validate: {
+          //   len: [10, 10],
+          // }
         },
       email: {
         type:DataTypes.STRING,
