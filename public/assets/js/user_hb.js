@@ -1,25 +1,4 @@
-// var toggleProfessional = false
-// var togglePetOwner = false
-
-
 //EVENT LISTENERS
-//when the user clicks the pet owner button it will direct them to their pet owner page
-// $(".pet-owner").click(function(event){
-//   event.preventDefault();
-//   // togglePetOwner = !togglePetOwner
-//   $(".professional-page").hide();
-//   $(".owner-page").toggle();
-//   console.log(" clicked owner")
-// })
-
-// //when the user clicks the professional button it will direct them to their professional page
-// $(".professional").click(function(event){
-//   event.preventDefault();
-//   $(".professional-page").toggle();
-//   $(".owner-page").hide();
-//   // toggleProfessional = !toggleProfessional
-//   console.log(" clicked professional")
-// })
 
 //when the user clicks on add dog, they will be redirected to an add dog page with a form
 $(".add-dog").click(function(event){
@@ -53,5 +32,30 @@ $(".service-cat").click(function(event){
   $(".service-dogs-page").hide();
   $(".service-cats-page").toggle();
   console.log(" clicked service cat")
+})
+//when the user clicks on save account, they will be redirected to a service cat page with a form
+$("#save-account").click(function(event){
+  event.preventDefault();
+
+  console.log(" clicked save account")
+
+})
+//when the user clicks on service cat, they will be redirected to a service cat page with a form
+$("#delete-account").click(function(event){
+  event.preventDefault();
+
+  console.log(" clicked delete account")
+})
+//when the user clicks on service cat, they will be redirected to a service cat page with a form
+$("#create-account").click(function(event){
+  event.preventDefault();
+
+  console.log(" clicked create account")
+})
+//when the user clicks on service cat, they will be redirected to a service cat page with a form
+$("#sign-in").click(function(event){
+  event.preventDefault();
+
+  console.log(" clicked sign in ")
 })
 

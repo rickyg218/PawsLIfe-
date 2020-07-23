@@ -19,6 +19,7 @@ app.engine("handlebars", exphbs({
 app.set("view engine", "handlebars");
 
 var routes = require("./controllers/paws_controller.js");
+var routes = require("./controllers/frontend_controller.js");
 
 app.use(routes);
 
