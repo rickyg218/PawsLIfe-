@@ -11,7 +11,7 @@ router.get("/", function(req, res) {
 });
 
 router.get("/user", function(req, res) {
-  return res.render("user", {name:"nicole"});
+  return res.redirect("/user/owner");
 });
 
 router.get("/signin", function(req, res) {
@@ -20,6 +20,12 @@ router.get("/signin", function(req, res) {
 
 router.get("/createaccount", function(req, res) {
   return res.render("createaccount");
+});
+router.get("/user/professional", function(req, res) {
+  return res.render("professional", {name:"nicole"});
+});
+router.get("/user/owner", function(req, res) {
+  return res.render("owner", {name:"nicole"});
 });
 
 

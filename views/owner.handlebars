@@ -1,0 +1,42 @@
+<div class="owner-page">
+    <div class="container">
+        <div class="row">
+            <h2>owner profile</h2>
+                <div class="user-profile">
+                    <h3>welcome, {{name}} !</h3> 
+                </div>
+        </div>
+    </div>
+
+    <!-- pet professional or pet owner buttons and info divs -->
+    <div class="container">
+        <div class="row">
+            <div class="col s6 offset-s8">
+                <button class="professional">professional</button>
+                <button class="pet-owner">pet owner</button>
+            </div>
+        
+        </div>  
+        <div class= "">view my pets/listings</div>
+        <div class= "">view my pet bookings/booked listings</div>
+        <div class= "">view my pet reviews/booked listings reviews</div>
+    </div>
+
+    {{!--CREATE A PET --}}
+    <div class="container owner">
+        <h2>add a pet</h2>
+            <ul>
+                {{!-- choose for cat or dog  --}}
+                <button class="add-dog"> dogs</button>
+                <button class="add-cat"> cats</button>
+            </ul> 
+
+        {{!-- show either addcat or adddog handlebar  --}}
+        <div class= "col s12" id="info-add">{{>addcat}}</div>
+        <div class= "col s12" id="info-add">{{>adddog}}</div>
+
+        {{!-- show pet family for owner --}}
+        <h2>pet family</h2>
+        <div class="pet-family">this will have pet family displayed as cards in the users profile</div>
+    </div>
+</div>

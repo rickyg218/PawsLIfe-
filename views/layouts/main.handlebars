@@ -9,13 +9,15 @@
 </head>
 
 <body>
+
+  {{!-- nav bar  --}}
   <nav class="nav-extended">
     <div class="nav-wrapper">
       <a href="#" class="brand-logo">paws life</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="/signin">sign in</a></li>
         <li><a href="/createaccount">create account</a></li>
-        <li><a href="/user">my account</a></li>
+        <li><a href="/user/owner">my account</a></li>
         <li><a href="/">home</a></li>
       </ul>
     </div>
@@ -24,13 +26,15 @@
     </div>
   </nav>
   
-    <div class="container logo flex">
-      <h3>PAWS LIFE. we paws life so you don't have to.</h3>
-    </div>
+  {{!-- logo --}}
+  <div class="container logo flex">
+    <h3>PAWS LIFE. we paws life so you don't have to.</h3>
+  </div>
  
   
   {{{ body }}} 
 
+{{!-- footer  --}}
   <footer class="page-footer">
     <div class="container">
       <div class="row">
