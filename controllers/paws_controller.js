@@ -7,14 +7,19 @@ var db = require("../models");
 
 
 router.get("/", function(req, res) {
- 
-  
   return res.render("index");
 });
+
 router.get("/user", function(req, res) {
- 
-  
-  return res.render("user");
+  return res.render("user", {name:"nicole"});
+});
+
+router.get("/signin", function(req, res) {
+  return res.render("signin");
+});
+
+router.get("/createaccount", function(req, res) {
+  return res.render("createaccount");
 });
 
 
