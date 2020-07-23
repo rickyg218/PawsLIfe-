@@ -1,29 +1,24 @@
-<div class="owner-page">
-    <div class="container">
-        <div class="row">
+<div class="owner-page container">
+    <div class="row">
             <h2>owner profile</h2>
                 <div class="user-profile">
                     <h3>welcome, {{name}} !</h3> 
                 </div>
-        </div>
     </div>
 
     <!-- pet professional or pet owner buttons and info divs -->
-    <div class="container">
-        <div class="row">
-            <div class="col s6 offset-s8">
-                <button class="professional">professional</button>
-                <button class="pet-owner">pet owner</button>
-            </div>
-        
-        </div>  
-        <div class= "">view my pets/listings</div>
-        <div class= "">view my pet bookings/booked listings</div>
-        <div class= "">view my pet reviews/booked listings reviews</div>
-    </div>
+    <div class="row card">
+        <div class="col s9 offset-s5">
+            <ul class="tabs">
+                <li class="tab col s3"><a href= "/user/professional">professional</a></li>
+                <li class="tab col s3"><a href="/user/owner" >pet owner</a></li>
+                <li class="tab col s3"><a href="/user/account-profile">view my profile</a></li>
+            </ul> 
+        </div>
+    </div>  
 
     {{!--CREATE A PET --}}
-    <div class="container owner">
+    <div class="row create-pet">
         <h2>add a pet</h2>
             <ul>
                 {{!-- choose for cat or dog  --}}
@@ -34,9 +29,28 @@
         {{!-- show either addcat or adddog handlebar  --}}
         <div class= "col s12" id="info-add">{{>addcat}}</div>
         <div class= "col s12" id="info-add">{{>adddog}}</div>
-
+    </div>
         {{!-- show pet family for owner --}}
+    <div class="row pets">
         <h2>pet family</h2>
         <div class="pet-family">this will have pet family displayed as cards in the users profile</div>
+        <br>
+        <br>
+        <br>
+    </div>
+
+        {{!-- show pet  bookings  --}}
+    <div class="row">
+        <h2>pet bookings</h2>
+        <div class= "pet-bookings">view my pet bookings</div>
+        <br>
+        <br>
+        <br>
+    </div>
+
+        {{!-- pet ratings  --}}
+    <div class="row">
+        <h2>pet ratings</h2>
+        <div class= "pet-ratings">view my pet ratings</div>
     </div>
 </div>
