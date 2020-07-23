@@ -26,9 +26,6 @@ module.exports = function(sequelize, DataTypes) {
       pet_type: {
           type:DataTypes.STRING,
           allowNull: false,
-          validate: {
-            isIn: [["cat","dog"]]
-          }
       },
        breed: {
           type:DataTypes.STRING,
@@ -40,9 +37,6 @@ module.exports = function(sequelize, DataTypes) {
       size: {
         type:DataTypes.STRING,
         allowNull: false,
-        validate: {
-            isIn: [["xs","s","m","l","xl"]]
-        }
       },
       temperment: {
         type:DataTypes.STRING,
@@ -66,7 +60,6 @@ module.exports = function(sequelize, DataTypes) {
             min: 0
         }
       },
-
     });  
     Pet.associate = function(models) {
         Pet.belongsTo(models.Customer, {
@@ -74,6 +67,9 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
           }
         });
+        Pet.hasMany(models.Rating, {
+          onDelete: "cascade"
+      })
       };
     return Pet;
   };
