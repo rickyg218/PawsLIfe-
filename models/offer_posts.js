@@ -58,6 +58,9 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
           }
         });
+        Post.hasMany(models.Rating, {
+          onDelete: "cascade"
+        })
       };
     return offerPost;
   };

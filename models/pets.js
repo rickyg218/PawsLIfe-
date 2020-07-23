@@ -60,7 +60,6 @@ module.exports = function(sequelize, DataTypes) {
             min: 0
         }
       },
-
     });  
     Pet.associate = function(models) {
         Pet.belongsTo(models.Customer, {
@@ -68,6 +67,9 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
           }
         });
+        Pet.hasMany(models.Rating, {
+          onDelete: "cascade"
+      })
       };
     return Pet;
   };
