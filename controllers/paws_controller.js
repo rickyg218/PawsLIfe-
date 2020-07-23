@@ -45,7 +45,7 @@ router.get("/user/account-profile", function(req, res) {
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~HERE BEGIN THE ROUTES FOR USERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//TODO: users
+//users
 router.post("/users/create", function(req, res) {
   db.User.create({
     user_name: req.body.user_name,
@@ -73,7 +73,7 @@ router.get("/users/:id", function(req, res) {
   }).then(function(dbUser) {
     console.log(dbUser);
     // res.json(dbUser, `retrieved user with id: ${req.params.id}`);
-    res.json("whatever")
+    res.json("testing response success of user findOne")
     //TODO: check in with nicole where this will route to, pulling functional record correctly based on user id.
   }).catch(function(err){
     res.status(500).json(err);
@@ -133,8 +133,6 @@ router.get("/customers", function (req,res) {
     include: [db.User]
   }).then(function (dbCustomer){
     console.log(dbCustomer)
-    // const dbCustomerJson = (dbCustomer=>Customer.toJSON());
-    //   var allCustomer = { Customer: dbCustomerJson };
     //   //TODO: make sure this render is correct
     //   return res.render("index", allCustomer);
     return res.json(dbCustomer)
@@ -162,7 +160,7 @@ router.get("/customers/:id", function (req,res) {
 
 
 
-//==========================HERE BEGIN THE TODO: customer ROUTES======================================
+//==========================HERE END THE customer ROUTES======================================
 
 
 //================================HERE BEGIN THE PROVIDER ROUTES======================================
@@ -201,8 +199,8 @@ router.get("/providers/:id", function (req,res) {
     
    
     //TODO: make sure we are rendering properly or sending back to the right place for frontend
-    return res.json(dbProvider)
-    // return res.render("index", oneProvider);
+    return res.json({provider: dbProvider})
+    // return res.render("index", {provider: dbProvider});
   })
   .catch(function(err){
     res.status(500).json(err);
@@ -214,8 +212,7 @@ router.get("/providers/:id", function (req,res) {
 
 
 // //=========================HERE BEGIN THE ROUTES FOR THE OFFER POSTS ========================
-//TO CHECK cannot
-//offer_posts CREATE NEW POST TODO: test/finish this route
+//offer_posts CREATE NEW POST 
 router.post("/offer_posts/create", function(req,res) {
   console.log(req.body)
   db.offer_post.create(req.body)
@@ -224,23 +221,26 @@ router.post("/offer_posts/create", function(req,res) {
       //TODO: decide where this redirect will go, ask Nicole. for now will refresh the total posts page.
       // res.redirect("/offer_posts");
       res.json("good job, post posted")
-    });
+    }).catch(function(err){
+      res.status(500).json(err);
+    });;
 });
 
-// //offer_posts READ ALL TODO: test this route/finish
-// router.get("/offer_posts", function(req,res) {
+// //offer_posts READ ALL 
+router.get("/offer_posts", function(req,res) {
   
-//   db.Post.findAll()
+  db.offer_post.findAll()
   
-//   .then(function(dbPost) {
-//     console.log(dbPosts);
-//     const dbPostsJson = dbPosts.map(post=>post.toJSON());
-//     let hbrsObj = { offer_post : dbPostsJson };
-//     // return res.render("offer_post", hbrsObj);
-//     //TODO: convert the below to above line when post.handlebars exists or we know where it's rendering.
-//     return res.json(hbrsObj);
-//   })
-// });
+  .then(function(dbPost) {
+    console.log(dbPost);
+    let hbrsObj = { offer_posts : dbPost };
+    // return res.render("offer_post", hbrsObj);
+    //TODO: convert the below to above line when post.handlebars exists or we know where it's rendering.
+    return res.json(hbrsObj);
+  }).catch(function(err){
+    res.status(500).json(err);
+  });
+});
 
 // router.get("/offer_posts/:range", function(req,res) {
 //   let rangeRel = req.params.range;
@@ -282,47 +282,49 @@ router.post("/offer_posts/create", function(req,res) {
 // });
 
 
-// // offer_posts UPDATE, by post id. TODO: needs test/finish
-// router.put("offer_posts/update/:id", function (req,res) {
+// // offer_posts UPDATE, by post id. 
+router.put("/offer_posts/update/:id", function (req,res) {
 
-//   db.offerPost.update({
-//     title: req.body.title,
-//     text: req.body.text,
-//     size_restrictions: req.body.size_restrictions,
-//     animal_type: req.body.animal_type,
-//     duration: req.body.duration,
-//     range: req.body.range,
-//     //TODO: verify need for range. may have to mathematically convert "range" into an over/under in the lat and long comparisons for read.
-//     cost: req.body.cost,
-//     service_type: req.body.service_type,
-//     //TODO: verify how pictures will be used
-//     pictures: req.body.pictures,
-//   },
-//   {where: {
-//     id: req.params.id
-//   }})
-//   .then(function(dbPosts){
-//     res.json(`changed the post with id of ${req.params.id}`)
-// });
-// });
+  db.offer_post.update({
+    title: req.body.title,
+    text: req.body.text,
+    size_restrictions: req.body.size_restrictions,
+    animal_type: req.body.animal_type,
+    duration: req.body.duration,
+    range: req.body.range,
+    cost: req.body.cost,
+    service_type: req.body.service_type,
+    //TODO: verify how pictures will be used
+    pictures: req.body.pictures,
+  },
+  {where: {
+    id: req.params.id
+  }})
+  .then(function(dbPosts){
+    console.log(dbPosts)
+    res.json(`changed the post with id of ${req.params.id}`)
+}).catch(function(err){
+  console.log(err);
+  res.status(500).json(err);
+});;
+});
 
-// // offer_posts DELETE, by post id.
-// router.delete("/offer_posts/:id", function(req, res) {
-//  //TODO: needs to tested/finished
-//     db.offerPost.destroy(
-//       {
-//         where: { id: req.params.id },
-//       },
-//       function (result) {
-//         if (result.affectedRows == 0) {
-//           // If no rows were changed, then the ID must not exist, so 404
-//           return res.status(404).end();
-//         } else {
-//           res.status(200).end();
-//         }
-//       }
-//     );
-// });
+// offer_posts DELETE, by post id.
+router.delete("/offer_posts/:id", function (req, res) {
+  db.offer_post
+    .destroy({
+      where: {
+        id: req.params.id,
+      },
+    })
+    .then(function (dbPosts) {
+      res.json(`destroyed the offering post with id of ${req.params.id}`);
+    }).catch(function(err) {
+      console.log(err);
+      res.status(500)
+    })
+    
+});
 
 // //=========================HERE ENDS THE ROUTES FOR THE OFFER POSTS ==============
 
@@ -331,46 +333,41 @@ router.post("/offer_posts/create", function(req,res) {
 
 
 // //=====================HERE BEGIN THE ROUTES FOR THE PETS=========================
-//pets CREATE TODO: untested!
-// router.post("/pets/create", function(req,res) {
+// pets CREATE TODO: untested!
+router.post("/pets/create", function(req,res) {
   
-//   db.Pet.create(
-//     req.body 
-//   )
-//   .then(function(dbPost) {
-//       console.log(dbPost);
-//       //TODO: decide where this redirect will go, ask Nicole. for now will take us to /pets
-//       // res.redirect("/pets");
-//       res.json(console.log("good boy, pet made"));
-//     });
-// router.put("/provider/update/:id", function (req, res) {
-//   db.Provider.update({
-//     Created: true
-//   },
-//     {
-//       where: {
-//         id: req.params.id
-//       }
-//     }
-//   ).then(function (dbProvider) {
-//     res.json("/");
+  db.Pet.create(
+    req.body 
+  )
+  .then(function(dbPet) {
+      console.log(dbPet);
+      //TODO: decide where this redirect will go, ask Nicole. for now will take us to /pets
+      // res.redirect("/pets");
+      res.json("good boy, pet made");
+    }).catch(function(err){
+      console.log(err);
+      res.status(500);
+    });
+})
+
+// router.get("/pets", function(req,res) {
+  
+//   db.Pet.findAll()
+  
+//   .then(function(dbPet) {
+//     console.log(dbPet);
+//     let hbrsObj = { pets : dbPet };
+//     // return res.render("offer_post", hbrsObj);
+//     //TODO: convert the below to above line when post.handlebars exists or we know where it's rendering.
+//     return res.json(hbrsObj);
+//   }).catch(function(err){
+//     res.status(500).json(err);
 //   });
 // });
-
-// router.delete("/provider/:id", function (req, res) {
-//   db.Providers.destroy({
-//     where: {
-//       id: req.params.id
-//     }
-//   }).then(function (dbProvider) {
-//     res.json(dbProvider);
-//   });
-// });
-
-// //pets READ: go get the pets belonging to the owner. how will we pass the owner data into the pet search? will we send the owner id to the url and grab it from there? let's ask Joe and Denis! restful convention says don't hang ONTO the data. look into login status. TODO: untested!
+// //pets READ
 // router.get("/pets/:id", function (req,res) {
 
-//   db.Pet.findAll({
+//   db.Pet.findOne({
 //     where: {cust_id:req.params.id}
 //   }).then(function(dbPet){
 //     console.log(dbPet);
