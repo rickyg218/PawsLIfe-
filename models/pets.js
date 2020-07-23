@@ -26,9 +26,6 @@ module.exports = function(sequelize, DataTypes) {
       pet_type: {
           type:DataTypes.STRING,
           allowNull: false,
-          validate: {
-            isIn: [["cat","dog"]]
-          }
       },
        breed: {
           type:DataTypes.STRING,
@@ -40,9 +37,6 @@ module.exports = function(sequelize, DataTypes) {
       size: {
         type:DataTypes.STRING,
         allowNull: false,
-        validate: {
-            isIn: [["xs","s","m","l","xl"]]
-        }
       },
       temperment: {
         type:DataTypes.STRING,
