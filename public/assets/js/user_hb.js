@@ -79,9 +79,8 @@ $("#delete-account").click(function(event){
 //when the user clicks on create account, they will be redirected their owner page
 $("#create-account").click(function(event){
   event.preventDefault();
-  const accountId = $(this).attr("data-id")
   $.ajax({
-    url:`/api/account/${accountId}`,
+    url:`/api/account/`,
     method: "POST"
   }).then(data=>{
     alert("POSTED!");
@@ -98,9 +97,8 @@ $("#create-account").click(function(event){
 //when the user clicks on submit, they will be redirected to their professional page 
 $("#service-cat-form").click(function(event){
   event.preventDefault();
-  const serviceCatId = $(this).attr("data-id")
   $.ajax({
-    url:`/api/service/${serviceCatId}`,
+    url:`/api/service/`,
     method: "POST"
   }).then(data=>{
     alert("POSTED cat service!");
@@ -114,9 +112,8 @@ $("#service-cat-form").click(function(event){
 //when the user clicks on submit, they will be redirected to their professional page
 $("#service-dog-form").click(function(event){
   event.preventDefault();
-  const serviceDogId = $(this).attr("data-id")
   $.ajax({
-    url:`/api/service/${serviceDogId}`,
+    url:`/api/service/`,
     method: "POST"
   }).then(data=>{
     alert("POSTED dog service!");
@@ -161,10 +158,19 @@ $("#delete-posting").click(function(event){
 //when the user clicks on submit, they will be redirected to their owner page 
 $("#add-cat-form").click(function(event){
   event.preventDefault();
-  const addCatId = $(this).attr("data-id")
+  const catObj = {
+    first_name:$("#cat-name").val(),
+    special_care:$("#cat-care").val(),
+    pet_type:"cat",
+    breed:$("#cat-breed").val(),
+    size:$("#cat-size").val(),
+    temperment:$("#cat-temperment").val(),
+    age:$("#cat-age").val(),
+}
   $.ajax({
-    url:`/api/user/pets/${addCatId}`,
-    method: "POST"
+    url:`/api/user/pets/`,
+    method: "POST",
+    data: catObj
   }).then(data=>{
     alert("POSTED new cat!");
     location.href = `/user/owner/${id}`
@@ -177,9 +183,8 @@ $("#add-cat-form").click(function(event){
 //when the user clicks on submit, they will be redirected to their owner page  
 $("#add-dog-form").click(function(event){
   event.preventDefault();
-  const addDogId = $(this).attr("data-id")
   $.ajax({
-    url:`/api//user/pets/${addDogId}`,
+    url:`/api//user/pets/`,
     method: "POST"
   }).then(data=>{
     alert("POSTED new dog !");
