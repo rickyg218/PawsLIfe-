@@ -350,34 +350,35 @@ router.post("/pets/create", function(req,res) {
     });
 })
 
-// router.get("/pets", function(req,res) {
-  
-//   db.Pet.findAll()
-  
-//   .then(function(dbPet) {
-//     console.log(dbPet);
-//     let hbrsObj = { pets : dbPet };
-//     // return res.render("offer_post", hbrsObj);
-//     //TODO: convert the below to above line when post.handlebars exists or we know where it's rendering.
-//     return res.json(hbrsObj);
-//   }).catch(function(err){
-//     res.status(500).json(err);
-//   });
-// });
-// //pets READ
-// router.get("/pets/:id", function (req,res) {
 
-//   db.Pet.findOne({
-//     where: {cust_id:req.params.id}
-//   }).then(function(dbPet){
-//     console.log(dbPet);
-//     const dbPetsJson = dbPet.map(pet=>pet.toJSON());
-//     var hbrsObject = { pet: dbPetsJson };
-//     // return res.render("nICOLESlAYOUThANDLEbARhERE", hbrsObject) //TODO: turn this into a real subframe render.
-//     return res.json("the pet.findAll-where was successful", hbrsObject)
-//   })
+router.get("/pets", function(req,res) {
+  db.Pet.findAll()
+  .then(function(dbPet) {
+    console.log(dbPet);
+    let hbrsObj = { pets : dbPet };
+    return res.json(hbrsObj);
+  }).catch(function(err){
+    res.status(500).json(err);
+  });
+});
 
-// })
+
+router.get("/pets/:id", function (req,res) {
+ db.Pet.findOne({
+    where: {id:req.params.id}
+  }).then(function(dbPet){
+    const dbPetsJson = dbPet.map(pet=>pet.toJSON());
+    var hbrsObject = { pet: dbPetsJson };
+    // return res.render("nICOLESlAYOUThANDLEbARhERE", hbrsObject) //TODO: turn this into a real subframe render.
+    return res.json("the pet.findAll-where was successful", hbrsObject)
+  }).catch(function (err) {
+    res.status(500).json(err);
+  })
+
+})
+
+
+
 // //pets UPDATE    TODO: untested! please test and revise
 // router.put("pets/update/:id", function (req,res) {
 
@@ -399,23 +400,23 @@ router.post("/pets/create", function(req,res) {
 // });
 // });
 
-// // pets DELETE, by pet id.
-// router.delete("/pets/delete/:id", function(req, res) {
-//   //TODO: needs to tested/finished
-//      db.Pet.destroy(
-//        {
-//          where: { id: req.params.id },
-//        },
-//        function (result) {
-//          if (result.affectedRows == 0) {
-//            // If no rows were changed, then the ID must not exist, so 404
-//            return res.status(404).end();
-//          } else {
-//            res.status(200).end();
-//          }
-//        }
-//      );
-//  });
+router.delete("/pets/:id", function (req, res) {
+  db.Pet
+    .destroy({
+      where: {
+        id: req.params.id,
+      },
+    })
+    .then(function (dbPet) {
+      res.json(`destroyed the offering post with id of ${req.params.id}`);
+    }).catch(function (err) {
+      console.log(err);
+      res.status(500)
+    })
+
+});
+
+
 // //TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:
 // //=====================HERE END THE ROUTES FOR THE PETS===================================
 
