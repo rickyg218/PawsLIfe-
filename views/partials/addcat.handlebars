@@ -11,7 +11,7 @@
         {{!-- cat breed --}}
         <form>
             <label for="cat-breed">what breed?</label>
-                <input type="text" name="cat-breed"> 
+                <input type="text" name="cat-breed" id="breed"> 
             <br>
         </form>
         <br>
@@ -19,7 +19,7 @@
         {{!-- cat size --}}
         <form>
             <label for="cat-size">cat size</label>
-                <input list="cat-size" name="cat-size">
+                <input list="cat-size" name="cat-size" id="cat-size">
                 <datalist id="cat-size">
                     <option value="petit kitty (0-15lbs)">
                     <option value="medium kitty (15lbs-25lbs)">
@@ -31,14 +31,14 @@
         {{!-- cat age --}}
         <form >
             <label for="cat-age">what is the age?</label>
-                <input type="text" age="cat-age"> 
+                <input type="text" age="cat-age" id="cat-age"> 
         </form>
         <br>
 
         {{!-- cat temperment --}}  
         <form>
             <label for="cat-temperment">cat temperment</label>
-                <input list="cat-temperment" name="cat-temperment">
+                <input list="cat-temperment" name="cat-temperment" id="cat-temperment">
                 <datalist id="cat-temperment">
                     <option value="friendly">
                     <option value="aggressive">
@@ -51,12 +51,12 @@
         {{!-- cat special care --}}
         <form >
             <label for="cat-care">are there any special care items for your pet?</label>
-                <input type="text" name="cat-care"> 
+                <input type="text" name="cat-care" id="cat-care"> 
         </form>
         <br>
 
         {{!-- submit cat --}}
         <form>
-            <input type="submit" value="submit">
+            <input type="submit" value="submit" id="add-cat-form">
         </form>
 </div>

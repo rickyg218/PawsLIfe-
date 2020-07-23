@@ -30,27 +30,30 @@
         <div class= "col s12" id="info-service">{{>servicedog}}</div>
         <div class= "col s12" id="info-service">{{>servicecat}}</div>
     </div>
-        {{!-- show professional bookings --}}
+    
+
+    {{!-- show professional active listings  --}}
+    <div class="row active">
+        <h2>active postings</h2>
+        <div class="active-postings">this will have the active listings displayed as cards in the users profile{{>active-postings}}</div> 
+        <br>
+        <br>
+        <br>
+    </div> 
+
+    {{!-- show professional bookings --}}
     <div class="row booked">
         <h2>booked postings</h2>
-        <div class="booked-postings">this will have the booked listings displayed as cards in the users profile</div>
+        <div class="booked-postings">this will have the booked listings displayed as cards in the users profile{{>booked-postings}}</div>
         <br>
         <br>
         <br>
     </div>
 
-        {{!-- show professional active listings  --}}
-    <div class="row active">
-        <h2>active postings</h2>
-        <div class="active-postings">this will have the active listings displayed as cards in the users profile</div> 
-        <br>
-        <br>
-        <br>
-    </div>    
-        {{!-- show professional  listing ratings  --}}
+    {{!-- show professional  listing ratings  --}}
     <div class="row">
         <h2>listing ratings</h2>
-        <div class= "listing-ratings">view my pet ratings</div>
+        <div class= "listing-ratings">view my pet ratings{{>listing-ratings}}</div>
     </div>  
 </div>
     

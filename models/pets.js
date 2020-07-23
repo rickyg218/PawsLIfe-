@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
       },
       last_name: {
           type:DataTypes.STRING,
-          allowNull: false,
+          allowNull: true,
           validate: {
             len: [1]
           }
