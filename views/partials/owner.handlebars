@@ -1,0 +1,17 @@
+{{!--CREATE A PET --}}
+<div class="owner-page">
+    <h2>add a pet</h2>
+        <ul>
+            {{!-- choose for cat or dog  --}}
+            <button class="add-dog"> dogs</button>
+            <button class="add-cat"> cats</button>
+        </ul> 
+
+    {{!-- show either addcat or adddog handlebar  --}}
+    <div class= "col s12" id="info-add">{{>addcat}}</div>
+    <div class= "col s12" id="info-add">{{>adddog}}</div>
+
+    {{!-- show pet family for owner --}}
+    <h2>pet family</h2>
+    <div class="pet-family">this will have pet family displayed as cards in the users profile</div>
+</div>

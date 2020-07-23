@@ -1,0 +1,63 @@
+    {{!-- CREATE A DOG --}}
+<div class="add-dog-page">
+    <h2>dogs</h2>
+        {{!-- dog name --}}
+        <form >
+            <label for="dog-name">what is the name?</label>
+                <input type="text" name="dog-name"> 
+        </form>
+        <br>
+
+        {{!-- dog breed --}}
+        <form >
+            <label for="dog-breed">what breed?</label>
+                <input type="text" name="dog-breed"> 
+        </form>
+        <br>
+
+        {{!-- dog size --}}
+        <form>
+            <label for="dog-size">dog size</label>
+                <input list="dog-size" name="dog-size">
+                <datalist id="dog-size">
+                    <option value="petit pup (0-15lbs)">
+                    <option value="medium pup (15lbs-25lbs)">
+                    <option value="large pup (25lbs-40lbs)">
+                    <option value="xlarge pup (40lbs-65lbs)">
+                    <option value="mega pup (65lbs +)">
+                </datalist> 
+        </form> 
+        <br>
+
+        {{!-- dog age --}}
+        <form >
+            <label for="dog-age">what is the age?</label>
+                <input type="text" age="dog-age"> 
+        </form>
+        <br>
+
+        {{!-- dog temperment --}}  
+        <form>
+            <label for="dog-temperment">dog temperment</label>
+                <input list="dog-temperment" name="dog-temperment">
+                <datalist id="dog-temperment">
+                    <option value="friendly">
+                    <option value="aggressive">
+                    <option value="calm">
+                    <option value="nervous">
+                </datalist>    
+        </form>
+        <br>
+
+        {{!-- dog special care --}}
+        <form >
+            <label for="dog-care">are there any special care items for your pet?</label>
+                <input type="text" name="dog-care"> 
+        </form>
+        <br>
+
+        {{!-- submit dog --}}
+        <form>
+            <input type="submit" value="submit">
+        </form>
+</div>
