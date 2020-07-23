@@ -26,32 +26,54 @@ router.get("/createaccount", function(req, res) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // //=========================HERE BEGIN THE ROUTES FOR THE OFFER POSTS ==============
-// //offer_posts CREATE NEW POST TODO: test/finish this route
-// router.post("/offer_posts/create", function(req,res) {
-  
-//   db.offerPost.create(
-//     req.body
-//     //might have to expand req.body later into component parts depending on what we are grabbing from each input. 
-//   )
-//   .then(function(dbPost) {
-//       console.log(dbPost);
-//       //TODO: decide where this redirect will go, ask Nicole. for now will refresh the total posts page.
-//       res.redirect("/offer_posts");
-//     });
-// });
+//TO CHECK cannot
+//offer_posts CREATE NEW POST TODO: test/finish this route
+router.post("/offer_posts/create", function(req,res) {
+  console.log(req.body)
+  db.offer_post.create(req.body)
+  .then(function(dbPost) {
+      console.log(dbPost);
+      //TODO: decide where this redirect will go, ask Nicole. for now will refresh the total posts page.
+      // res.redirect("/offer_posts");
+      res.json("good job, post posted")
+    });
+});
 
 // //offer_posts READ ALL TODO: test this route/finish
 // router.get("/offer_posts", function(req,res) {
   
-//   db.offerPost.findAll()
+//   db.Post.findAll()
   
 //   .then(function(dbPost) {
 //     console.log(dbPosts);
 //     const dbPostsJson = dbPosts.map(post=>post.toJSON());
 //     let hbrsObj = { offer_post : dbPostsJson };
 //     // return res.render("offer_post", hbrsObj);
-//     //TODO: convert the below to above line when post.handlebars exists
+//     //TODO: convert the below to above line when post.handlebars exists or we know where it's rendering.
 //     return res.json(hbrsObj);
 //   })
 // });
@@ -145,7 +167,7 @@ router.get("/createaccount", function(req, res) {
 
 
 // //=====================HERE BEGIN THE ROUTES FOR THE PETS=========================
-// //pets CREATE TODO: untested!
+//pets CREATE TODO: untested!
 // router.post("/pets/create", function(req,res) {
   
 //   db.Pet.create(
@@ -154,7 +176,8 @@ router.get("/createaccount", function(req, res) {
 //   .then(function(dbPost) {
 //       console.log(dbPost);
 //       //TODO: decide where this redirect will go, ask Nicole. for now will take us to /pets
-//       res.redirect("/pets");
+//       // res.redirect("/pets");
+//       res.json(console.log("good boy, pet made"));
 //     });
 // });
 

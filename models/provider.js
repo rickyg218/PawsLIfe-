@@ -6,9 +6,10 @@ module.exports = function(sequelize, DataTypes) {
           allowNull: false
         }
       });
-      Provider.hasMany(models.Post, {
-          onDelete: "cascade"
-      })
+      //TODO: need to find out why this doesn't work, thought I was calling the.
+      // Provider.hasMany(models.Post, {
+      //     onDelete: "cascade"
+      // })
     };
    return Provider;
  };

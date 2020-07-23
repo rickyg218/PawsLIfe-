@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var offerPost = sequelize.define("offer_posts", {
+    var Post = sequelize.define("offer_post", {
       title: {
           type:DataTypes.STRING,
           allowNull: false,
@@ -52,8 +52,8 @@ module.exports = function(sequelize, DataTypes) {
       },
 
     });  
-    offerPost.associate = function(models) {
-        offerPost.belongsTo(models.Provider, {
+    Post.associate = function(models) {
+        Post.belongsTo(models.Provider, {
           foreignKey: {
             allowNull: false
           }
@@ -62,5 +62,5 @@ module.exports = function(sequelize, DataTypes) {
           onDelete: "cascade"
         })
       };
-    return offerPost;
+    return Post;
   };
