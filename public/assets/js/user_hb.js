@@ -58,11 +58,11 @@ $("#delete-account").click(function(event){
   console.log(" clicked delete account")
 })
 
-
 //createaccount.handlebars
 //when the user clicks on create account, they will be redirected their owner page
 $("#create-account").on("click", function(event){
   event.preventDefault();
+
   let latitude;
   let longitude;
 

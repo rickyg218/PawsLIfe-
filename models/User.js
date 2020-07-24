@@ -35,6 +35,7 @@ module.exports = function(sequelize, DataTypes) {
 
     });
 
+
   User.beforeCreate(function(user){
       user.password = bcrypt.hashSync(user.password,bcrypt.genSaltSync(10),null);
   })
@@ -48,6 +49,7 @@ module.exports = function(sequelize, DataTypes) {
     User.hasMany(models.Post, {
       as: "Provider",
       onDelete: "cascade"
+
     });
   };
   console.table(User);

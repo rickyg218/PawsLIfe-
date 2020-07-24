@@ -7,8 +7,6 @@ var db = require("../models");
 
 // const { Router } = require("express");
 
-// //=========================HERE BEGIN THE ROUTES FOR THE USERS ========================
-
 // //get user by id 
 router.get("/users/:id", function(req, res) {
   db.User.findOne({
@@ -86,6 +84,34 @@ router.get("/offer_posts", function(req,res) {
     res.status(500).json(err);
   });
 });
+
+//TODO: working find posts within a range that match an animal type
+router.get("/offer_posts/:animal", function(req,res){
+  //service passed by clicking on "cat" or "dog" button
+  //lat/long passed by using available session id?
+  db.Post.findAll(
+    {include:[
+      {model: db.User,
+      as: 'Provider',
+    // where: {}
+  }
+    ]},
+    {where: {animal_type: req.params.animal}},
+             //{user.lat: [(lat-0.1),(lat+0.1)]}   
+             //{user.long:[(long-0.1),(long+0.1)]}   
+  // }
+  )
+
+.then(function(dbPost){
+  console.log(dbPost);
+  let hbrsObj = { offer_posts : dbPost };
+  return res.json(hbrsObj);
+})
+.catch(function(err){
+  res.status(500).json(err);
+});
+})
+//TODO: working find posts within a range that match a service
 
 
 //offer_posts select by animal
