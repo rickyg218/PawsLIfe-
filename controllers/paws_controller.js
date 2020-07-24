@@ -247,10 +247,10 @@ router.get("/pets/:id", function (req,res) {
  db.Pet.findOne({
     where: {id:req.params.id}
   }).then(function(dbPet){
-    const dbPetsJson = dbPet.map(pet=>pet.toJSON());
-    var hbrsObject = { pet: dbPetsJson };
+    // const dbPetsJson = dbPet.map(pet=>pet.toJSON());
+    // var hbrsObject = { pet: dbPetsJson };
     // return res.render("nICOLESlAYOUThANDLEbARhERE", hbrsObject) //TODO: turn this into a real subframe render.
-    return res.json("the pet.findAll-where was successful", hbrsObject)
+    return res.json({pet: dbPet})
   }).catch(function (err) {
     res.status(500).json(err);
   })
@@ -259,26 +259,29 @@ router.get("/pets/:id", function (req,res) {
 
 
 
-// //pets UPDATE    TODO: untested! please test and revise
-// router.put("pets/update/:id", function (req,res) {
+//pets UPDATE    TODO: untested! please test and revise
+router.put("/pets/update/:id", function (req,res) {
 
-//   db.Pet.update({
-//     name: req.body.name,
-//     special_care: req.body.special_care,
-//     pet_type: req.body.pet_type,
-//     breed: req.body.breed,
-//     size: req.body.size,
-//     temperment:req.body.temperment,
-//     age: req.body.age,
-//     picture: req.body.picture
-//   },
-//   {where: {
-//     id: req.params.id
-//   }})
-//   .then(function(dbPosts){
-//     res.json(`updated the pet information for pet with id of ${req.params.id}`)
-// });
-// });
+  db.Pet.update({
+    first_name: req.body.first_name,
+    special_care: req.body.special_care,
+    pet_type: req.body.pet_type,
+    breed: req.body.breed,
+    size: req.body.size,
+    temperment:req.body.temperment,
+    age: req.body.age,
+    picture: req.body.picture
+  },
+  {where: {
+    id: req.params.id
+  }})
+  .then(function(dbPosts){
+    res.json(`updated the pet information for pet with id of ${req.params.id}`)
+}).catch(function(err){
+  console.log(err);
+  res.status(500).json(err);
+});
+});
 
 router.delete("/pets/:id", function (req, res) {
   db.Pet
@@ -288,7 +291,7 @@ router.delete("/pets/:id", function (req, res) {
       },
     })
     .then(function (dbPet) {
-      res.json(`destroyed the offering post with id of ${req.params.id}`);
+      res.json(` the pet with id of ${req.params.id} is gone`);
     }).catch(function (err) {
       console.log(err);
       res.status(500)
