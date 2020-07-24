@@ -27,19 +27,24 @@ $("#add-cat-form").click(function(event){
       first_name:$("#cat-name").val(),
       special_care:$("#cat-care").val(),
       pet_type:"cat",
-      breed:$("#cat-breed").val(),
+      breed:$("#breed").val(),
       size:$("#cat-size").val(),
       temperment:$("#cat-temperment").val(),
       age:$("#cat-age").val(),
       picture:$("#cat-picture").val(),
     }
     $.ajax({
-      url:`/pets/create`,
+      url:'/pets/create',
       method: "POST",
       data: catObj
-    }).then(data=>{
+    }).done(data=>{
       alert("POSTED new cat!");
+      console.log(data)
       location.href = `/user/owner/${id}`
+    }).fail(function(err){
+      console(err);
+      alert("something went wrong");
+      location.reload();
     })
     console.log(" clicked add cat form")
   })
@@ -53,7 +58,7 @@ $("#add-cat-form").click(function(event){
       first_name:$("#cat-name").val(),
       special_care:$("#cat-care").val(),
       pet_type:"dog",
-      breed:$("#cat-breed").val(),
+      breed:$("#breed").val(),
       size:$("#cat-size").val(),
       temperment:$("#cat-temperment").val(),
       age:$("#cat-age").val(),
@@ -65,7 +70,7 @@ $("#add-cat-form").click(function(event){
       data: dogObj
     }).then(data=>{
       alert("POSTED new dog !");
-      location.href = `/user/owner/${id}`
+      location.href = "/"
     })
     console.log(" clicked add dog form")
   })

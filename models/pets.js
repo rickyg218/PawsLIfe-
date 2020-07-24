@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
       },
        breed: {
           type:DataTypes.STRING,
-          allowNull: false,
+          allowNull: true,
         },
       size: {
         type:DataTypes.STRING,

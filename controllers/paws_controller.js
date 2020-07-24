@@ -206,7 +206,7 @@ router.post("/pets/create", function(req,res) {
       UserId:req.session.user.id
   }).then(function(dbPet) {
       console.log(dbPet);
-      res.json(dbPet);
+      res.json(dbPet.id);
     }).catch(function(err){
       console.log(err);
       res.status(500);
