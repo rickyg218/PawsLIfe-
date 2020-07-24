@@ -21,8 +21,10 @@
   },
   "homepage": "https://github.com/rickyg218/PawsLIfe-#readme",
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.1.0",
+    "express-session": "^1.17.1",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
     "nanoid": "^3.1.10",

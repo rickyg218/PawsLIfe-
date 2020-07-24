@@ -1,5 +1,5 @@
 var express = require("express");
-
+const session = require("express-session");
 
 var db = require("./models");
 
@@ -20,9 +20,20 @@ app.set("view engine", "handlebars");
 
 var routes_paws = require("./controllers/paws_controller.js");
 var routes_frontend = require("./controllers/frontend_controller.js");
+var routes_auth = require("./controllers/auth_controller.js");
 
-app.use(routes_paws, routes_frontend);
+app.use(routes_paws, routes_frontend, routes_auth);
 
+
+//session 
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 7200000
+  }
+}))
 
 var PORT = process.env.PORT || 3030;
 db.sequelize.sync({ force: false }).then(function() {

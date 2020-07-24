@@ -41,6 +41,26 @@ $(".service-cat").click(function(event){
 //when the user clicks on service cat, they will be redirected to the home page
 $("#sign-in").click(function(event){
   event.preventDefault();
+  const userObj = {
+    user_name:$("#signinUsername").val(),
+    password:$("#signinPassword").val(),
+  }
+  console.log("User Obj: "+userObj);
+
+  $.ajax("/signin",{
+    type:"POST",
+    data:userObj
+  }).done(data=>{
+    alert("welcome back!");
+    location.href = '/'
+    console.log(data)
+  }).fail(function(err){
+    console.log(err);
+    alert("something went wrong!")
+    location.reload();
+  })
+
+  console.log(" clicked sign in")
   location.href = '/'
   console.log(" clicked sign in ")
 })
@@ -85,28 +105,22 @@ $("#create-account").on("click", function(event){
     last_name:$("#last-name").val(),
     user_name:$("#new-username").val(),
     password:$("#new-password").val(),
-    // phone:$("#phone").val(),
     email:$("#email").val()
   }
 
   console.log("User Obj: "+userObj);
 
-  /*$.ajax({
-    url:"/users/create",
-    method: "POST",
-    data: userObj
-  }).then(data=>{
-    alert("POSTED!");
-    location.href = '/'
-    console.log(data)
-  })*/
   $.ajax("/users/create",{
     type:"POST",
     data:userObj
-  }).then(data=>{
-    alert("POSTED!");
-    location.href = '/'
+  }).done(data=>{
+    alert("ACCOUNT CREATED!");
+    location.href = '/signin'
     console.log(data)
+  }).fail(function(err){
+    console.log(err);
+    alert("something went wrong")
+    location.reload();
   })
 
   console.log(" clicked create account")
@@ -199,7 +213,8 @@ $("#add-cat-form").click(function(event){
     size:$("#cat-size").val(),
     temperment:$("#cat-temperment").val(),
     age:$("#cat-age").val(),
-}
+    picture:$("#cat-picture").val(),
+  }
   $.ajax({
     url:`/pets/create`,
     method: "POST",
@@ -216,9 +231,20 @@ $("#add-cat-form").click(function(event){
 //when the user clicks on submit, they will be redirected to their owner page  
 $("#add-dog-form").click(function(event){
   event.preventDefault();
+  const dogObj = {
+    first_name:$("#cat-name").val(),
+    special_care:$("#cat-care").val(),
+    pet_type:"cat",
+    breed:$("#cat-breed").val(),
+    size:$("#cat-size").val(),
+    temperment:$("#cat-temperment").val(),
+    age:$("#cat-age").val(),
+    picture:$("#cat-picture").val(),
+  }
   $.ajax({
     url:`/pets/create`,
-    method: "POST"
+    method: "POST",
+    data: dogObj
   }).then(data=>{
     alert("POSTED new dog !");
     location.href = `/user/owner/${id}`

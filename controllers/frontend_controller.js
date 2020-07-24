@@ -1,5 +1,7 @@
 var express = require("express");
+
 const router = require("express").Router();
+
 const db = require("../models")
 
 //main route welcome
@@ -14,7 +16,7 @@ router.get("/", function(req, res) {
   
   //takes you to the sign in page
   router.get("/signin", function(req, res) {
-    return res.render("signin");
+    return res.render("singin")
   });
   
   //takes you to the createaccount page 
@@ -24,11 +26,17 @@ router.get("/", function(req, res) {
   
   //this route will need to include a :id at the end so it goes to the specific user page
   router.get("/user/professional", function(req, res) {
-    return res.render("professional", {name:"nicole"});
+    if(!req.session.user){
+      res.redirect("/signin")
+    }
+    return res.render("professional");
   });
   
   //this route will need to include a :id at the end so it goes to the specific user page
   router.get("/user/owner", function(req, res) {
+    if(!req.session.user){
+      res.redirect("/signin")
+    }
     // db.User.findOne(
     //    {
     //     where: {
@@ -61,12 +69,7 @@ router.get("/", function(req, res) {
     // return res.render("account-profile", userJSON);
     return res.render("account-profile", 
     {name:"nicole"},
-  // {firstname:"nicole"},
-  // {lastname:"remy"},
-  // {username:"nicole2839"},
-  // {password:"password"},
-  // {phone:"2837381973"},
-  // {email:"nicole@remy.com"},
+ 
   );
   });
   

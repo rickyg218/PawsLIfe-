@@ -5,28 +5,9 @@ var router = express.Router();
 
 var db = require("../models");
 
+// const { Router } = require("express");
 
-//~~~~~~~~~~~~~~~~~~~~~~~~HERE BEGIN THE ROUTES FOR USERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// create users 
-router.post("/users/create", function(req, res) {
-  db.User.create({
-   
-    first_name: req.body.first_name,
-    last_name:req.body.last_name,
-    user_name: req.body.user_name,
-    password:req.body.password,
-    email:req.body.email, 
-    // lat: req.body.lat,
-    // long: req.body.long
-  }).then(function(dbUser) {
-      console.log(dbUser);
-      res.json(dbUser)
-    }).catch(function(err){
-     
-      res.status(500).json(err);
-    });
-    
-});
+// //=========================HERE BEGIN THE ROUTES FOR THE USERS ========================
 
 // //get user by id 
 router.get("/users/:id", function(req, res) {
@@ -67,7 +48,6 @@ router.delete("/users/delete/:id", function (req, res) {
     res.status(500).json(err);
   });
 });
-
 
 
 
@@ -160,18 +140,20 @@ router.delete("/offer_posts/:id", function (req, res) {
 // //=====================HERE BEGIN THE ROUTES FOR THE PETS=========================
 // //create pet 
 router.post("/pets/create", function(req,res) {
-  
+  if(!req.session.user){
+    return res.status(401).send("login first")
+  }
   db.Pet.create({
-    first_name: req.body.first_name,
-    special_care:req.body.special_care,
-    pet_type: req.body.pet_type,
-    breed:req.body.breed,
-    size:req.body.size,  
-    temperment:req.body.temperment,  
-    age:req.body.age,  
-    picture:req.body.picture,   
-  })
-  .then(function(dbPet) {
+      first_name: req.body.first_name,
+      special_care:req.body.special_care,
+      pet_type: req.body.pet_type,
+      breed:req.body.breed,
+      size:req.body.size,  
+      temperment:req.body.temperment,  
+      age:req.body.age,  
+      picture:req.body.picture,   
+      UserId:req.session.user.id
+  }).then(function(dbPet) {
       console.log(dbPet);
       res.json(dbPet);
     }).catch(function(err){
