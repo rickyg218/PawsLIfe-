@@ -1,7 +1,7 @@
 var express = require("express");
 const router = express.Router();
 
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 var db = require("../models");
 
@@ -37,7 +37,7 @@ router.post("/signin", (req,res)=>{
       if(!user){
         return res.status(404).send("no such user")
       } else{
-        if (bcrypt.compareSync(req.body.password, user.password)){
+        if (rypt.compareSync(req.body.password, user.password)){
           req.session.user = {
             id: user.id,
             first_name: user.first_name,

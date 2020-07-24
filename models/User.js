@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcryptjs")
 
 module.exports = function(sequelize, DataTypes) {
     var User = sequelize.define("User", {
@@ -37,7 +37,7 @@ module.exports = function(sequelize, DataTypes) {
 
 
   User.beforeCreate(function(user){
-      user.password = bcrypt.hashSync(user.password,bcrypt.genSaltSync(10),null);
+      user.password = rypt.hashSync(user.password,rypt.genSaltSync(10),null);
   })
 
 
