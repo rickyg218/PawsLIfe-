@@ -77,17 +77,50 @@ $("#delete-account").click(function(event){
 
 //createaccount.handlebars
 //when the user clicks on create account, they will be redirected their owner page
-$("#create-account").click(function(event){
+$("#create-account").on("click", function(event){
   event.preventDefault();
-  $.ajax({
-    url:`/api/account/`,
-    method: "POST"
+ 
+  const userObj = {
+    first_name:$("#first-name").val(),
+    last_name:$("#last-name").val(),
+    user_name:$("#new-username").val(),
+    password:$("#new-password").val(),
+    phone:$("#phone").val(),
+    email:$("#email").val()
+  }
+
+  console.log("User Obj: "+userObj);
+
+  /*$.ajax({
+    url:"/users/create",
+    method: "POST",
+    data: userObj
   }).then(data=>{
     alert("POSTED!");
-    location.href = `/user/owner/${id}`
+    location.href = '/'
+    console.log(data)
+  })*/
+  $.ajax("/users/create",{
+    type:"POST",
+    data:userObj
+  }).then(data=>{
+    alert("POSTED!");
+    location.href = '/'
+    console.log(data)
   })
+
   console.log(" clicked create account")
 })
+ // let lat;
+  // let lon;
+  // $.ajax({
+  //   url: "https://ipapi.co/json/",
+  //   method: "GET",
+  // }).then(function (response) {
+  //   let lat = response.latitude
+  //   let lon = response.longitude 
+  //   console.log(lat, lon);
+  // });
 
 
 

@@ -18,13 +18,13 @@ app.engine("handlebars", exphbs({
 }));
 app.set("view engine", "handlebars");
 
-var routes = require("./controllers/paws_controller.js");
-var routes = require("./controllers/frontend_controller.js");
+var routes_paws = require("./controllers/paws_controller.js");
+var routes_frontend = require("./controllers/frontend_controller.js");
 
-app.use(routes);
+app.use(routes_paws, routes_frontend);
 
 
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 3030;
 db.sequelize.sync({ force: false }).then(function() {
   app.listen(PORT, function() {
     console.log("App now listening on port:", PORT);
