@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcryptjs")
 
 module.exports = function(sequelize, DataTypes) {
     var User = sequelize.define("User", {
@@ -44,10 +44,12 @@ module.exports = function(sequelize, DataTypes) {
   User.associate = function(models) {
     User.hasMany(models.Pet, {
       as: "Customer",
+      foreignKey: "CustomerId",
       onDelete: "cascade"
     });
     User.hasMany(models.Post, {
       as: "Provider",
+      foreignKey: "ProviderId",
       onDelete: "cascade"
 
     });
