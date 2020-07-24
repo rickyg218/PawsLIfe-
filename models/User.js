@@ -49,11 +49,11 @@ module.exports = function(sequelize, DataTypes) {
       },
       lat: {
         type:DataTypes.DECIMAL,
-        allowNull: false,
+        allowNull: true,
       },
       long: {
         type:DataTypes.DECIMAL,
-        allowNull: false,
+        allowNull: true,
       },
     });
     User.associate = function(models) {

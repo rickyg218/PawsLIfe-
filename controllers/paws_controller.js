@@ -48,14 +48,17 @@ router.get("/user/account-profile", function(req, res) {
 //users
 router.post("/users/create", function(req, res) {
   db.User.create({
-    user_name: req.body.user_name,
+   
     first_name: req.body.first_name,
     last_name:req.body.last_name,
-    email:req.body.email,
+    user_name: req.body.user_name,
     password:req.body.password,
     phone: req.body.phone,
-    lat: req.body.lat,
-    long: req.body.long
+    email:req.body.email,
+    
+    
+    // lat: req.body.lat,
+    // long: req.body.long
   }).then(function(dbUser) {
       console.log(dbUser);
       // res.redirect("/Users");
