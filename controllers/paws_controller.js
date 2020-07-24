@@ -88,6 +88,31 @@ router.get("/offer_posts", function(req,res) {
 });
 
 
+//offer_posts select by animal
+router.get("/offer_posts/:animal", function(req,res){
+  //service passed by clicking on "cat" or "dog" button
+  //lat/long passed by using available session id?
+  db.Post.findAll(
+    {
+      where: { animal_type: req.params.animal },
+      include: [
+        {
+          model: db.User,
+        },
+      ],
+    }
+  )
+    .then(function (dbPost) {
+      console.log(dbPost);
+      let hbrsObj = { offer_posts: dbPost };
+      return res.json(hbrsObj);
+    })
+    .catch(function (err) {
+      res.status(500).json(err);
+    });
+})
+
+
 // // offer_posts UPDATE, by post id. 
 router.put("/offer_posts/update/:id", function (req,res) {
 
