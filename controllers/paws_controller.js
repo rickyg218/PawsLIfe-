@@ -16,8 +16,8 @@ router.post("/users/create", function(req, res) {
     user_name: req.body.user_name,
     password:req.body.password,
     email:req.body.email, 
-    // lat: req.body.lat,
-    // long: req.body.long
+    lat: req.body.lat,
+    long: req.body.long
   }).then(function(dbUser) {
       console.log(dbUser);
       res.json(dbUser)
