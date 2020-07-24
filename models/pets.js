@@ -35,7 +35,6 @@ module.exports = function(sequelize, DataTypes) {
       },
     });  
     Pet.associate = function(models) {
-        Pet.belongsTo(models.User);
         Pet.belongsTo(models.User, {
           as: "Customer"
         });
