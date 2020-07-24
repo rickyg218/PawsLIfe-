@@ -40,8 +40,21 @@ router.get("/", function(req, res) {
   router.get("/user/professional", function(req, res) {
     if(!req.session.user){
       res.redirect("/signin")
+    } else{
+      db.User.findOne({
+        where:{
+          id:req.session.user.id
+        },
+        include: [{model:db.Post, as:"Provider"}]
+         
+      }).then(userObj=>{
+        // res.json(userObj)
+        //this grabs just the json response not all of the extra stuff that normally is sent back
+        const userObjJSON = userObj.toJSON();
+        return res.render("professional", userObjJSON);
+      })
     }
-    return res.render("professional");
+  
   });
   
   //this route will need to include a :id at the end so it goes to the specific user page
@@ -83,19 +96,22 @@ router.get("/", function(req, res) {
   
   //gets user account profile. this route will need to include a :id at the end so it goes to the specific user page
   router.get("/user/account-profile", function(req, res) {
-    //   db.User.findOne(
-    //       {
-    //         where: {
-    //             id: req.params.id
-    //         }
-    //   }).then(userData=>{
-    //       const userJSON = userData.toJSON();
-    //   })
-    // return res.render("account-profile", userJSON);
-    return res.render("account-profile", 
-    {name:"nicole"},
- 
-  );
+    if(!req.session.user){
+      res.redirect("/signin")
+    } else{
+      db.User.findOne({
+        where:{
+          id:req.session.user.id
+        },
+        // include: [{model:db.User}]
+         
+      }).then(userObj=>{
+        // res.json(userObj)
+        //this grabs just the json response not all of the extra stuff that normally is sent back
+        const userObjJSON = userObj.toJSON();
+        return res.render("account-profile", userObjJSON);
+      })
+    }
   });
   
 
