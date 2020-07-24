@@ -74,22 +74,53 @@ $("#delete-account").click(function(event){
   console.log(" clicked delete account")
 })
 
-
 //createaccount.handlebars
 //when the user clicks on create account, they will be redirected their owner page
 $("#create-account").on("click", function(event){
   event.preventDefault();
- 
-  const userObj = {
-    first_name:$("#first-name").val(),
-    last_name:$("#last-name").val(),
-    user_name:$("#new-username").val(),
-    password:$("#new-password").val(),
-    // phone:$("#phone").val(),
-    email:$("#email").val()
-  }
+    //Grabs users general location based on IP address
 
-  console.log("User Obj: "+userObj);
+    let latitude;
+    let longitude;
+
+    $.ajax({
+      url: "https://ipapi.co/json/",
+      method: "GET",
+    }).then(function (response) {
+      latitude = response.latitude;
+      longitude = response.longitude;
+      console.log("response from location ajax", response);
+      console.log("latitude saved form ajax", latitude);
+      console.log("longitude saved form ajax",longitude);
+
+      const userObj = {
+        first_name:$("#first-name").val(),
+        last_name:$("#last-name").val(),
+        user_name:$("#new-username").val(),
+        password:$("#new-password").val(),
+        // phone:$("#phone").val(),
+        lat: latitude,
+        long: longitude,
+        email:$("#email").val()
+      }
+      console.log("User Obj: ", userObj);
+
+      $.ajax("/users/create",{
+        type:"POST",
+        data:userObj
+      }).then(data=>{
+        alert("POSTED!");
+        location.href = '/'
+        console.log(data)
+      })
+    
+      console.log(" clicked create account")
+    });
+  
+  
+
+
+ 
 
   /*$.ajax({
     url:"/users/create",
@@ -100,17 +131,48 @@ $("#create-account").on("click", function(event){
     location.href = '/'
     console.log(data)
   })*/
-  $.ajax("/users/create",{
-    type:"POST",
-    data:userObj
-  }).then(data=>{
-    alert("POSTED!");
-    location.href = '/'
-    console.log(data)
-  })
 
-  console.log(" clicked create account")
 })
+// //createaccount.handlebars
+// //when the user clicks on create account, they will be redirected their owner page
+// $("#create-account").on("click", function(event){
+//   event.preventDefault();
+//   //run ajax for ipapi
+//   //save its variable data within this function scope (remains stateless)
+//   // the userobj etc should happen inside the .then of the ipapi ajax request
+//   const userObj = {
+//     first_name:$("#first-name").val(),
+//     last_name:$("#last-name").val(),
+//     user_name:$("#new-username").val(),
+//     password:$("#new-password").val(),
+//     // phone:$("#phone").val(),
+//     // lat: response.lat
+//     // long: response.long
+//     email:$("#email").val()
+//   }
+
+//   console.log("User Obj: "+userObj);
+
+//   /*$.ajax({
+//     url:"/users/create",
+//     method: "POST",
+//     data: userObj
+//   }).then(data=>{
+//     alert("POSTED!");
+//     location.href = '/'
+//     console.log(data)
+//   })*/
+//   $.ajax("/users/create",{
+//     type:"POST",
+//     data:userObj
+//   }).then(data=>{
+//     alert("POSTED!");
+//     location.href = '/'
+//     console.log(data)
+//   })
+
+//   console.log(" clicked create account")
+// })
  // let lat;
   // let lon;
   // $.ajax({
