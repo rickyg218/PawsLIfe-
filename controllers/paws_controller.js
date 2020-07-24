@@ -261,7 +261,7 @@ router.get("/offer_posts", function(req,res) {
 //         return res.json(hbrsObj);
 //       });
 //   }
-//   if (2 < rageRel < 5) {
+//   if (2 < rangeRel < 5) {
 //     db.offerPost
 //     //TODO: work on the joins involved this has joins written all over it 
 //       .findAll({
@@ -420,7 +420,82 @@ router.delete("/pets/:id", function (req, res) {
 // //TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:
 // //=====================HERE END THE ROUTES FOR THE PETS===================================
 
+//==============================HERE BEGIN THE RATING ROUTES===========================================
 
+router.post("/ratings/create", function (req, res) {
+  db.Rating.create({
+    UserId : req.body.uid,
+    PetId : req.body.peid,
+    ProviderId : req.body.prid
+  }).then(function (dbRating) {
+        console.log(dbRating);
+        // res.redirect("/rating");
+        //TODO: link this properly with the frontend, both on req.body having an id key (or whatever it's called)
+        res.json("we made you that customer");
+      }).catch(function(err){
+        res.status(500).json(err);
+      });
+    });
+
+router.get("/ratings", function (req,res) {
+  db.Rating.findAll({
+    include: [db.User, db.Pet, db.Provider]
+  }).then(function (dbRating){
+    console.log(dbRating)
+    //   //TODO: make sure this render is correct
+    //   return res.render("index", allCustomer);
+    return res.json(dbRating)
+  }).catch(function(err){
+    res.status(500).json(err);
+  });
+})
+
+
+router.get("/ratings/:id", function (req,res) {
+  db.Rating.findOne({
+    where: {id: req.params.id}
+  })
+  .then(function(dbRating) {
+    const dbRatingJson = (dbRating=>Rating.toJSON());
+    var oneRating = { Rating: dbRatingJson };
+    //TODO: make sure this render is correct
+    return res.render("index", oneRating);
+  })
+  .catch(function(err){
+    res.status(500).json(err);
+  });
+})
+
+router.put("/ratings/update/:id", function (req,res) {
+  db.Rating.update({
+    service_title: req.body.title,
+    text: req.body.text,
+    rating: req.body.rating,
+  },
+  {where: {
+    id: req.params.id
+  }})
+  .then(function(dbRating){
+    console.log(dbRating)
+    res.json(`changed the rating with id of ${req.params.id}`)
+}).catch(function(err){
+  console.log(err);
+  res.status(500).json(err);
+});;
+});
+
+router.delete("/ratings/delete/:id", function (req, res) {
+  db.User.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(function (dbRating) {
+    // res.json(dbUsers);
+    res.json(`destroyed the rating with id of ${req.params.id}`);
+  }).catch(function(err){
+    res.status(500).json(err);
+  });
+});
 
 
 module.exports = router;
