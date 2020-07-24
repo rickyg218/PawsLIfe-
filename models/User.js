@@ -3,67 +3,34 @@ module.exports = function(sequelize, DataTypes) {
       first_name: {
           type:DataTypes.STRING,
           allowNull: false,
-          // validate: {
-          //   len: [1]
-          // }
       },
       last_name: {
           type:DataTypes.STRING,
           allowNull: false,
-          // validate: {
-          //   len: [1]
-          // }
       },
       user_name: {
           type:DataTypes.STRING,
           allowNull: false,
-          unique: true,
-          // validate: {
-          //   len: [1]
-          // }
+
       },
       password: {
           type:DataTypes.STRING,
           allowNull: false,
-          // validate: {
-          //   len: [8, 16],
-          //   // isInt: true,
-          //   // isLowercase: true,       
-          //   // isUppercase: true
-          // }
       },
-      //  phone: {
-      //     type:DataTypes.INTEGER,
-      //     allowNull: false,
-      //     // validate: {
-      //     //   len: [10, 10],
-      //     // }
-      //   },
+
       email: {
         type:DataTypes.STRING,
-        unique: true,
         allowNull: false,
-        // validate: {
-        //   isEmail: true,
-        // }
       },
-      // lat: {
-      //   type:DataTypes.DECIMAL,
-      //   allowNull: true,
-      // },
-      // long: {
-      //   type:DataTypes.DECIMAL,
-      //   allowNull: true,
-      // },
+
     });
     User.associate = function(models) {
-      User.hasMany(models.Customer, {
+      User.hasMany(models.Pet, {
+        as: "Customer",
         onDelete: "cascade"
       });
-      User.hasMany(models.Provider, {
-        onDelete: "cascade"
-      });
-      User.hasMany(models.Rating, {
+      User.hasMany(models.Post, {
+        as: "Provider",
         onDelete: "cascade"
       });
     };
