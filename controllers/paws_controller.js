@@ -307,14 +307,14 @@ router.delete("/pets/:id", function (req, res) {
 
 router.post("/ratings/create", function (req, res) {
   db.Rating.create({
-    UserId : req.body.uid,
-    PetId : req.body.peid,
-    ProviderId : req.body.prid
+    service_name : req.body.service_name,
+    text_review : req.body.text_review,
+    rating : req.body.rating
   }).then(function (dbRating) {
         console.log(dbRating);
         // res.redirect("/rating");
         //TODO: link this properly with the frontend, both on req.body having an id key (or whatever it's called)
-        res.json("we made you that customer");
+        res.json(dbRating);
       }).catch(function(err){
         res.status(500).json(err);
       });
@@ -322,7 +322,7 @@ router.post("/ratings/create", function (req, res) {
 
 router.get("/ratings", function (req,res) {
   db.Rating.findAll({
-    include: [db.User, db.Pet, db.Provider]
+    include: [db.User, db.Pet]
   }).then(function (dbRating){
     console.log(dbRating)
     //   //TODO: make sure this render is correct
@@ -339,10 +339,10 @@ router.get("/ratings/:id", function (req,res) {
     where: {id: req.params.id}
   })
   .then(function(dbRating) {
-    const dbRatingJson = (dbRating=>Rating.toJSON());
-    var oneRating = { Rating: dbRatingJson };
+    // const dbRatingJson = (dbRating=>Rating.toJSON());
+    // var oneRating = { Rating: dbRatingJson };
     //TODO: make sure this render is correct
-    return res.render("index", oneRating);
+    return res.json({rating: dbRating});
   })
   .catch(function(err){
     res.status(500).json(err);
@@ -351,8 +351,8 @@ router.get("/ratings/:id", function (req,res) {
 
 router.put("/ratings/update/:id", function (req,res) {
   db.Rating.update({
-    service_title: req.body.title,
-    text: req.body.text,
+    service_name: req.body.service_name,
+    text_review: req.body.text_review,
     rating: req.body.rating,
   },
   {where: {
