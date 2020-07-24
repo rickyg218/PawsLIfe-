@@ -1,4 +1,5 @@
-const router = require('express').Router();
+var express = require("express");
+const router = express.Router();
 
 const bcrypt = require("bcrypt");
 

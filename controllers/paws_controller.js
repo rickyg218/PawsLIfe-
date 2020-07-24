@@ -214,18 +214,37 @@ router.put("/pets/update/:id", function (req,res) {
 
 // //delete pet by id
 router.delete("/pets/:id", function (req, res) {
-  db.Pet
-    .destroy({
+  //protection if they aren't logged in
+  if(!req.session.user){
+    return res.status(401).send("login first!")
+  }else {
+    db.Pet.findOne({
       where: {
-        id: req.params.id,
-      },
+        id:req.params.id
+      }
+    }).then(dbPet=>{
+      //if it is not the same user who created the pet protection
+      if(req.session.user.id!==dbPet.UserId){
+        return res.status(401).send("not your pet")
+      }else {
+        //if it is the user than delete
+        db.Pet
+        .destroy({
+          where: {
+            id: req.params.id,
+          },
+        })
+        .then(function (data) {
+          res.json(` the pet with id of ${req.params.id} is gone`);
+        }).catch(function (err) {
+          console.log(err);
+          res.status(500)
+        })
+      }
     })
-    .then(function (dbPet) {
-      res.json(` the pet with id of ${req.params.id} is gone`);
-    }).catch(function (err) {
-      console.log(err);
-      res.status(500)
-    })
+    
+  }
+  
 
 });
 

@@ -1,12 +1,24 @@
 var express = require("express");
 
-const router = require("express").Router();
+const router = express.Router();
 
-const db = require("../models")
+const db = require("../models");
+// const { eq } = require("sequelize/types/lib/operators");
 
 //main route welcome
 router.get("/", function(req, res) {
-    return res.render("index");
+  db.Post.findAll({
+    include:[db.User]
+  }).then(posts=>{
+    console.log(posts);
+  //   const postsJSON = posts.map(function(postObj){
+  //     return postObj.toJSON;
+  //   })
+  //   console.log(postsJSON)
+  // })
+  //    res.render("index", {posts:postsJSON});
+     res.render("index");
+  });
   });
   
   //redirects you to the user owner page as a default and will need the user :id param
@@ -16,7 +28,7 @@ router.get("/", function(req, res) {
   
   //takes you to the sign in page
   router.get("/signin", function(req, res) {
-    return res.render("singin")
+    return res.render("signin")
   });
   
   //takes you to the createaccount page 
@@ -36,6 +48,19 @@ router.get("/", function(req, res) {
   router.get("/user/owner", function(req, res) {
     if(!req.session.user){
       res.redirect("/signin")
+    } else{
+      db.User.findOne({
+        where:{
+          id:req.session.user.id
+        },
+        include: [{model:db.Pet, as:"Customer"}]
+         
+      }).then(userObj=>{
+        // res.json(userObj)
+        //this grabs just the json response not all of the extra stuff that normally is sent back
+        const userObjJSON = userObj.toJSON();
+        return res.render("owner", userObjJSON);
+      })
     }
     // db.User.findOne(
     //    {
@@ -53,7 +78,7 @@ router.get("/", function(req, res) {
     //     console.log(userDataJSON)
     // })
     // return res.render("owner", hbs);
-    return res.render("owner", {name:"nicole"});
+    
   });
   
   //gets user account profile. this route will need to include a :id at the end so it goes to the specific user page

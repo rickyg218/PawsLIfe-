@@ -234,7 +234,7 @@ $("#add-dog-form").click(function(event){
   const dogObj = {
     first_name:$("#cat-name").val(),
     special_care:$("#cat-care").val(),
-    pet_type:"cat",
+    pet_type:"dog",
     breed:$("#cat-breed").val(),
     size:$("#cat-size").val(),
     temperment:$("#cat-temperment").val(),
@@ -262,8 +262,8 @@ $("#save-pet").click(function(event){
     url:`/pets/update/${petId}`,
     method: "PUT"
   }).then(data=>{
-    alert(`saved ${petId} posting!`);
-    location.href = `/user/owner/${id}`
+    alert(`saved ${petId} pet!`);
+    window.location.reload();
   })
   console.log(" clicked save pet")
 })
@@ -275,8 +275,8 @@ $("#delete-pet").click(function(event){
     url:`/pets/${petId}`,
     method: "DELETE"
   }).then(data=>{
-    alert(`saved ${petId} posting!`);
-    location.href = `/user/owner/${id}`
+    alert(`deleted ${petId} pet!`);
+    window.location.reload();
   })
   console.log(" clicked delete pet")
 })
