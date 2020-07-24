@@ -118,15 +118,24 @@ router.delete("/users/delete/:id", function (req, res) {
 //offer_posts CREATE NEW POST 
 router.post("/offer_posts/create", function(req,res) {
   console.log(req.body)
-  db.Post.create(req.body)
+  db.Post.create({
+    title: req.body.title,
+    text:req.body.text,
+    animal_type: req.body.animal_type,
+    size_restrictions:req.body.size_restrictions,
+    duration:req.body.duration, 
+    range:req.body.range, 
+    picture:req.body.picture, 
+    service_type:req.body.service_type, 
+  })
   .then(function(dbPost) {
       console.log(dbPost);
       //TODO: decide where this redirect will go, ask Nicole. for now will refresh the total posts page.
       // res.redirect("/offer_posts");
-      res.json("good job, post posted")
+      res.json(dbPost)
     }).catch(function(err){
       res.status(500).json(err);
-    });;
+    });
 });
 
 // //offer_posts READ ALL 
@@ -200,14 +209,21 @@ router.delete("/offer_posts/:id", function (req, res) {
 // pets CREATE TODO: untested!
 router.post("/pets/create", function(req,res) {
   
-  db.Pet.create(
-    req.body 
-  )
+  db.Pet.create({
+    first_name: req.body.first_name,
+    special_care:req.body.special_care,
+    pet_type: req.body.pet_type,
+    breed:req.body.breed,
+    size:req.body.size,  
+    temperment:req.body.temperment,  
+    age:req.body.age,  
+    picture:req.body.picture,   
+  })
   .then(function(dbPet) {
       console.log(dbPet);
       //TODO: decide where this redirect will go, ask Nicole. for now will take us to /pets
       // res.redirect("/pets");
-      res.json("good boy, pet made");
+      res.json(dbPet);
     }).catch(function(err){
       console.log(err);
       res.status(500);
