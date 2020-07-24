@@ -62,3 +62,20 @@ nav{
     margin-bottom: 10px;
     text-align: center;
 }
+
+
+/* check box  */
+/* input.checkbox {
+    display: inline-block;
+} */
+
+input[type="checkbox"]:checked {
+    display: inline-block;
+    opacity: 100;
+}
+input[type="checkbox"]:not(:checked) {
+    display: inline-block;
+    opacity: 100;
+    position: absolute;
+    pointer-events: none;
+}

@@ -52,11 +52,11 @@ $("#save-account").click(function(event){
   event.preventDefault();
   const accountId = $(this).attr("data-id")
   $.ajax({
-    url:`/api/account/${accountId}`,
+    url:`/users/update/${accountId}`,
     method: "PUT"
   }).then(data=>{
     alert("deleted!");
-    ocation.href = `/user/owner/${id}`
+    location.href = `/user/owner/${id}`
   })
   console.log(" clicked save account")
 })
@@ -65,7 +65,7 @@ $("#delete-account").click(function(event){
   event.preventDefault();
   const accountId = $(this).attr("data-id")
   $.ajax({
-    url:`/api/account/${accountId}`,
+    url:`/users/delete/${accountId}`,
     method: "DELETE"
   }).then(data=>{
     alert("deleted!");
@@ -85,7 +85,7 @@ $("#create-account").on("click", function(event){
     last_name:$("#last-name").val(),
     user_name:$("#new-username").val(),
     password:$("#new-password").val(),
-    phone:$("#phone").val(),
+    // phone:$("#phone").val(),
     email:$("#email").val()
   }
 
@@ -131,7 +131,7 @@ $("#create-account").on("click", function(event){
 $("#service-cat-form").click(function(event){
   event.preventDefault();
   $.ajax({
-    url:`/api/service/`,
+    url:`/offer_posts/create/`,
     method: "POST"
   }).then(data=>{
     alert("POSTED cat service!");
@@ -146,7 +146,7 @@ $("#service-cat-form").click(function(event){
 $("#service-dog-form").click(function(event){
   event.preventDefault();
   $.ajax({
-    url:`/api/service/`,
+    url:`/offer_posts/create/`,
     method: "POST"
   }).then(data=>{
     alert("POSTED dog service!");
@@ -163,7 +163,7 @@ $("#save-posting").click(function(event){
   event.preventDefault();
   const postingId = $(this).attr("data-id")
   $.ajax({
-    url:`/api/service/${postingId}`,
+    url:`/offer_posts/updates/${postingId}`,
     method: "PUT"
   }).then(data=>{
     alert(`saved ${postingId} posting!`);
@@ -176,7 +176,7 @@ $("#delete-posting").click(function(event){
   event.preventDefault();
   const postingId = $(this).attr("data-id")
   $.ajax({
-    url:`/api/service/${postingId}`,
+    url:`/offer_posts/${postingId}`,
     method: "DELETE"
   }).then(data=>{
     alert(`saved ${postingId} posting!`);
@@ -201,7 +201,7 @@ $("#add-cat-form").click(function(event){
     age:$("#cat-age").val(),
 }
   $.ajax({
-    url:`/api/user/pets/`,
+    url:`/pets/create`,
     method: "POST",
     data: catObj
   }).then(data=>{
@@ -217,7 +217,7 @@ $("#add-cat-form").click(function(event){
 $("#add-dog-form").click(function(event){
   event.preventDefault();
   $.ajax({
-    url:`/api//user/pets/`,
+    url:`/pets/create`,
     method: "POST"
   }).then(data=>{
     alert("POSTED new dog !");
@@ -233,7 +233,7 @@ $("#save-pet").click(function(event){
   event.preventDefault();
   const petId = $(this).attr("data-id")
   $.ajax({
-    url:`/api/user/pets/${petId}`,
+    url:`/pets/update/${petId}`,
     method: "PUT"
   }).then(data=>{
     alert(`saved ${petId} posting!`);
@@ -246,7 +246,7 @@ $("#delete-pet").click(function(event){
   event.preventDefault();
   const petId = $(this).attr("data-id")
   $.ajax({
-    url:`/api/user/pets/${petId}`,
+    url:`/pets/${petId}`,
     method: "DELETE"
   }).then(data=>{
     alert(`saved ${petId} posting!`);
