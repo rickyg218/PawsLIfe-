@@ -1,3 +1,5 @@
+const bcrypt = require("bcrypt")
+
 module.exports = function(sequelize, DataTypes) {
     var User = sequelize.define("User", {
       first_name: {
@@ -22,18 +24,34 @@ module.exports = function(sequelize, DataTypes) {
         type:DataTypes.STRING,
         allowNull: false,
       },
+      lat: {
+        type:DataTypes.DECIMAL(9,4),
+        allowNull: true
+      },
+      long: {
+        type: DataTypes.DECIMAL(9,4),
+        allowNull:true
+      }
 
     });
-    User.associate = function(models) {
-      User.hasMany(models.Pet, {
-        as: "Customer",
-        onDelete: "cascade"
-      });
-      User.hasMany(models.Post, {
-        as: "Provider",
-        onDelete: "cascade"
-      });
-    };
-    console.table(User);
-    return User;
+
+
+  User.beforeCreate(function(user){
+      user.password = bcrypt.hashSync(user.password,bcrypt.genSaltSync(10),null);
+  })
+
+
+  User.associate = function(models) {
+    User.hasMany(models.Pet, {
+      as: "Customer",
+      onDelete: "cascade"
+    });
+    User.hasMany(models.Post, {
+      as: "Provider",
+      onDelete: "cascade"
+
+    });
   };
+  console.table(User);
+  return User;
+};

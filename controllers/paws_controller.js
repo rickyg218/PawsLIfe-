@@ -5,28 +5,7 @@ var router = express.Router();
 
 var db = require("../models");
 
-
-//~~~~~~~~~~~~~~~~~~~~~~~~HERE BEGIN THE ROUTES FOR USERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// create users 
-router.post("/users/create", function(req, res) {
-  db.User.create({
-   
-    first_name: req.body.first_name,
-    last_name:req.body.last_name,
-    user_name: req.body.user_name,
-    password:req.body.password,
-    email:req.body.email, 
-    // lat: req.body.lat,
-    // long: req.body.long
-  }).then(function(dbUser) {
-      console.log(dbUser);
-      res.json(dbUser)
-    }).catch(function(err){
-     
-      res.status(500).json(err);
-    });
-    
-});
+// const { Router } = require("express");
 
 // //get user by id 
 router.get("/users/:id", function(req, res) {
@@ -70,7 +49,6 @@ router.delete("/users/delete/:id", function (req, res) {
 
 
 
-
 // //=========================HERE BEGIN THE ROUTES FOR THE OFFER POSTS ========================
 //offer_posts CREATE NEW POST 
 router.post("/offer_posts/create", function(req,res) {
@@ -106,6 +84,59 @@ router.get("/offer_posts", function(req,res) {
     res.status(500).json(err);
   });
 });
+
+//TODO: working find posts within a range that match an animal type
+router.get("/offer_posts/:animal", function(req,res){
+  //service passed by clicking on "cat" or "dog" button
+  //lat/long passed by using available session id?
+  db.Post.findAll(
+    {include:[
+      {model: db.User,
+      as: 'Provider',
+    // where: {}
+  }
+    ]},
+    {where: {animal_type: req.params.animal}},
+             //{user.lat: [(lat-0.1),(lat+0.1)]}   
+             //{user.long:[(long-0.1),(long+0.1)]}   
+  // }
+  )
+
+.then(function(dbPost){
+  console.log(dbPost);
+  let hbrsObj = { offer_posts : dbPost };
+  return res.json(hbrsObj);
+})
+.catch(function(err){
+  res.status(500).json(err);
+});
+})
+//TODO: working find posts within a range that match a service
+
+
+//offer_posts select by animal
+router.get("/offer_posts/:animal", function(req,res){
+  //service passed by clicking on "cat" or "dog" button
+  //lat/long passed by using available session id?
+  db.Post.findAll(
+    {
+      where: { animal_type: req.params.animal },
+      include: [
+        {
+          model: db.User,
+        },
+      ],
+    }
+  )
+    .then(function (dbPost) {
+      console.log(dbPost);
+      let hbrsObj = { offer_posts: dbPost };
+      return res.json(hbrsObj);
+    })
+    .catch(function (err) {
+      res.status(500).json(err);
+    });
+})
 
 
 // // offer_posts UPDATE, by post id. 
@@ -160,18 +191,20 @@ router.delete("/offer_posts/:id", function (req, res) {
 // //=====================HERE BEGIN THE ROUTES FOR THE PETS=========================
 // //create pet 
 router.post("/pets/create", function(req,res) {
-  
+  if(!req.session.user){
+    return res.status(401).send("login first")
+  }
   db.Pet.create({
-    first_name: req.body.first_name,
-    special_care:req.body.special_care,
-    pet_type: req.body.pet_type,
-    breed:req.body.breed,
-    size:req.body.size,  
-    temperment:req.body.temperment,  
-    age:req.body.age,  
-    picture:req.body.picture,   
-  })
-  .then(function(dbPet) {
+      first_name: req.body.first_name,
+      special_care:req.body.special_care,
+      pet_type: req.body.pet_type,
+      breed:req.body.breed,
+      size:req.body.size,  
+      temperment:req.body.temperment,  
+      age:req.body.age,  
+      picture:req.body.picture,   
+      UserId:req.session.user.id
+  }).then(function(dbPet) {
       console.log(dbPet);
       res.json(dbPet);
     }).catch(function(err){
@@ -232,18 +265,37 @@ router.put("/pets/update/:id", function (req,res) {
 
 // //delete pet by id
 router.delete("/pets/:id", function (req, res) {
-  db.Pet
-    .destroy({
+  //protection if they aren't logged in
+  if(!req.session.user){
+    return res.status(401).send("login first!")
+  }else {
+    db.Pet.findOne({
       where: {
-        id: req.params.id,
-      },
+        id:req.params.id
+      }
+    }).then(dbPet=>{
+      //if it is not the same user who created the pet protection
+      if(req.session.user.id!==dbPet.UserId){
+        return res.status(401).send("not your pet")
+      }else {
+        //if it is the user than delete
+        db.Pet
+        .destroy({
+          where: {
+            id: req.params.id,
+          },
+        })
+        .then(function (data) {
+          res.json(` the pet with id of ${req.params.id} is gone`);
+        }).catch(function (err) {
+          console.log(err);
+          res.status(500)
+        })
+      }
     })
-    .then(function (dbPet) {
-      res.json(` the pet with id of ${req.params.id} is gone`);
-    }).catch(function (err) {
-      console.log(err);
-      res.status(500)
-    })
+    
+  }
+  
 
 });
 
