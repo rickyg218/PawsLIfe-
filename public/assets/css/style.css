@@ -4,6 +4,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-color: #eee;
 }
 
 main {
@@ -56,12 +57,16 @@ nav{
 }
 
 /* main page */
-.logo{
-    background-color: #F1E16E;
+/* .logo{
+    background-color: #282e5f;
     margin-top: 10px;
     margin-bottom: 10px;
     text-align: center;
-}
+    border-radius: 50%;
+    height: 450px;
+    width: 450px;
+    color: white;
+} */
 
 
 /* check box  */
