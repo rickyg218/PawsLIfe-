@@ -11,7 +11,7 @@ router.get("/", function(req, res) {
     include:[db.User]
   }).then(posts=>{
     const hbsObj={
-      users:userData
+      users:posts
     }
     console.log(posts);
   //   const postsJSON = posts.map(function(postObj){
@@ -78,22 +78,6 @@ router.get("/", function(req, res) {
         return res.render("owner", userObjJSON);
       })
     }
-    // db.User.findOne(
-    //    {
-    //     where: {
-    //         id: req.params.id
-    //     }
-    //    }
-    // ).then(function(userData){
-    //     const userDataJSON = userData.map(userObj=>{
-    //         return userObj.toJSON();
-    //     })
-    //     const hbsObj = {
-    //         users:userDataJSON
-    //     }
-    //     console.log(userDataJSON)
-    // })
-    // return res.render("owner", hbs);
     
   });
   

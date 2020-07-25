@@ -216,15 +216,27 @@ router.post("/pets/create", function(req,res) {
 
 // //get all pets
 router.get("/pets", function(req,res) {
-  db.Pet.findAll()
+  db.Pet.findAll({})
   .then(function(dbPet) {
     console.log(dbPet);
-    let hbsObj = { pets : dbPet };
-    res.render("owner",hbsObj)
+    const petsJSON = dbPet.map(function(petObj){
+      return petObj.toJSON();
+    })
+    res.render("owner",{dbPet:petsJSON})
   }).catch(function(err){
     res.status(500).json(err);
   });
 });
+// router.get("/pets", function(req,res) {
+//   db.Pet.findAll({})
+//   .then(function(dbPet) {
+//     console.log(dbPet);
+//     let hbsObj = { pets : dbPet };
+//     res.render("owner",hbsObj)
+//   }).catch(function(err){
+//     res.status(500).json(err);
+//   });
+// });
 
 // //get pet by id 
 router.get("/pets/:id", function (req,res) {

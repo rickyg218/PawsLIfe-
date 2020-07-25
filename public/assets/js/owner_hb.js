@@ -72,7 +72,7 @@ $("#add-cat-form").click(function(event){
       alert("POSTED new dog !");
       location.href = "/"
     }).fail(function(err){
-      console(err);
+      console.log(err);
       alert("something went wrong");
       location.reload();
     })
