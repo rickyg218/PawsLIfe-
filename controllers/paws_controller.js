@@ -78,7 +78,7 @@ router.post("/offer_posts/create", function(req,res) {
 // //offer_posts READ ALL 
 router.get("/offer_posts", function(req,res) {
   
-  db.Post.findAll()
+  db.Post.findAll({})
   
   .then(function(dbPost) {
     console.log(dbPost);
@@ -132,17 +132,17 @@ router.get("/offer_posts/:animal", function(req,res){
   db.Post.findAll(
     {
       where: { animal_type: req.params.animal },
-      include: [
-        {
-          model: db.User,
-        },
-      ],
     }
   )
-    .then(function (dbPost) {
-      console.log(dbPost);
-      let hbrsObj = { offer_posts: dbPost };
-      return res.json(hbrsObj);
+    .then(function (postsAnimal) {
+      const postsAnimalJSON = postsAnimal.map(function(postsAnimalObj){
+        return postsAnimalObj.toJSON();
+      })
+      const hbsObj={
+        posts:postsAnimalJSON
+      }
+      console.log(postsAnimalJSON)
+      res.render("index",hbsObj)
     })
     .catch(function (err) {
       res.status(500).json(err);
@@ -214,10 +214,11 @@ router.post("/pets/create", function(req,res) {
       temperment:req.body.temperment,  
       age:req.body.age,  
       picture:req.body.picture,   
-      UserId:req.session.user.id
+      UserId:req.session.user.id,
+
   }).then(function(dbPet) {
       console.log(dbPet);
-      res.json(dbPet);
+      res.json(dbPet.id);
     }).catch(function(err){
       console.log(err);
       res.status(500);

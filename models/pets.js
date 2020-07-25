@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
       },
        breed: {
           type:DataTypes.STRING,
-          allowNull: false,
+          allowNull: true,
         },
       size: {
         type:DataTypes.STRING,
@@ -29,15 +29,13 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: true,
       },
       age: {
-        type:DataTypes.INTEGER,
+        type:DataTypes.STRING,
         allowNull: false,
 
       },
     });  
     Pet.associate = function(models) {
-        Pet.belongsTo(models.User, {
-          as: "Customer"
-        });
+        Pet.belongsTo(models.User);
       };
     return Pet;
   };

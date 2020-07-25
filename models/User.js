@@ -44,10 +44,12 @@ module.exports = function(sequelize, DataTypes) {
   User.associate = function(models) {
     User.hasMany(models.Pet, {
       as: "Customer",
+      foreignKey: "CustomerId",
       onDelete: "cascade"
     });
     User.hasMany(models.Post, {
       as: "Provider",
+      foreignKey: "ProviderId",
       onDelete: "cascade"
 
     });

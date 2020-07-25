@@ -22,12 +22,28 @@ $(".service-dog").click(function(event){
 //when the user clicks on submit, they will be redirected to their professional page 
 $("#service-cat-form").click(function(event){
     event.preventDefault();
+    const catServiceObj = {
+      title:$("#cat-title").val(),
+      text:$("#cat-text").val(),
+      animal_type:"cat",
+      size_restrictions:$("#cat-size-restrictions").val(),
+      duration:$("#cat-duration").val(),
+      range:$("#cat-range").val(),
+      picture:$("#cat-picture").val(),
+      service_type:$("#cat-service-type").val(),
+      cost:$("#cat-cost").val(),
+    }
     $.ajax({
       url:`/offer_posts/create/`,
-      method: "POST"
+      method: "POST",
+      data: catServiceObj
     }).then(data=>{
       alert("POSTED cat service!");
-      location.href = `/user/professional/${id}`
+      location.href = "/"
+    }).fail(function(err){
+      console(err);
+      alert("something went wrong");
+      location.reload();
     })
     console.log(" clicked service cat form")
   })
@@ -37,12 +53,28 @@ $("#service-cat-form").click(function(event){
   //when the user clicks on submit, they will be redirected to their professional page
   $("#service-dog-form").click(function(event){
     event.preventDefault();
+    const dogServiceObj = {
+      title:$("#dog-title").val(),
+      text:$("#dog-text").val(),
+      animal_type:"dog",
+      size_restrictions:$("#dog-size-restrictions").val(),
+      duration:$("#dog-duration").val(),
+      range:$("#dog-range").val(),
+      picture:$("#dog-picture").val(),
+      service_type:$("#dog-service-type").val(),
+      cost:$("#dog-cost").val(),
+    }
     $.ajax({
-      url:`/offer_posts/create/`,
-      method: "POST"
+      url:"/offer_posts/create",
+      method: "POST",
+      data: dogServiceObj
     }).then(data=>{
       alert("POSTED dog service!");
-      location.href = `/user/professional/${id}`
+      location.href = "/"
+    }).fail(function(err){
+      console.log(err);
+      alert("something went wrong");
+      location.reload();
     })
     console.log(" clicked service dog form")
   })

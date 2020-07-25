@@ -105,6 +105,18 @@ $("#create-account").on("click", function(event){
   
 })
 
+
+//MAIN PAGE SEARCH
+//search on main page 
+$(".material-icons").click(function(event){
+  event.preventDefault();
+  $.ajax("/offer_posts/:animal",{
+    type: "GET"
+  }).then(function(posts){
+    console.log(posts)
+  })
+})
+
   
 
 

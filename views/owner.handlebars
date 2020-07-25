@@ -33,10 +33,30 @@
         {{!-- show pet family for owner --}}
     <div class="row pets">
         <h2>pet family</h2>
-        <div class="pet-family">this will have pet family displayed as cards in the users profile{{>pet-family}}</div>
-        <br>
-        <br>
-        <br>
+            <div class="row" id="pet-family">
+            {{#each Customer}}
+                    <div class="col s12 l3 card blue-grey darken-1 parent-user">
+                        <div class="card-content white-text">
+                            <span class="card-title">name: {{first_name}}</span>
+                            <div class="card-content">
+                                <ul>
+                                    <li>breed:{{breed}} <button>edit</button></li>
+                                    <li>size: {{size}}<button>edit</button></li>
+                                    <li>temperment: {{temperment}} <button>edit</button></li>
+                                    <li>special care: {{special_care}} <button>edit</button></li>
+                                    <li>pet_type: {{pet_type}} <button>edit</button></li>
+                                    <li>picture: {{picture}} <button>edit</button></li>
+                                    <li>age: {{age}} <button>edit</button></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-action">
+                            <button data-id={{id}} id="save-pet">save pet</button>
+                            <button data-id={{id}} id="delete-pet">delete pet</button>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
     </div>
 
         {{!-- show pet  bookings  --}}

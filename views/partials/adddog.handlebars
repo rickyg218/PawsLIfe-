@@ -4,21 +4,21 @@
         {{!-- dog name --}}
         <form >
             <label for="dog-name">what is the name?</label>
-                <input type="text" name="dog-name"> 
+                <input type="text" name="dog-name" id="dog-name"> 
         </form>
         <br>
 
         {{!-- dog breed --}}
         <form >
-            <label for="dog-breed">what breed?</label>
-                <input type="text" name="dog-breed"> 
+            <label for="breed">what breed?</label>
+                <input type="text" name="breed" id="breed"> 
         </form>
         <br>
 
         {{!-- dog size --}}
         <form>
             <label for="dog-size">dog size</label>
-                <input list="dog-size" name="dog-size">
+                <input list="dog-size" name="dog-size" id="dog-size">
                 <datalist id="dog-size">
                     <option value="petit pup (0-15lbs)">
                     <option value="medium pup (15lbs-25lbs)">
@@ -32,14 +32,14 @@
         {{!-- dog age --}}
         <form >
             <label for="dog-age">what is the age?</label>
-                <input type="text" age="dog-age"> 
+                <input type="text" age="dog-age" id="dog-age"> 
         </form>
         <br>
 
         {{!-- dog temperment --}}  
         <form>
             <label for="dog-temperment">dog temperment</label>
-                <input list="dog-temperment" name="dog-temperment">
+                <input list="dog-temperment" name="dog-temperment" id="dog-temperment">
                 <datalist id="dog-temperment">
                     <option value="friendly">
                     <option value="aggressive">
@@ -52,7 +52,14 @@
         {{!-- dog special care --}}
         <form >
             <label for="dog-care">are there any special care items for your pet?</label>
-                <input type="text" name="dog-care"> 
+                <input type="text" name="dog-care" id="dog-care"> 
+        </form>
+        <br>
+
+        {{!-- dog picture  --}}
+        <form >
+            <label for="dog-picture">are there any special care items for your pet?</label>
+                <input type="text" name="dog-picture" id="dog-picture"> 
         </form>
         <br>
 
