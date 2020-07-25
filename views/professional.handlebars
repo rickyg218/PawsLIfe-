@@ -35,10 +35,32 @@
     {{!-- show professional active listings  --}}
     <div class="row active">
         <h2>active postings</h2>
-        <div class="active-postings">this will have the active listings displayed as cards in the users profile{{>active-postings}}</div> 
-        <br>
-        <br>
-        <br>
+        
+            <div class="row" id="active-postings">
+                {{#each Provider}}
+                    <div class="col s12 m6">
+                        <div class="card blue-grey darken-1">
+                            <div class="card-content white-text">
+                                <span class="card-title">service title: {{title}} </span>
+                                <div class="card-content">
+                                    <ul>
+                                        <li>service text: {{title}} <button>edit</button></li>
+                                        <li>service type: {{service_type}} <button>edit</button></li>
+                                        <li>pet type: {{animal_type}}<button>edit</button></li>
+                                        <li>pet size: {{size_restrictions}} <button>edit</button></li>
+                                        <li>duration:{{duration}} <button>edit</button></li>
+                                        <li>cost: {{cost}}<button>edit</button></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-action">
+                                <button data-id={{id}} id="save-posting">save posting</button>
+                                <button data-id={{id}} id="delete-posting">delete posting</button>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
     </div> 
 
     {{!-- show professional bookings --}}

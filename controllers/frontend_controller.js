@@ -5,14 +5,7 @@ const router = express.Router();
 const db = require("../models");
 // const { eq } = require("sequelize/types/lib/operators");
 
-//takes you to a json array with objects containing all posts and their users
-router.get("/api/posts", function(req, res) {
-  db.Post.findAll({
-    include:[db.User]
-  }).then(posts=>{
-    res.json(posts)
-  });
-});
+
 
 // main route welcome gets all posts plus user info
 router.get("/", function(req, res) {
@@ -78,13 +71,18 @@ router.get("/", function(req, res) {
         where:{
           id:req.session.user.id
         },
-        include: [{model:db.Pet, as:"Customer"}]
+        include: [
+          {
+            model:db.Pet, as:"Customer"
+          }
+        ]
          
-      }).then(userObj=>{
-        // res.json(userObj)
-        //this grabs just the json response not all of the extra stuff that normally is sent back
-        const userObjJSON = userObj.toJSON();
-        return res.render("owner", userObjJSON);
+      }).then(userProfile=>{
+        const userProfileJSON = userProfile.toJSON();
+        console.log(userProfileJSON)
+        return res.render("owner", userProfileJSON);
+      }).catch(err=>{
+        if(err) throw err;
       })
     }
     
@@ -110,5 +108,45 @@ router.get("/", function(req, res) {
     }
   });
   
+
+//API ROUTES 
+//all pets with users 
+router.get("/api/pets/users", function(req, res){
+  db.Pet.findAll({
+    include:[db.User]
+  }).then(pets=>{
+    res.json(pets)
+  });
+})
+
+
+//all posts with users 
+router.get("/api/posts/users", function(req, res) {
+  db.Post.findAll({
+    include:[db.User]
+  }).then(posts=>{
+    res.json(posts)
+  });
+});
+
+//all users with pets 
+  router.get("/api/users/pets", function(req, res){
+    db.User.findAll({
+      include:[{model:db.Pet, as:"Customer"}]
+    }).then(users=>{
+      // const userJSON = users.toJSON();
+      res.json(users)
+    });
+  })
+
+//all users with posts 
+  router.get("/api/users/posts", function(req, res){
+    db.User.findAll({
+      include:[{model:db.Post, as:"Provider"}]
+    }).then(users=>{
+      // const userJSON = users.toJSON();
+      res.json(users)
+    });
+  })
 
 module.exports = router;
