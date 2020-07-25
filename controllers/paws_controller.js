@@ -64,8 +64,8 @@ router.post("/offer_posts/create", function(req,res) {
     range:req.body.range, 
     picture:req.body.picture, 
     service_type:req.body.service_type, 
-    //TODO: passing a userID for now, will be grabbed by session id
-    UserId: req.body.UserId,
+    // TODO: ask joe if ProviderId or UserId
+    ProviderId:req.session.user.id,
   })
   .then(function(dbPost) {
       console.log(dbPost);
@@ -213,8 +213,9 @@ router.post("/pets/create", function(req,res) {
       size:req.body.size,  
       temperment:req.body.temperment,  
       age:req.body.age,  
-      picture:req.body.picture,   
-      UserId:req.session.user.id,
+      picture:req.body.picture,  
+      // TODO: ask joe if CustomerId or UserId 
+      CustomerId:req.session.user.id,
 
   }).then(function(dbPet) {
       console.log(dbPet);
