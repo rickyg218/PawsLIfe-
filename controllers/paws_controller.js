@@ -63,6 +63,7 @@ router.post("/offer_posts/create", function(req,res) {
     picture:req.body.picture, 
     service_type:req.body.service_type, 
     cost:req.body.cost, 
+    UserId:req.session.user.id,
   })
   .then(function(dbPost) {
       console.log(dbPost);
@@ -204,7 +205,8 @@ router.post("/pets/create", function(req,res) {
       temperment:req.body.temperment,  
       age:req.body.age,  
       picture:req.body.picture,   
-      UserId:req.session.user.id
+      UserId:req.session.user.id,
+
   }).then(function(dbPet) {
       console.log(dbPet);
       res.json(dbPet.id);
