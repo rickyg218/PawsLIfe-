@@ -123,17 +123,17 @@ router.get("/offer_posts/:animal", function(req,res){
   db.Post.findAll(
     {
       where: { animal_type: req.params.animal },
-      include: [
-        {
-          model: db.User,
-        },
-      ],
     }
   )
-    .then(function (dbPost) {
-      console.log(dbPost);
-      let hbrsObj = { offer_posts: dbPost };
-      return res.json(hbrsObj);
+    .then(function (postsAnimal) {
+      const postsAnimalJSON = postsAnimal.map(function(postsAnimalObj){
+        return postsAnimalObj.toJSON();
+      })
+      const hbsObj={
+        posts:postsAnimalJSON
+      }
+      console.log(postsAnimalJSON)
+      res.render("index",hbsObj)
     })
     .catch(function (err) {
       res.status(500).json(err);
