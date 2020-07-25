@@ -94,7 +94,7 @@ router.get("/offer_posts/:animal/:lat/:long", function(req,res){
   let latRange = [(parseFloat(req.params.lat)-0.100), (parseFloat(req.params.lat)+0.100)]
   let longRange = [(parseFloat(req.params.long)-0.100), (parseFloat(req.params.long)+0.100)]
   
-  // res.json([latRange[0], latRange[1]]);
+  // res.json([latRange[0], latRange[1]]); 
   // res.json([longRange[0], longRange[1]]);
 
   db.Post.findAll(
@@ -104,7 +104,7 @@ router.get("/offer_posts/:animal/:lat/:long", function(req,res){
           model: db.User,
           where: {
             lat: {[Op.between]:latRange},
-            long: -122.3104
+            long: {[Op.between]:longRange}
           },
         },
       ],
