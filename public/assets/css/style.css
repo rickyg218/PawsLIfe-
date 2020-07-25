@@ -77,3 +77,7 @@ input[type="checkbox"]:not(:checked) {
     box-shadow: 4px 4px 6px;
     margin: 0 10px; 
 }
+
+.account-user{
+    padding: 0%;
+}
