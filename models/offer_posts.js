@@ -18,12 +18,12 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false,
       },
       duration: {
-        type:DataTypes.INTEGER,
+        type:DataTypes.STRING,
         allowNull: false,
 
       },
       range: {
-        type:DataTypes.INTEGER,
+        type:DataTypes.STRING,
         allowNull: false,
  
       },
@@ -35,6 +35,11 @@ module.exports = function(sequelize, DataTypes) {
       service_type: {
         type:DataTypes.STRING,
         allowNull: false,
+
+      },
+      cost: {
+        type:DataTypes.STRING,
+        allowNull: true,
 
       },
 

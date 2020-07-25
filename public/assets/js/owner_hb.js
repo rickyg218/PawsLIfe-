@@ -40,7 +40,7 @@ $("#add-cat-form").click(function(event){
     }).done(data=>{
       alert("POSTED new cat!");
       console.log(data)
-      location.href = `/user/owner/${id}`
+      location.href = "/"
     }).fail(function(err){
       console(err);
       alert("something went wrong");
@@ -55,14 +55,14 @@ $("#add-cat-form").click(function(event){
   $("#add-dog-form").click(function(event){
     event.preventDefault();
     const dogObj = {
-      first_name:$("#cat-name").val(),
-      special_care:$("#cat-care").val(),
+      first_name:$("#dog-name").val(),
+      special_care:$("#dog-care").val(),
       pet_type:"dog",
       breed:$("#breed").val(),
-      size:$("#cat-size").val(),
-      temperment:$("#cat-temperment").val(),
-      age:$("#cat-age").val(),
-      picture:$("#cat-picture").val(),
+      size:$("#dog-size").val(),
+      temperment:$("#dog-temperment").val(),
+      age:$("#dog-age").val(),
+      picture:$("#dog-picture").val(),
     }
     $.ajax({
       url:`/pets/create`,
@@ -71,6 +71,10 @@ $("#add-cat-form").click(function(event){
     }).then(data=>{
       alert("POSTED new dog !");
       location.href = "/"
+    }).fail(function(err){
+      console(err);
+      alert("something went wrong");
+      location.reload();
     })
     console.log(" clicked add dog form")
   })

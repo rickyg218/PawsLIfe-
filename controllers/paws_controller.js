@@ -62,6 +62,7 @@ router.post("/offer_posts/create", function(req,res) {
     range:req.body.range, 
     picture:req.body.picture, 
     service_type:req.body.service_type, 
+    cost:req.body.cost, 
   })
   .then(function(dbPost) {
       console.log(dbPost);

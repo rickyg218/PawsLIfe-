@@ -29,7 +29,7 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: true,
       },
       age: {
-        type:DataTypes.INTEGER,
+        type:DataTypes.STRING,
         allowNull: false,
 
       },

@@ -4,21 +4,21 @@
         {{!-- service title --}}
         <form >
             <label for="title">title of post?</label>
-                <input type="text" name="title"> 
+                <input type="text" name="title" id="dog-title"> 
         </form>
         <br>
 
         {{!-- service text --}}
         <form >
             <label for="text">what do you want to say about your listing?</label>
-                <input type="text" name="text"> 
+                <input type="text" name="text" id="dog-text"> 
         </form>
         <br>
 
         <!-- service type dog -->
         <form >
         <label for="service-dogs">choose a service type for dogs</label>
-            <input list="service-dogs" name="service-dogs">
+            <input list="service-dogs" name="service-dogs" id="dog-service-type">
             <datalist id="service-dogs">
                 <option value="dog walker">
                 <option value="dog sitter">
@@ -30,7 +30,7 @@
         <!-- dog size-->
         <form >
         <label for="size-dogs">choose a dog size</label>
-            <input list="size-dogs" name="size-dogs">
+            <input list="size-dogs" name="size-dogs" id="dog-size-restrictions">
             <datalist id="size-dogs">
                 <option value="petit pup (0-15lbs)">
                 <option value="medium pup (15lbs-25lbs)">
@@ -44,7 +44,7 @@
         <!-- location radius-->
         <form >
         <label for="location-dogs">choose a location radius</label>
-            <input list="location-dogs" name="location-dogs">
+            <input list="location-dogs" name="location-dogs" id="dog-range">
             <datalist id="location-dogs">
                 <option value="0-2 miles">
                 <option value="2-5 miles">
@@ -55,14 +55,21 @@
         {{!-- duration --}}
         <form >
             <label for="duration">duration of service?</label>
-                <input type="text" name="duration"> 
+                <input type="text" name="duration" id="dog-duration"> 
         </form>
         <br>
 
         {{!-- cost --}}
         <form >
             <label for="cost">cost of service?</label>
-                <input type="text" name="cost"> 
+                <input type="number" name="cost" id="dog-cost"> 
+        </form>
+        <br>
+
+        {{!-- picture --}}
+        <form >
+            <label for="dog-picture">picture of service?</label>
+                <input type="text" name="dog-picture" id="dog-dog-picture"> 
         </form>
         <br>
 
