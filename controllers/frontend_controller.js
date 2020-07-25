@@ -5,24 +5,33 @@ const router = express.Router();
 const db = require("../models");
 // const { eq } = require("sequelize/types/lib/operators");
 
-//main route welcome
-router.get("/", function(req, res) {
+//takes you to a json array with objects containing all posts and their users
+router.get("/api/posts", function(req, res) {
   db.Post.findAll({
     include:[db.User]
   }).then(posts=>{
+    res.json(posts)
+  });
+});
+
+// main route welcome gets all posts plus user info
+router.get("/", function(req, res) {
+  db.Post.findAll({
+    include:[db.User]
+  }).then(userPosts=>{
+    const userPostsJSON = userPosts.map(function(postObj){
+      return postObj.toJSON();
+    })
     const hbsObj={
-      users:posts
+      posts:userPostsJSON
     }
-    console.log(posts);
-  //   const postsJSON = posts.map(function(postObj){
-  //     return postObj.toJSON;
-  //   })
-  //   console.log(postsJSON)
-  // })
-  //    res.render("index", {posts:postsJSON});
-     res.render("index");
-  });
-  });
+    console.log(userPostsJSON)
+    res.render("index", hbsObj);
+  })
+     
+    
+});
+
   
   //redirects you to the user owner page as a default and will need the user :id param
   router.get("/user", function(req, res) {

@@ -76,7 +76,7 @@ router.post("/offer_posts/create", function(req,res) {
 // //offer_posts READ ALL 
 router.get("/offer_posts", function(req,res) {
   
-  db.Post.findAll()
+  db.Post.findAll({})
   
   .then(function(dbPost) {
     console.log(dbPost);
