@@ -219,8 +219,8 @@ router.get("/pets", function(req,res) {
   db.Pet.findAll()
   .then(function(dbPet) {
     console.log(dbPet);
-    let hbrsObj = { pets : dbPet };
-    return res.json(hbrsObj);
+    let hbsObj = { pets : dbPet };
+    res.render("owner",hbsObj)
   }).catch(function(err){
     res.status(500).json(err);
   });

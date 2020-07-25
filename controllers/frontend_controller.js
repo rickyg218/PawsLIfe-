@@ -10,6 +10,9 @@ router.get("/", function(req, res) {
   db.Post.findAll({
     include:[db.User]
   }).then(posts=>{
+    const hbsObj={
+      users:userData
+    }
     console.log(posts);
   //   const postsJSON = posts.map(function(postObj){
   //     return postObj.toJSON;
