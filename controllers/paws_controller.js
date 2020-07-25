@@ -17,6 +17,7 @@ router.get("/users/:id", function(req, res) {
     console.log(dbUser);
     res.json( dbUser)
   }).catch(function(err){
+    console.log(err)
     res.status(500).json(err);
   });
 });
