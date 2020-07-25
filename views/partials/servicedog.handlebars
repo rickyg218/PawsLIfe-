@@ -4,14 +4,14 @@
         {{!-- service title --}}
         <form >
             <label for="title">title of post?</label>
-                <input type="text" name="title" id="dog-title"> 
+                <input type="text" name="title" id="dog-title" placeholder="title"> 
         </form>
         <br>
 
         {{!-- service text --}}
         <form >
             <label for="text">what do you want to say about your listing?</label>
-                <input type="text" name="text" id="dog-text"> 
+                <input type="text" name="text" id="dog-text" placeholder="let us know here"> 
         </form>
         <br>
 
@@ -54,15 +54,27 @@
 
         {{!-- duration --}}
         <form >
-            <label for="duration">duration of service?</label>
-                <input type="text" name="duration" id="dog-duration"> 
+             <label for="duration">duration of service?</label>
+            <input list="duration" name="duration" id="dog-duration">
+                <datalist id="duration">
+                    <option value="1-2 hours">
+                    <option value="half a day">
+                    <option value="full day">
+                    <option value="3 days">
+                </datalist>   
         </form>
         <br>
 
         {{!-- cost --}}
         <form >
             <label for="cost">cost of service?</label>
-                <input type="number" name="cost" id="dog-cost"> 
+                <input list="cost" name="cost" id="dog-cost"> 
+                <datalist id="cost">
+                    <option value="$15/hour">
+                    <option value="$20/hour">
+                    <option value="$25/hour">
+                    <option value="$400/day">
+                </datalist>  
         </form>
         <br>
 
