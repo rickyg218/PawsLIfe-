@@ -12,10 +12,17 @@ const { Op } = require("sequelize");
 // //get user by id 
 router.get("/users/:id", function(req, res) {
   db.User.findOne({
-    where: {id: req.params.id}
+    where: {
+      id: req.params.id
+    },
+    include: [
+      {model:db.Pet, as:"Customer"},
+      {model:db.Post, as:"Provider"}
+    ]
   }).then(function(dbUser) {
     console.log(dbUser);
     res.json( dbUser)
+    // return res.render("owner")
   }).catch(function(err){
     console.log(err)
     res.status(500).json(err);
@@ -194,22 +201,7 @@ router.delete("/offer_posts/:id", function (req, res) {
     
 });
 
-//book an offer post 
-router.put("/offer_posts/:id/claimpost",(req,res)=>{
-  db.Post.update({
-      ProviderId: req.body.ProviderId
-  }, {
-      where: {
-          id: req.params.id
-      }
-  }).then(postData => {
-      res.json(postData)
-      // res.json({claimedBy:req.body.UserId})
-  }).catch(err => {
-      console.log(err);
-      res.status(500).end()
-  })
-})
+
 
 // //=========================HERE ENDS THE ROUTES FOR THE OFFER POSTS ==============
 

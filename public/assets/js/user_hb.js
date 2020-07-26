@@ -1,6 +1,8 @@
 //EVENT LISTENERS
 //USER ACOUNTS
 
+// const { response } = require("express");
+
 //signin.handlebars
 //when the user clicks on service cat, they will be redirected to the home page
 $("#sign-in").click(function(event){
@@ -122,17 +124,30 @@ $(".material-icons").click(function(event){
 
 //MAIN PAGE SEARCH
 //book a service 
-$("#book-now").click(function(event){
+$(".claimPost").click(function(event){
   event.preventDefault();
   const postId = $(this).attr("data-id")
+  console.log(postId)
   $.ajax({
     url:`/offer_posts/${postId}/claimpost`,
-    method:"PUT"
-}).then(data=>{
+    method:"PUT",
+    data: {
+      ProviderId: req.session.user.id
+    }
+  }).then(data=>{
     console.log(data)
     location.href = `/`;
+  }).catch(err=>{
+    console.log(err)
+    response.status(500).json(err)
+  })
 })
+
+$("#logout").click(function(){
+
+  alert("logged out of account")
 })
+
 
   
 
