@@ -25,12 +25,16 @@ $("#sign-in").click(function(event){
     alert("check your username or password!")
     location.reload();
   })
-
-  console.log(" clicked sign in")
   location.href = '/'
   console.log(" clicked sign in ")
 })
 
+//auth_controller.js
+//logout
+$("#logout").click(function(){
+  alert("logged out of account")
+  console.log("clicked log out")
+})
 
 //account-profile.handlebars
 //when the user clicks on save account, they will be redirected to their owner page
@@ -143,10 +147,7 @@ $(".claimPost").click(function(event){
   })
 })
 
-$("#logout").click(function(){
 
-  alert("logged out of account")
-})
 
 
   
