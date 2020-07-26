@@ -35,7 +35,7 @@ module.exports = function(sequelize, DataTypes) {
 
     });
 
-
+  //before you create the user, take the password that you have for the user and generate a random 10 character encryption
   User.beforeCreate(function(user){
       user.password = rypt.hashSync(user.password,rypt.genSaltSync(10),null);
   })
@@ -44,10 +44,12 @@ module.exports = function(sequelize, DataTypes) {
   User.associate = function(models) {
     User.hasMany(models.Pet, {
       as: "Customer",
+      foreignKey: "CustomerId",
       onDelete: "cascade"
     });
     User.hasMany(models.Post, {
       as: "Provider",
+      foreignKey: "ProviderId",
       onDelete: "cascade"
 
     });

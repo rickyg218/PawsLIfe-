@@ -5,6 +5,8 @@ var router = express.Router();
 
 var db = require("../models");
 
+const { Op } = require("sequelize");
+
 // const { Router } = require("express");
 
 // //get user by id 
@@ -15,6 +17,7 @@ router.get("/users/:id", function(req, res) {
     console.log(dbUser);
     res.json( dbUser)
   }).catch(function(err){
+    console.log(err)
     res.status(500).json(err);
   });
 });
@@ -62,6 +65,8 @@ router.post("/offer_posts/create", function(req,res) {
     range:req.body.range, 
     picture:req.body.picture, 
     service_type:req.body.service_type, 
+    // TODO: ask joe if ProviderId or UserId
+    ProviderId:req.session.user.id,
   })
   .then(function(dbPost) {
       console.log(dbPost);
@@ -74,7 +79,7 @@ router.post("/offer_posts/create", function(req,res) {
 // //offer_posts READ ALL 
 router.get("/offer_posts", function(req,res) {
   
-  db.Post.findAll()
+  db.Post.findAll({})
   
   .then(function(dbPost) {
     console.log(dbPost);
@@ -86,30 +91,36 @@ router.get("/offer_posts", function(req,res) {
 });
 
 //TODO: working find posts within a range that match an animal type
-router.get("/offer_posts/:animal", function(req,res){
-  //service passed by clicking on "cat" or "dog" button
-  //lat/long passed by using available session id?
+router.get("/offer_posts/:animal/:lat/:long", function(req,res){
+  let latRange = [(parseFloat(req.params.lat)-0.100), (parseFloat(req.params.lat)+0.100)]
+  let longRange = [(parseFloat(req.params.long)-0.100), (parseFloat(req.params.long)+0.100)]
+  
+  // res.json([latRange[0], latRange[1]]); 
+  // res.json([longRange[0], longRange[1]]);
+
   db.Post.findAll(
-    {include:[
-      {model: db.User,
-      as: 'Provider',
-    // where: {}
-  }
-    ]},
-    {where: {animal_type: req.params.animal}},
-             //{user.lat: [(lat-0.1),(lat+0.1)]}   
-             //{user.long:[(long-0.1),(long+0.1)]}   
-  // }
+    {
+      include: [
+        {
+          model: db.User,
+          where: {
+            lat: {[Op.between]:latRange},
+            long: {[Op.between]:longRange}
+          },
+        },
+      ],
+      where: { animal_type: req.params.animal },
+    },
   )
 
-.then(function(dbPost){
-  console.log(dbPost);
-  let hbrsObj = { offer_posts : dbPost };
-  return res.json(hbrsObj);
-})
-.catch(function(err){
-  res.status(500).json(err);
-});
+    .then(function (dbPost) {
+      console.log("this console logs the dbPost return from get by lat long", dbPost);
+      let hbrsObj = { offer_posts: dbPost };
+      return res.json(hbrsObj);
+    })
+    .catch(function (err) {
+      res.status(500).json(err);
+    });
 })
 //TODO: working find posts within a range that match a service
 
@@ -118,20 +129,21 @@ router.get("/offer_posts/:animal", function(req,res){
 router.get("/offer_posts/:animal", function(req,res){
   //service passed by clicking on "cat" or "dog" button
   //lat/long passed by using available session id?
+  console.log(req.params.animal);
   db.Post.findAll(
     {
       where: { animal_type: req.params.animal },
-      include: [
-        {
-          model: db.User,
-        },
-      ],
     }
   )
-    .then(function (dbPost) {
-      console.log(dbPost);
-      let hbrsObj = { offer_posts: dbPost };
-      return res.json(hbrsObj);
+    .then(function (postsAnimal) {
+      const postsAnimalJSON = postsAnimal.map(function(postsAnimalObj){
+        return postsAnimalObj.toJSON();
+      })
+      const hbsObj={
+        posts:postsAnimalJSON
+      }
+      console.log(postsAnimalJSON)
+      res.render("index",hbsObj)
     })
     .catch(function (err) {
       res.status(500).json(err);
@@ -202,11 +214,13 @@ router.post("/pets/create", function(req,res) {
       size:req.body.size,  
       temperment:req.body.temperment,  
       age:req.body.age,  
-      picture:req.body.picture,   
-      UserId:req.session.user.id
+      picture:req.body.picture,  
+      // TODO: ask joe if CustomerId or UserId 
+      CustomerId:req.session.user.id,
+
   }).then(function(dbPet) {
       console.log(dbPet);
-      res.json(dbPet);
+      res.json(dbPet.id);
     }).catch(function(err){
       console.log(err);
       res.status(500);

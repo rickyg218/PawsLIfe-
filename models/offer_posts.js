@@ -18,12 +18,12 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false,
       },
       duration: {
-        type:DataTypes.INTEGER,
+        type:DataTypes.STRING,
         allowNull: false,
 
       },
       range: {
-        type:DataTypes.INTEGER,
+        type:DataTypes.STRING,
         allowNull: false,
  
       },
@@ -37,10 +37,18 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false,
 
       },
+      cost: {
+        type:DataTypes.STRING,
+        allowNull: true,
+
+      },
 
     });  
     Post.associate = function(models) {
-        Post.belongsTo(models.User);
+        Post.belongsTo(models.User,{
+          as: "Provider",
+          foreignKey: "ProviderId",
+          });
       };
     return Post;
   };

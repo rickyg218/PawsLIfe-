@@ -20,7 +20,7 @@ $("#sign-in").click(function(event){
     console.log(data)
   }).fail(function(err){
     console.log(err);
-    alert("something went wrong!")
+    alert("check your username or password!")
     location.reload();
   })
 
@@ -51,9 +51,12 @@ $("#delete-account").click(function(event){
   $.ajax({
     url:`/users/delete/${accountId}`,
     method: "DELETE"
-  }).then(data=>{
-    alert("deleted!");
-    location.href = `/user/owner/${id}`
+  }).done(data=>{
+    alert("account deleted!");
+    location.href = "/"
+  }).fail(err=>{
+    alert("something went wrong");
+    window.location.reload();
   })
   console.log(" clicked delete account")
 })
@@ -87,7 +90,7 @@ $("#create-account").on("click", function(event){
   
     console.log("User Obj: "+userObj);
   
-    $.ajax("/users/create",{
+    $.ajax("/createaccount",{
       type:"POST",
       data:userObj
     }).done(data=>{
@@ -103,6 +106,18 @@ $("#create-account").on("click", function(event){
     console.log(" clicked create account")
   });
   
+})
+
+
+//MAIN PAGE SEARCH
+//search on main page 
+$(".material-icons").click(function(event){
+  event.preventDefault();
+  $.ajax("/offer_posts/:animal",{
+    type: "GET"
+  }).then(function(posts){
+    console.log(posts)
+  })
 })
 
   

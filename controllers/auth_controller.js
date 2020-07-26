@@ -5,8 +5,8 @@ const bcrypt = require("bcryptjs");
 
 var db = require("../models");
 
-// create users 
-router.post("/users/create", function(req, res) {
+
+router.post("/createaccount", function(req, res) {
   db.User.create({
    
     first_name: req.body.first_name,
@@ -30,6 +30,7 @@ router.post("/users/create", function(req, res) {
 //AUTHENTICATION LOG IN 
 router.post("/signin", (req,res)=>{
     db.User.findOne({
+      // setting user name as the standard
       where: {
         user_name: req.body.user_name
       }
@@ -37,7 +38,9 @@ router.post("/signin", (req,res)=>{
       if(!user){
         return res.status(404).send("no such user")
       } else{
-        if (rypt.compareSync(req.body.password, user.password)){
+        //it will compare the passed in password to what is stored in the database
+        if (bcrypt.compareSync(req.body.password, user.password)){
+          //whenever i signin, add this object to my session key (will only show up after I signin)
           req.session.user = {
             id: user.id,
             first_name: user.first_name,
@@ -54,10 +57,12 @@ router.post("/signin", (req,res)=>{
     })
   })
   
-  //SESSIONS 
-  router.get("/readsessions", function(req,res){
-     res.json(req.session)
-  })
+  //SESSIONS
+  //session key is info about you is connected to the session. go to this route to see your session info
+  router.get("/readsessions",(req,res)=>{
+    res.json(req.session)
+})
+
   
   //SECRET ROUTE
   router.get("/secretroute", function(req,res){
