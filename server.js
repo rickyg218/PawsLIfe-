@@ -7,6 +7,7 @@ var app = express();
 
 app.use(express.static("public"));
 
+require("dotenv");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -28,7 +29,7 @@ var routes_auth = require("./controllers/auth_controller.js");
 //SESION
 app.use(session({
   //secret string that will encrypt my sessions
-  secret: "nicole",
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
   //the session will last for 2 hours

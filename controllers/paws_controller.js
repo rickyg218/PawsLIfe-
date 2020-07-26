@@ -102,6 +102,7 @@ router.get("/offer_posts/:animal/:lat/:long", function(req,res){
       include: [
         {
           model: db.User,
+          as: "Provider",
           where: {
             lat: {[Op.between]:latRange},
             long: {[Op.between]:longRange}
