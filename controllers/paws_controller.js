@@ -194,6 +194,23 @@ router.delete("/offer_posts/:id", function (req, res) {
     
 });
 
+//book an offer post 
+router.put("/offer_posts/:id/claimpost",(req,res)=>{
+  db.Patch.update({
+      GardenerId: req.body.GardenerId
+  }, {
+      where: {
+          id: req.params.id
+      }
+  }).then(postData => {
+      res.json(postData)
+      // res.json({claimedBy:req.body.UserId})
+  }).catch(err => {
+      console.log(err);
+      res.status(500).end()
+  })
+})
+
 // //=========================HERE ENDS THE ROUTES FOR THE OFFER POSTS ==============
 
 

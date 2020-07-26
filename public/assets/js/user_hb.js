@@ -120,6 +120,20 @@ $(".material-icons").click(function(event){
   })
 })
 
+//MAIN PAGE SEARCH
+//book a service 
+$("#book-now").click(function(event){
+  event.preventDefault();
+  const postId = $(this).attr("data-id")
+  $.ajax({
+    url:`/offer_posts/${postId}/claimpost`,
+    method:"PUT"
+}).then(data=>{
+    console.log(data)
+    location.href = `/`;
+})
+})
+
   
 
 
