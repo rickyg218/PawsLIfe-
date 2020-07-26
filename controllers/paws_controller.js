@@ -196,8 +196,8 @@ router.delete("/offer_posts/:id", function (req, res) {
 
 //book an offer post 
 router.put("/offer_posts/:id/claimpost",(req,res)=>{
-  db.Patch.update({
-      GardenerId: req.body.GardenerId
+  db.Post.update({
+      ProviderId: req.body.ProviderId
   }, {
       where: {
           id: req.params.id

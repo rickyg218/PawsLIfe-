@@ -15,7 +15,7 @@
             {{#each posts}}
                <div class="col s12 l3 card blue-grey darken-1 parent-user">
                   <div class="card-content white-text">
-                     <span class="card-title">{{title}}</span>
+                     <span class="card-title">{{title}}, posted by: {{Provider.first_name}}</span>
                      <ul>
                         <li>this service is for a: {{animal_type}}</li>
                         <li>service type: {{service_type}}</li>
@@ -25,10 +25,11 @@
                         <li>location range: {{range}}</li>
                         <li>picture: {{picture}}</li>
                         <li>cost: ${{cost}}</li>
+                        
                      </ul>
                   </div>
                   <div class="card-action">
-                     <button data-id={{id}} id="book-now">Book Now!</button>
+                     <button data-id={{Provider.id}} id="book-now">Book Now!</button>
                   </div>
                </div>
             {{/each}}
