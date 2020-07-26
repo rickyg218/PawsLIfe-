@@ -119,7 +119,7 @@ router.get("/", function(req, res) {
 //all pets with users 
 router.get("/api/pets/users", function(req, res){
   db.Pet.findAll({
-    include:[db.User]
+    include:[{model:db.User, as:"Customer"}]
   }).then(pets=>{
     res.json(pets)
   });
@@ -129,7 +129,7 @@ router.get("/api/pets/users", function(req, res){
 //all posts with users 
 router.get("/api/posts/users", function(req, res) {
   db.Post.findAll({
-    include:[db.User]
+    include:[{model:db.User, as:"Provider"}]
   }).then(posts=>{
     res.json(posts)
   });
