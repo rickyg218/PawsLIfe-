@@ -29,7 +29,8 @@ var routes_auth = require("./controllers/auth_controller.js");
 //SESION
 app.use(session({
   //secret string that will encrypt my sessions
-  secret: process.env.SESSION_SECRET,
+  // secret: process.env.SESSION_SECRET,
+  secret: "nicole",
   resave: false,
   saveUninitialized: true,
   //the session will last for 2 hours
