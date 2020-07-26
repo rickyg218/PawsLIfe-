@@ -1,0 +1,95 @@
+
+/* footer  */
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: #eee;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.page-footer{
+    background-color: #EAA82A;
+}
+
+/* headers */
+h2{
+    font-size: 30px;
+}
+h3{
+    font-size: 20px;
+}
+
+/* nav bar */
+nav{
+    background-color: #EAA82A;
+}
+
+/* professional page */
+.service-dogs-page{
+    display: none;
+}
+.service-cats-page{
+    display: none;
+}
+
+/* owner page */
+.add-dog-page{
+    display: none;
+}
+
+.add-cat-page{
+    display: none;
+}
+
+
+/* index page */
+.search-bar{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.current-listings{
+    padding-left: 0px
+}
+
+
+/* input boxes */
+input[type="checkbox"]:checked {
+    display: inline-block;
+    opacity: 100;
+}
+input[type="checkbox"]:not(:checked) {
+    display: inline-block;
+    opacity: 100;
+    position: absolute;
+    pointer-events: none;
+}
+
+/* cards  */
+.parent-user{
+    display: inline-block;
+    height:40vh;
+    overflow:scroll;
+    box-shadow: 4px 4px 6px;
+    margin: 0 10px; 
+}
+
+.account-user{
+    padding: 0%;
+}
+
+.professional-page{
+    background-color: white;
+}
+
+.owner-page{
+    background-color: white;
+}
+
+.account-profile-page{
+    background-color: white;
+}

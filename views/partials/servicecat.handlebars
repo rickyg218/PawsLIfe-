@@ -1,0 +1,89 @@
+{{!-- LIST A CAT SERVICE --}}
+<div class="service-cats-page">
+    <h2>cats</h2>
+        {{!-- service title --}}
+        <form >
+            <label for="title">title of post?</label>
+                <input type="text" name="title" id="cat-title" placeholder="title"> 
+        </form>
+        <br>
+
+        {{!-- service text --}}
+        <form >
+            <label for="text">what do you want to say about your listing?</label>
+                <input type="text" name="text" id="cat-text" placeholder="let us know here"> 
+        </form>
+        <br>
+
+        <!-- service for cats -->
+        <form >
+        <label for="service-cats">choose a service type for cats</label>
+            <input list="service-cats" name="service-cats" id="cat-service-type">
+            <datalist id="service-cats">
+                <option value="cat groomer">
+                <option value="cat sitter">
+            </datalist>    
+        </form>
+        <br>
+
+        <!-- cat size-->
+        <form >
+        <label for="size-cats">choose a cat size</label>
+            <input list="size-cats" name="size-cats" id="cat-size-restrictions">
+            <datalist id="size-cats">
+                <option value="petit kitty (0-15lbs)">
+                <option value="medium kitty (15lbs-25lbs)">
+                <option value="large kitty (25lbs-40lbs)">
+            </datalist>  
+        </form>
+        <br>
+
+        <!-- location radius-->
+        <form >
+        <label for="location-cats">choose a location radius in miles</label>
+            <input list="location-cats" name="location-cats" id="cat-range">
+            <datalist id="location-cats">
+                <option value="0-2 miles">
+                <option value="2-5 miles">
+            </datalist>  
+        </form>
+        <br>
+
+        {{!-- duration --}}
+        <form >
+            <label for="duration">duration of service?</label>
+            <input list="duration" name="duration" id="cat-duration">
+                <datalist id="duration">
+                    <option value="1-2 hours">
+                    <option value="half a day">
+                    <option value="full day">
+                    <option value="3 days">
+                </datalist>  
+        </form>
+        <br>
+
+        {{!-- cost --}}
+        <form >
+            <label for="cost">cost of service?</label>
+                <input list="cost" name="cost" id="cat-cost"> 
+                <datalist id="cost">
+                    <option value="$15/hour">
+                    <option value="$20/hour">
+                    <option value="$25/hour">
+                    <option value="$400/day">
+                </datalist>  
+        </form>
+        <br>
+
+        {{!-- picture --}}
+        <form >
+            <label for="cost">picture of service?</label>
+                <input type="text" name="cost" id="cat-picture"> 
+        </form>
+        <br>
+
+        {{!-- submit a cat --}}
+        <form>
+            <input type="submit" value="submit" id="service-cat-form">  
+        </form>
+</div>

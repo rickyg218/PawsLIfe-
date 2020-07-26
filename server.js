@@ -1,5 +1,6 @@
 var express = require("express");
-
+const session = require("express-session");
+require("dotenv").config();
 
 var db = require("./models");
 
@@ -18,14 +19,38 @@ app.engine("handlebars", exphbs({
 }));
 app.set("view engine", "handlebars");
 
-var routes = require("./controllers/paws_controller.js");
 
-app.use(routes);
+//ROUTES
+var routes_paws = require("./controllers/paws_controller.js");
+var routes_frontend = require("./controllers/frontend_controller.js");
+var routes_auth = require("./controllers/auth_controller.js");
 
 
-var PORT = process.env.PORT || 3000;
-db.sequelize.sync().then(function() {
+//SESION
+app.use(session({
+  //secret string that will encrypt sessions
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  //the session will last for 2 hours
+  cookie: {
+    maxAge: 7200000
+  }
+}))
+
+
+//USE ROUTES
+app.use(routes_paws);
+app.use(routes_frontend);
+app.use(routes_auth);
+
+
+//LISTENING TO SERVER
+var PORT = process.env.PORT || 3030;
+db.sequelize.sync({ force: false }).then(function() {
   app.listen(PORT, function() {
     console.log("App now listening on port:", PORT);
+    
   });
+
 });
