@@ -95,14 +95,13 @@ router.get("/offer_posts/:animal/:lat/:long", function(req,res){
   let latRange = [(parseFloat(req.params.lat)-0.100), (parseFloat(req.params.lat)+0.100)]
   let longRange = [(parseFloat(req.params.long)-0.100), (parseFloat(req.params.long)+0.100)]
   
-  // res.json([latRange[0], latRange[1]]); 
-  // res.json([longRange[0], longRange[1]]);
-
+ 
   db.Post.findAll(
     {
       include: [
         {
           model: db.User,
+           as: "Provider",
           where: {
             lat: {[Op.between]:latRange},
             long: {[Op.between]:longRange}
@@ -112,23 +111,39 @@ router.get("/offer_posts/:animal/:lat/:long", function(req,res){
       where: { animal_type: req.params.animal },
     },
   )
-
     .then(function (dbPost) {
-      console.log("this console logs the dbPost return from get by lat long", dbPost);
-      let hbrsObj = { offer_posts: dbPost };
+      //console.log("this console logs the dbPost return from get by lat long", dbPost);
+      for (var i = 0; i < dbPost.length; i++){
+           if ((req.params.lat == dbPost[i].Provider.lat) && (req.params.long == dbPost[i].Provider.long)) {
+            dbPost[i].range = 0;
+            console.log("we got it");
+          }
+         else {
+            var radlat1 = Math.PI * req.params.lat/180;
+            var radlat2 = Math.PI * parseFloat(dbPost[i].Provider.lat)/180;
+            var theta = req.params.long-parseFloat(dbPost[i].Provider.long);
+            var radtheta = Math.PI * theta/180;
+            var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+            if (dist > 1) {
+              dist = 1;
+            }
+            dist = Math.acos(dist);
+            dist = dist * 180/Math.PI;
+            dist = dist * 60 * 1.1515;
+            dbPost[i].range = dist.toFixed(2);
+         }	
+      } 
+      let hbrsObj = { offer_posts: dbPost }  
       return res.json(hbrsObj);
     })
     .catch(function (err) {
       res.status(500).json(err);
     });
 })
-//TODO: working find posts within a range that match a service
-
-
 //offer_posts select by animal
 router.get("/offer_posts/:animal", function(req,res){
   //service passed by clicking on "cat" or "dog" button
-  //lat/long passed by using available session id?
+
   console.log(req.params.animal);
   db.Post.findAll(
     {
