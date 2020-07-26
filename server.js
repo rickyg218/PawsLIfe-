@@ -1,7 +1,7 @@
 var express = require("express");
 const session = require("express-session");
 require("dotenv").config();
-
+var mail = require("./mailroom.js")
 var db = require("./models");
 
 var app = express();
