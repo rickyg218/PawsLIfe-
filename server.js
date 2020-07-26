@@ -7,7 +7,7 @@ var app = express();
 
 app.use(express.static("public"));
 
-require("dotenv");
+require("dotenv").config();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -24,13 +24,14 @@ app.set("view engine", "handlebars");
 var routes_paws = require("./controllers/paws_controller.js");
 var routes_frontend = require("./controllers/frontend_controller.js");
 var routes_auth = require("./controllers/auth_controller.js");
+const { config } = require("dotenv/types");
 
 
 //SESION
 app.use(session({
   //secret string that will encrypt my sessions
-  // secret: process.env.SESSION_SECRET,
-  secret: "nicole",
+  secret: process.env.SESSION_SECRET,
+  // secret: "nicole",
   resave: false,
   saveUninitialized: true,
   //the session will last for 2 hours

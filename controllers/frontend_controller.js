@@ -10,7 +10,7 @@ const db = require("../models");
 // main route welcome gets all posts plus user info
 router.get("/", function(req, res) {
   db.Post.findAll({
-    include:[db.User]
+    include:[{model:db.User, as:"Provider"}]
   }).then(userPosts=>{
     const userPostsJSON = userPosts.map(function(postObj){
       return postObj.toJSON();
@@ -20,7 +20,9 @@ router.get("/", function(req, res) {
     }
     console.log(userPostsJSON)
     res.render("index", hbsObj);
-  })
+  }).catch(function(err){
+    res.status(500).json(err);
+  });
      
     
 });
@@ -57,7 +59,9 @@ router.get("/", function(req, res) {
         //this grabs just the json response not all of the extra stuff that normally is sent back
         const userObjJSON = userObj.toJSON();
         return res.render("professional", userObjJSON);
-      })
+      }).catch(function(err){
+        res.status(500).json(err);
+      });
     }
   
   });
@@ -104,7 +108,9 @@ router.get("/", function(req, res) {
         //this grabs just the json response not all of the extra stuff that normally is sent back
         const userObjJSON = userObj.toJSON();
         return res.render("account-profile", userObjJSON);
-      })
+      }).catch(function(err){
+        res.status(500).json(err);
+      });
     }
   });
   
@@ -113,7 +119,7 @@ router.get("/", function(req, res) {
 //all pets with users 
 router.get("/api/pets/users", function(req, res){
   db.Pet.findAll({
-    include:[db.User]
+    include:[{model:db.User, as:"Customer"}]
   }).then(pets=>{
     res.json(pets)
   });
@@ -123,7 +129,7 @@ router.get("/api/pets/users", function(req, res){
 //all posts with users 
 router.get("/api/posts/users", function(req, res) {
   db.Post.findAll({
-    include:[db.User]
+    include:[{model:db.User, as:"Provider"}]
   }).then(posts=>{
     res.json(posts)
   });

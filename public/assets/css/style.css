@@ -81,3 +81,15 @@ input[type="checkbox"]:not(:checked) {
 .account-user{
     padding: 0%;
 }
+
+.professional-page{
+    background-color: white;
+}
+
+.owner-page{
+    background-color: white;
+}
+
+.account-profile-page{
+    background-color: white;
+}
