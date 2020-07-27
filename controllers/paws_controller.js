@@ -108,8 +108,8 @@ router.get("/offer_posts/:animal/:lat/:long", function(req,res){
   console.log ( req.params.animal,req.params.lat,req.params.long);
   
   let latRange = [(parseFloat(req.params.lat)-0.100), (parseFloat(req.params.lat)+0.100)]
-  let longRange = [(parseFloat(req.params.long)-0.100), (parseFloat(req.params.long)+0.100)]
-  
+  let longRange = [(parseFloat(req.params.long)-0.150), (parseFloat(req.params.long)+0.150)]
+  console.log(req.params.lat + " " + req.params.long);
  
   db.Post.findAll(
     {
