@@ -131,6 +131,7 @@ div #dogsearch {
 div #catsearch {
     display: flex;
     padding: 25px;
+    padding-right: 0px;
     border-radius: 30%;
     border-right: 5px solid #1565c0;
 }
@@ -144,4 +145,5 @@ div #catsearch {
     background-position: top;
     background-repeat: no-repeat;
     min-height: 40vh;
+    border-bottom: 5 px solid #1565c0;
 }
