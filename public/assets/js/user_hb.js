@@ -45,7 +45,6 @@ $("#save-account").click(function(event){
     first_name:$("#edit-first-name").val(),
     last_name:$("#edit-last-name").val(),
     user_name:$("#edit-username").val(),
-    password:$("#edit-password").val(),
     email:$("#edit-email").val(),
   }
   $.ajax({
@@ -54,7 +53,7 @@ $("#save-account").click(function(event){
     data: userObj
   }).then(data=>{
     alert("saved account!");
-    location.href = `/user/owner/${id}`
+    location.href = `/`
   })
   console.log(" clicked save account")
 })
@@ -120,18 +119,6 @@ $("#create-account").on("click", function(event){
     console.log(" clicked create account")
   });
   
-})
-
-
-//MAIN PAGE SEARCH
-//search on main page 
-$(".material-icons").click(function(event){
-  event.preventDefault();
-  $.ajax("/offer_posts/:animal",{
-    type: "GET"
-  }).then(function(posts){
-    console.log(posts)
-  })
 })
 
 //MAIN PAGE SEARCH

@@ -14,6 +14,10 @@
             <h2>account profile</h2>
                 <div class="user-profile">
                     <h3>welcome, {{first_name}} !</h3> 
+                    <h3>first name: {{last_name}}</h3>
+                    <h3>username: {{user-name}}</h3>
+                    <h3>email: {{email}}</h3>
+                    <h3>last name: {{last_name}}</h3>
                 </div>
     </div> 
   
@@ -24,10 +28,12 @@
                 <div class="card-content white-text">
                     <span class="card-title"> edit {{first_name}} {{last_name}}'s account</span>
                     <div class="card-content">
+                        
                         <form>
                             <label for="edit-first-name">edit first name</label>
                                 <input type="text" name="edit-first-name" id="edit-first-name" placeholder="first name">
                         </form>
+                            
                         <form>
                             <label for="edit-last-name">edit last name</label>
                                 <input type="text" name="edit-last-name" id="edit-last-name" placeholder="last name">
@@ -39,10 +45,6 @@
                         <form>
                             <label for="edit-email">edit email</label>
                                 <input type="text" name="edit-email" id="edit-email" placeholder="email">
-                        </form>
-                        <form>
-                            <label for="edit-password">edit password</label>
-                                <input type="text" name="edit-password" id="edit-password" placeholder="password">
                         </form>
                         
                     </div>
