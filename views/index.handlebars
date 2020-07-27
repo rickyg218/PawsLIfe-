@@ -1,5 +1,4 @@
 <div class="container">
-<<<<<<< HEAD
   <hr>
   <br>
    <div class="row">
@@ -38,39 +37,6 @@
          <form action="#">
             <div class="row">
                <p>
-=======
-   {{!-- shows current listings for view --}}
-   <div class="row current-listings">
-      <h2> current listings</h2>
-            {{#each posts}}
-               <div class="col s12 l3 card blue-grey darken-1 parent-user">
-                  <div class="card-content white-text">
-                     <span class="card-title">{{title}} <a href="/users/{{Provider.id}}">posted by: {{Provider.first_name}} {{Provider.last_name}}</a></span>
-                     <ul>
-                        <li>this service is for a: {{animal_type}}</li>
-                        <li>service type: {{service_type}}</li>
-                        <li>about this service: {{text}}</li>
-                        <li>accomodating: {{size_restrictions}}</li>
-                        <li>duration: {{duration}}</li>
-                        <li>location range: {{range}}</li>
-                        <li>picture: {{picture}}</li>
-                        <li>cost: ${{cost}}</li>
-                        
-                     </ul>
-                  </div>
-                  <div class="card-action">
-                     {{#if OwnerId}}
-                     <h3>Booked by: {{Owner.first_name}}</h3>
-                     {{/if}}
-                     {{#unless OwnerId}}
-                        <button class="claimPost" data-id={{Provider.id}}>Book Now!</button>
-                     {{/unless}}
-                  </div>
-               </div>
-            {{/each}}
-   </div>
-</div>
->>>>>>> dev
 
                <img src="./assets/images/runningdog.png" alt="running dog shadow" height="150px" title="Shadow pup" />
                </p>
