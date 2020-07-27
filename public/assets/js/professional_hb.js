@@ -96,15 +96,15 @@ $("#service-cat-form").click(function(event){
     console.log(" clicked save posting")
   })
   //when the user clicks on submit, they will be redirected to their professional page 
-  $("#delete-posting").click(function(event){
+  $(".delete-posting").click(function(event){
     event.preventDefault();
     const postingId = $(this).attr("data-id")
     $.ajax({
-      url:`/offer_posts/${postingId}`,
+      url:`/offer_posts/delete/${postingId}`,
       method: "DELETE"
     }).then(data=>{
-      alert(`saved ${postingId} posting!`);
-      location.href = `/user/professional/${id}`
+      alert(`deleted ${postingId} posting!`);
+      location.reload();
     })
     console.log(" clicked delete posting")
   })

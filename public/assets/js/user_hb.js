@@ -1,6 +1,8 @@
 //EVENT LISTENERS
 //USER ACOUNTS
 
+// const { response } = require("express");
+
 //signin.handlebars
 //when the user clicks on service cat, they will be redirected to the home page
 $("#sign-in").click(function(event){
@@ -23,24 +25,35 @@ $("#sign-in").click(function(event){
     alert("check your username or password!")
     location.reload();
   })
-
-  console.log(" clicked sign in")
   location.href = '/'
   console.log(" clicked sign in ")
 })
 
+//auth_controller.js
+//logout
+$("#logout").click(function(){
+  alert("logged out of account")
+  console.log("clicked log out")
+})
 
 //account-profile.handlebars
 //when the user clicks on save account, they will be redirected to their owner page
 $("#save-account").click(function(event){
   event.preventDefault();
   const accountId = $(this).attr("data-id")
+  const userObj = {
+    first_name:$("#edit-first-name").val(),
+    last_name:$("#edit-last-name").val(),
+    user_name:$("#edit-username").val(),
+    email:$("#edit-email").val(),
+  }
   $.ajax({
     url:`/users/update/${accountId}`,
-    method: "PUT"
+    method: "PUT",
+    data: userObj
   }).then(data=>{
-    alert("deleted!");
-    location.href = `/user/owner/${id}`
+    alert("saved account!");
+    location.href = `/`
   })
   console.log(" clicked save account")
 })
@@ -108,17 +121,29 @@ $("#create-account").on("click", function(event){
   
 })
 
-
 //MAIN PAGE SEARCH
-//search on main page 
-$(".material-icons").click(function(event){
+//book a service 
+$(".claimPost").click(function(event){
   event.preventDefault();
-  $.ajax("/offer_posts/:animal",{
-    type: "GET"
-  }).then(function(posts){
-    console.log(posts)
+  const postId = $(this).attr("data-id")
+  console.log(postId)
+  $.ajax({
+    url:`/offer_posts/${postId}/claimpost`,
+    method:"PUT",
+    data: {
+      ProviderId: req.session.user.id
+    }
+  }).then(data=>{
+    console.log(data)
+    location.href = `/`;
+  }).catch(err=>{
+    console.log(err)
+    response.status(500).json(err)
   })
 })
+
+
+
 
   
 
