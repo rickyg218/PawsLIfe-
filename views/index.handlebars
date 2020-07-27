@@ -1,45 +1,110 @@
 <div class="container">
    <div class="row search-bar">
       <form>
-        <div class="input-field">
-         {{!-- search bar  --}}
-          <input id="search" type="search" required>
-          <label class="label-icon" for="search"><i class="material-icons">search available listings</i></label>
-          <i class="material-icons">search</i>
-        </div>
+         <div class="input-field">
+            {{!-- search bar  --}}
+            <input id="search" type="search" required>
+            <label class="label-icon" for="search"><i class="material-icons">search available listings</i></label>
+            <i class="material-icons">search</i>
+         </div>
       </form>
    </div>
+
+   <div class="row center-align">
+      {{!-- cat search form --}}
+      <div class="col s10 m5 l4 offset-s1 catsearch hoverable center-align" id="catsearch">
+         <form action="#" class="center-align">
+            <div class="row">
+               <p>
+               <img src="./assets/images/catrunning.png" alt="running cat shadow" height="150px" title="Shadow kitty" />
+               </p>
+            Feline Friendly Services
+               <p>
+                  <label>
+                     <input name="group1" type="radio" checked />
+                     <span>Search close to home</span>
+                  </label>
+               </p>
+               <p>
+                  <label>
+                     <input name="group1" type="radio" />
+                     <span>Search near me right now</span>
+                  </label>
+               </p>
+             We
+            <button class="btn-floating btn-large waves-effect waves-light blue darken-3" type="submit" value="submit" data-id="cat" id="cat-search">
+               <img style="margin-top:10px" src="./assets/images/catpawpink_zrY_icon.ico" />
+            </button>
+            don't fetch
+         </form>
+         </div>
+      </div>
+      {{!-- spacer --}}
+      <div class="col m1"></div>  
+      {{!-- dog search form --}}
+      <div class="col s10 m5 l4 offset-l2 dogsearch hoverable center-align" id="dogsearch">
+         <form action="#">
+            <div class="row">
+               <p>
+
+               <img src="./assets/images/runningdog.png" alt="running dog shadow" height="150px" title="Shadow pup" />
+               </p>
+
+            
+            Canine Companion Services
+            
+               <p>
+                  <label>
+                     <input name="group2" type="radio" checked />
+                     <span>Search close to home</span>
+                  </label>
+               </p>
+               <p>
+                  <label>
+                     <input name="group2" type="radio" />
+                     <span>Search near me right now</span>
+                  </label>
+               </p>
+           
+               Go 
+            <button class="btn-floating btn-large waves-effect waves-light blue darken-3 " type="submit" value="submit" data-id="dog" id="dog-search">
+               <img style="margin-top:10px" src="./assets/images/browndogpaw_2cu_icon.ico" />
+            </button>
+            get 'em!
+            </div>
+         </form>
+      </div>
+   </div>
+
+
+
+   <div class="row center-align" id="mapWindow">
+      {{!-- TODO:turn this into a map --}}
+   </div>
+
+
    {{!-- shows current listings for view --}}
    <div class="row current-listings">
       <h2> current listings</h2>
-            {{#each posts}}
-               <div class="col s12 l3 card blue-grey darken-1 parent-user">
-                  <div class="card-content white-text">
-                     <span class="card-title">{{title}}</span>
-                     <ul>
-                        <li>this service is for a: {{animal_type}}</li>
-                        <li>service type: {{service_type}}</li>
-                        <li>about this service: {{text}}</li>
-                        <li>accomodating: {{size_restrictions}}</li>
-                        <li>duration: {{duration}}</li>
-                        <li>location range: {{range}}</li>
-                        <li>picture: {{picture}}</li>
-                        <li>cost: ${{cost}}</li>
-                     </ul>
-                  </div>
-                  <div class="card-action">
-                     <button data-id={{id}} id="book-now">Book Now!</button>
-                  </div>
-               </div>
-            {{/each}}
+      {{#each posts}}
+      <div class="col s12 l3 card blue-grey darken-1 parent-user">
+         <div class="card-content white-text">
+            <span class="card-title">{{title}}</span>
+            <ul>
+               <li>this service is for a: {{animal_type}}</li>
+               <li>service type: {{service_type}}</li>
+               <li>about this service: {{text}}</li>
+               <li>accomodating: {{size_restrictions}}</li>
+               <li>duration: {{duration}}</li>
+               <li>location range: {{range}}</li>
+               <li>picture: {{picture}}</li>
+               <li>cost: ${{cost}}</li>
+            </ul>
+         </div>
+         <div class="card-action">
+            <button data-id={{id}} id="book-now">Book Now!</button>
+         </div>
+      </div>
+      {{/each}}
    </div>
 </div>
-
-
-
-
-
-   
- 
-
-
