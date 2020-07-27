@@ -123,18 +123,18 @@ $("#create-account").on("click", function(event){
 
 //MAIN PAGE SEARCH
 //book a service 
-$(".claimPost").click(function(event){
+$("#book-now").click(function(event){
   event.preventDefault();
   const postId = $(this).attr("data-id")
+  
   console.log(postId)
   $.ajax({
-    url:`/offer_posts/${postId}/claimpost`,
+    url:`/offer_posts/${postId}/bookpost`,
     method:"PUT",
-    data: {
-      ProviderId: req.session.user.id
-    }
+    
   }).then(data=>{
     console.log(data)
+    alert("booked!")
     location.href = `/`;
   }).catch(err=>{
     console.log(err)

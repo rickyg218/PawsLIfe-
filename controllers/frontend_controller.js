@@ -124,16 +124,16 @@ router.get("/", function(req, res) {
   });
   
 //book an offer post 
-router.put("/offer_posts/:id/claimpost",(req,res)=>{
+router.put("/offer_posts/:id/bookpost",(req,res)=>{
   db.Post.update({
-      ProviderId: req.body.ProviderId
+      BookerId: req.session.user.id
   }, {
       where: {
           id: req.params.id
       }
   }).then(postData => {
-      res.json(postData)
-      // res.json({claimedBy:req.body.UserId})
+      // res.json(postData)
+      res.json({claimedBy:req.session.user.id})
   }).catch(err => {
       console.log(err);
       res.status(500).end()
