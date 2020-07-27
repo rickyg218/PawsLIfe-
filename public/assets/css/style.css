@@ -45,13 +45,6 @@ nav{
     display: none;
 }
 
-
-/* index page */
-.search-bar{
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-
 .current-listings{
     padding-left: 0px
 }
@@ -72,8 +65,14 @@ input[type="checkbox"]:not(:checked) {
 /* cards  */
 .parent-user{
     display: inline-block;
-    height:40vh;
-    overflow:scroll;
+    height:38vh;
+    padding-right:5px;
+    overflow:auto;
+    border-top-left-radius: 20%;
+    border-bottom-left-radius: 30%;
+    border-top-right-radius: 10%;
+    border-bottom-right-radius: 10%;
+    border-right: 5px solid #1565c0;
     box-shadow: 4px 4px 6px;
     margin: 0 10px; 
 }
@@ -83,11 +82,19 @@ input[type="checkbox"]:not(:checked) {
 }
 
 .professional-page{
+    padding:10px;
     background-color: white;
+    padding-bottom: 2vh;
+
 }
 
 .owner-page{
+  
+    padding:10px;
+    /* background-image: url("../images/multiprints.png"); */
     background-color: white;
+    padding-bottom: 2vh;
+
 }
 
 .account-profile-page{
@@ -105,9 +112,6 @@ input[type="checkbox"]:not(:checked) {
   border: 2px solid #4f90b3;
  
 }
- 
- 
- 
 [type="radio"]:checked + span:after,
 [type="radio"].with-gap:checked + span:after {
  
@@ -154,10 +158,10 @@ div #catsearch {
     background-image: url("../images/multiprints.png");
     padding-bottom: 2vh;
 }
-.current-listings {
+/* .current-listings {
     background-image: url("../images/multiprints.png");
     padding-bottom: 2vh;
-}
+} */
 
 a #navphoto {
     margin-bottom:5px;
@@ -169,22 +173,21 @@ a #navphoto {
     padding-bottom: 5px;
 }
 
-/* div .professional-page {
- padding: 10px;
- background-image: url(".assets/images/multiprints.png");
- padding-bottom: 2vh;
+nav .nav-extended {
+    min-height: 100px;
 }
 
-div .owner-page {
-    padding:10px;
-    background-image: url(".assets/images/multiprints.png");
-    padding-bottom: 2vh;
-} */
 
-button .pawbtn {
+
+
+button .add-cat .add-dog {
     border-radius: 50%;
+    background-color: #1565c0;
 }
 
-div .petcard {
-    border-right: 5px solid #1565c0;
-}
+.mostly-customized-scrollbar::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+    background-color: #1565c0; /* or add it to the track */
+  }
+
