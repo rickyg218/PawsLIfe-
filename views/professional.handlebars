@@ -5,11 +5,17 @@
     <div class="row card">
         <div class="col s9 l12">
              <ul class="tabs">
+<<<<<<< HEAD
                  <li class="tab col s1"></li>
                 <li class="tab col s3"><a href= "/user/professional"><b>professional</b></a></li>
                 <li class="tab col s3"><a href="/user/owner"><b>pet owner</a></li></b>
                 <li class="tab col s3"><a href="/user/account-profile"><b>view my profile</b></a></li>
                 <li class="tab col l1"></li>
+=======
+                <li class="tab col s3"><a href= "/user/professional">professional</a></li>
+                <li class="tab col s3"><a href="/user/owner">pet owner</a></li>
+                <li class="tab col s3"><a href="/user/account-profile">edit my profile</a></li>
+>>>>>>> dev
             </ul>
         </div>
     </div>
@@ -48,19 +54,32 @@
                                 <span class="card-title">service title: {{title}} </span>
                                 <div class="card-content">
                                     <ul>
+<<<<<<< HEAD
                                         <li>service text: {{title}} <button class="pawbtn"><i class="fas fa-paw"></i></button></li>
                                         <li>service type: {{service_type}} <button class="pawbtn"><i class="fas fa-paw"></i></button></li>
                                         <li>pet type: {{animal_type}}<button class="pawbtn"><i class="fas fa-paw"></i></button></li>
                                         <li>pet size: {{size_restrictions}} <button class="pawbtn"><i class="fas fa-paw"></i></button></li>
                                         <li>duration:{{duration}} <button class="pawbtn"><i class="fas fa-paw"></i></button></li>
                                         <li>cost: {{cost}}<button class="pawbtn"><i class="fas fa-paw"></i></button></li>
+=======
+                                        <li>service text: {{title}} </li>
+                                        <li>service type: {{service_type}} </li>
+                                        <li>pet type: {{animal_type}}</li>
+                                        <li>pet size: {{size_restrictions}} </li>
+                                        <li>duration:{{duration}} </li>
+                                        <li>cost: {{cost}}</li>
+>>>>>>> dev
                                     </ul>
                                     <span>edit with the paw buttons</span>
                                 </div>
                             </div>
                             <div class="card-action">
+<<<<<<< HEAD
                                 <button data-id={{id}} id="save-posting">save </button>
                                 <button data-id={{id}} id="delete-posting">delete </button>
+=======
+                                <button data-id={{id}} class="delete-posting">delete posting</button>
+>>>>>>> dev
                             </div>
                         </div>
                     </div>
@@ -71,7 +90,7 @@
     {{!-- show professional bookings --}}
     <div class="row booked">
         <h2>booked postings</h2>
-        <div class="booked-postings">this will have the booked listings displayed as cards in the users profile{{>booked-postings}}</div>
+        <div class="booked-postings">this will have the booked listings displayed as cards in the users profile</div>
         <br>
         <br>
         <br>
@@ -80,7 +99,7 @@
     {{!-- show professional  listing ratings  --}}
     <div class="row">
         <h2>listing ratings</h2>
-        <div class= "listing-ratings">view my pet ratings{{>listing-ratings}}</div>
+        <div class= "listing-ratings">view my pet ratings</div>
     </div>  
 </div>
     

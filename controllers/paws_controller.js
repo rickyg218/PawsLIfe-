@@ -12,10 +12,17 @@ const { Op } = require("sequelize");
 // //get user by id 
 router.get("/users/:id", function(req, res) {
   db.User.findOne({
-    where: {id: req.params.id}
+    where: {
+      id: req.params.id
+    },
+    include: [
+      {model:db.Pet, as:"Customer"},
+      {model:db.Post, as:"Provider"}
+    ]
   }).then(function(dbUser) {
     console.log(dbUser);
     res.json( dbUser)
+    // return res.render("owner")
   }).catch(function(err){
     console.log(err)
     res.status(500).json(err);
@@ -24,7 +31,14 @@ router.get("/users/:id", function(req, res) {
 
 // update user by id 
 router.put("/users/update/:id", function(req, res) {
-  db.User.update(req.body,
+  
+  db.User.update(
+    {
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      user_name: req.body.user_name,
+      email: req.body.email,
+    },
   {
     where: {
       id: req.params.id
@@ -65,7 +79,6 @@ router.post("/offer_posts/create", function(req,res) {
     range:req.body.range, 
     picture:req.body.picture, 
     service_type:req.body.service_type, 
-    // TODO: ask joe if ProviderId or UserId
     ProviderId:req.session.user.id,
   })
   .then(function(dbPost) {
@@ -193,21 +206,21 @@ router.put("/offer_posts/update/:id", function (req,res) {
 });
 
 // offer_posts DELETE, by post id.
-router.delete("/offer_posts/:id", function (req, res) {
-  db.Post
-    .destroy({
-      where: {
-        id: req.params.id,
-      },
+//DELETE Post by Post id DESTROY
+  router.delete("/offer_posts/delete/:id", function (req, res) {
+    db.Post.destroy({
+        where: {
+          id: req.params.id,
+        },
+    }).then(function (data) {
+        res.json(` the Post with id of ${req.params.id} is gone`);
+    }).catch(function (err) {
+        console.log(err);
+        res.status(500)
     })
-    .then(function (dbPosts) {
-      res.json(`destroyed the offering post with id of ${req.params.id}`);
-    }).catch(function(err) {
-      console.log(err);
-      res.status(500)
-    })
-    
-});
+  });
+
+
 
 // //=========================HERE ENDS THE ROUTES FOR THE OFFER POSTS ==============
 
@@ -293,38 +306,21 @@ router.put("/pets/update/:id", function (req,res) {
 });
 
 // //delete pet by id
-router.delete("/pets/:id", function (req, res) {
-  //protection if they aren't logged in
-  if(!req.session.user){
-    return res.status(401).send("login first!")
-  }else {
-    db.Pet.findOne({
+router.delete("/pets/delete/:id", function (req, res) {
+  db.Pet
+    .destroy({
       where: {
-        id:req.params.id
-      }
-    }).then(dbPet=>{
-      //if it is not the same user who created the pet protection
-      if(req.session.user.id!==dbPet.UserId){
-        return res.status(401).send("not your pet")
-      }else {
-        //if it is the user than delete
-        db.Pet
-        .destroy({
-          where: {
-            id: req.params.id,
-          },
-        })
-        .then(function (data) {
-          res.json(` the pet with id of ${req.params.id} is gone`);
-        }).catch(function (err) {
-          console.log(err);
-          res.status(500)
-        })
-      }
+        id: req.params.id,
+      },
     })
-    
-  }
-  
+    .then(function (data) {
+      res.json(` the pet with id of ${req.params.id} is gone`);
+    }).catch(function (err) {
+      console.log(err);
+      res.status(500)
+    })
+
+
 
 });
 

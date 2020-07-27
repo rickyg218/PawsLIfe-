@@ -77,6 +77,23 @@ router.post("/signin", (req,res)=>{
   //LOG OUT
   router.get("/logout", (req,res)=>{
     req.session.destroy();
-    res.send("logged out!")
+    db.Post.findAll({
+      include:[
+        {model:db.User, as:"Provider"},
+        // {model:db.User, as:"Owner"}
+      ]
+    }).then(userPosts=>{
+      const userPostsJSON = userPosts.map(function(postObj){
+        return postObj.toJSON();
+      })
+      const hbsObj={
+        posts:userPostsJSON
+      }
+      console.log(userPostsJSON)
+      res.render("index", hbsObj);
+    }).catch(function(err){
+      res.status(500).json(err);
+    });
+    
   })
 module.exports = router;
