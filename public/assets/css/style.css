@@ -139,8 +139,9 @@ div #catsearch {
 
 #petbanner {
     display:flex;
-    align-items: flex-end;
-    background-image: url("../images/petsquad.png");
+    align-items: center;
+    flex-direction: row-reverse;
+    background-image: url("../images/offsetpawsquad.png");
     background-attachment: local;
     background-size: fit;
     background-position: top;
@@ -159,12 +160,13 @@ div #catsearch {
 }
 
 a #navphoto {
-    min-height: 100px;
     margin-bottom:5px;
+    z-index: 99;
 }
 
 .nav-wrapper a {
-    margin-top: 25px;
+    margin-top: 0px;
+    padding-bottom: 5px;
 }
 
 /* div .professional-page {
