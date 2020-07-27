@@ -1,11 +1,12 @@
 var express = require("express");
 const router = express.Router();
 
+// const bcrypt = require("bcrypt");
 const bcrypt = require("bcryptjs");
 
 var db = require("../models");
 
-
+// create users 
 router.post("/createaccount", function(req, res) {
   db.User.create({
    
@@ -14,12 +15,13 @@ router.post("/createaccount", function(req, res) {
     user_name: req.body.user_name,
     password:req.body.password,
     email:req.body.email, 
-    lat: req.body.lat,
-    long: req.body.long
+    lat: parseFloat( req.body.lat),
+    long:parseFloat (req.body.long)
   }).then(function(dbUser) {
       console.log(dbUser);
       res.json(dbUser)
     }).catch(function(err){
+      console.log(err)
       res.status(500).json(err);
     });
     
