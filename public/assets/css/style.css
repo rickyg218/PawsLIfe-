@@ -153,6 +153,10 @@ div #catsearch {
     background-image: url("../images/multiprints.png");
     padding-bottom: 2vh;
 }
+.current-listings {
+    background-image: url("../images/multiprints.png");
+    padding-bottom: 2vh;
+}
 
 a #navphoto {
     min-height: 100px;
@@ -161,4 +165,24 @@ a #navphoto {
 
 .nav-wrapper a {
     margin-top: 25px;
+}
+
+/* div .professional-page {
+ padding: 10px;
+ background-image: url(".assets/images/multiprints.png");
+ padding-bottom: 2vh;
+}
+
+div .owner-page {
+    padding:10px;
+    background-image: url(".assets/images/multiprints.png");
+    padding-bottom: 2vh;
+} */
+
+button .pawbtn {
+    border-radius: 50%;
+}
+
+div .petcard {
+    border-right: 5px solid #1565c0;
 }

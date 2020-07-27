@@ -26,8 +26,8 @@
         <h2>create a posting</h2>
         <ul>
             {{!-- choose for cat or dog  --}}
-            <button class="service-dog">for dogs</button>
-            <button class="service-cat">for cats</button>
+            <button class="service-dog"><i class="fas fa-dog"></i> for dogs </button>
+            <button class="service-cat"><i class="fas fa-cat"></i> for cats </button>
         </ul>
 
         {{!-- show either servicedog or servicecat handlebar  --}}
@@ -48,18 +48,19 @@
                                 <span class="card-title">service title: {{title}} </span>
                                 <div class="card-content">
                                     <ul>
-                                        <li>service text: {{title}} <button>edit</button></li>
-                                        <li>service type: {{service_type}} <button>edit</button></li>
-                                        <li>pet type: {{animal_type}}<button>edit</button></li>
-                                        <li>pet size: {{size_restrictions}} <button>edit</button></li>
-                                        <li>duration:{{duration}} <button>edit</button></li>
-                                        <li>cost: {{cost}}<button>edit</button></li>
+                                        <li>service text: {{title}} <button class="pawbtn"><i class="fas fa-paw"></i></button></li>
+                                        <li>service type: {{service_type}} <button class="pawbtn"><i class="fas fa-paw"></i></button></li>
+                                        <li>pet type: {{animal_type}}<button class="pawbtn"><i class="fas fa-paw"></i></button></li>
+                                        <li>pet size: {{size_restrictions}} <button class="pawbtn"><i class="fas fa-paw"></i></button></li>
+                                        <li>duration:{{duration}} <button class="pawbtn"><i class="fas fa-paw"></i></button></li>
+                                        <li>cost: {{cost}}<button class="pawbtn"><i class="fas fa-paw"></i></button></li>
                                     </ul>
+                                    <span>edit with the paw buttons</span>
                                 </div>
                             </div>
                             <div class="card-action">
-                                <button data-id={{id}} id="save-posting">save posting</button>
-                                <button data-id={{id}} id="delete-posting">delete posting</button>
+                                <button data-id={{id}} id="save-posting">save </button>
+                                <button data-id={{id}} id="delete-posting">delete </button>
                             </div>
                         </div>
                     </div>
