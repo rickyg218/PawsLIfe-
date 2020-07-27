@@ -61,7 +61,10 @@ router.get("/", function(req, res) {
         where:{
           id:req.session.user.id
         },
-        include: [{model:db.Post, as:"Provider"}]
+        include: [
+          {model:db.Post, as:"Provider"},
+          {model:db.Post, as:"Booker"}
+        ]
          
       }).then(userObj=>{
         // res.json(userObj)

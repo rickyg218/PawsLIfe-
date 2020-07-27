@@ -40,40 +40,75 @@
     <div class="row active">
         <h2>Jobs you've posted</h2>
         
-            <div class="row" id="active-postings">
-                {{#each Provider}}
-                    <div class="col s12 m6">
-                        <div class="card blue-grey darken-1 parent-user">
-                            <div class="card-content white-text">
-                                <span class="card-title">service title: {{title}} </span>
-                                <div class="card-content">
-                                    <ul>
-                                        <li>service text: {{title}} </li>
-                                        <li>service type: {{service_type}} </li>
-                                        <li>pet type: {{animal_type}}</li>
-                                        <li>pet size: {{size_restrictions}} </li>
-                                        <li>duration:{{duration}} </li>
-                                        <li>cost: {{cost}}</li>
-                                    </ul>
-                                    
+            
+                <div class="row" id="active-postings">
+                     {{#each Provider}} 
+                        <div class="col s12 m6">
+                            <div class="card blue-grey darken-1 parent-user">
+                                <div class="card-content white-text">
+                                    <span class="card-title">service title: {{title}} </span>
+                                    <div class="card-content">
+                                        <ul>
+                                            <li>service text: {{text}} </li>
+                                            <li>service type: {{service_type}} </li>
+                                            <li>pet type: {{animal_type}}</li>
+                                            <li>pet size: {{size_restrictions}} </li>
+                                            <li>duration:{{duration}} </li>
+                                            <li>cost: ${{cost}}</li>
+                                        </ul>
+                                        
+                                    </div>
+                                </div>
+                                <div class="card-action">
+                                    <button data-id={{id}} class="delete-posting">delete posting</button>
                                 </div>
                             </div>
-                            <div class="card-action">
-                                <button data-id={{id}} class="delete-posting">delete posting</button>
-                            </div>
                         </div>
-                    </div>
-                {{/each}}
-            </div>
+                    {{/each}} 
+                </div>
+           
+            
     </div> 
 
     {{!-- show professional bookings --}}
     <div class="row booked">
         <h2>booked postings</h2>
-        <div class="booked-postings">this will have the booked listings displayed as cards in the users profile</div>
+        {{#each posts}}
+            {{#if BookerId}}
+            <div class="booked-postings">
+               
+                        <div class="col s12 m6">
+                            <div class="card blue-grey darken-1 parent-user">
+                                <div class="card-content white-text">
+                                    <span class="card-title">service title: {{title}} </span>
+                                    <div class="card-content">
+                                        <ul>
+                                            <li>service text: {{title}} </li>
+                                            <li>service type: {{service_type}} </li>
+                                            <li>pet type: {{animal_type}}</li>
+                                            <li>pet size: {{size_restrictions}} </li>
+                                            <li>duration:{{duration}} </li>
+                                            <li>cost: {{cost}}</li>
+                                        </ul>
+                                        
+                                    </div>
+                                </div>
+                                <div class="card-action">
+                                    <button data-id={{id}} class="delete-posting">delete posting</button>
+                                </div>
+                            </div>
+                        </div>
+                
+            </div>
+            {{/if}}
+            {{#unless BookerId}}
+                <h1>no booked postings yet!</h1>
+            {{/unless}}
+
         <br>
         <br>
         <br>
+        {{/each}}
     </div>
 
     {{!-- show professional  listing ratings  --}}
