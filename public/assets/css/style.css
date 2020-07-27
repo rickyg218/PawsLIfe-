@@ -148,3 +148,8 @@ div #catsearch {
     min-height: 40vh;
     border-bottom: 5 px solid #1565c0;
 }
+
+.current-listings {
+    background-image: url("../images/multiprints.png");
+    padding-bottom: 2vh;
+}
