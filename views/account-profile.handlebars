@@ -5,7 +5,7 @@
             <ul class="tabs">
                 <li class="tab col s3"><a href= "/user/professional">professional</a></li>
                 <li class="tab col s3"><a href="/user/owner" >pet owner</a></li>
-                <li class="tab col s3"><a href="/user/account-profile">view my profile</a></li>
+                <li class="tab col s3"><a href="/user/account-profile">edit my profile</a></li>
             </ul> 
         </div>
     </div> 
@@ -22,12 +22,29 @@
         <div class="col s12 l6 user-card" >
             <div class="card blue-grey darken-1">
                 <div class="card-content white-text">
-                    <span class="card-title">name: {{first_name}} {{last_name}}</span>
+                    <span class="card-title"> edit {{first_name}} {{last_name}}'s account</span>
                     <div class="card-content">
-                        <ul>
-                            <li>username: {{user_name}}<button>edit</button></li>
-                            <li>email: {{email}}<button>edit</button></li>
-                        </ul>
+                        <form>
+                            <label for="edit-first-name">edit first name</label>
+                                <input type="text" name="edit-first-name" id="edit-first-name" placeholder="first name">
+                        </form>
+                        <form>
+                            <label for="edit-last-name">edit last name</label>
+                                <input type="text" name="edit-last-name" id="edit-last-name" placeholder="last name">
+                        </form>
+                        <form>
+                            <label for="edit-username">edit username</label>
+                                <input type="text" name="edit-username" id="edit-username" placeholder="username">
+                        </form>
+                        <form>
+                            <label for="edit-email">edit email</label>
+                                <input type="text" name="edit-email" id="edit-email" placeholder="email">
+                        </form>
+                        <form>
+                            <label for="edit-password">edit password</label>
+                                <input type="text" name="edit-password" id="edit-password" placeholder="password">
+                        </form>
+                        
                     </div>
                 </div>
                 <div class="card-action">

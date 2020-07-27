@@ -41,11 +41,19 @@ $("#logout").click(function(){
 $("#save-account").click(function(event){
   event.preventDefault();
   const accountId = $(this).attr("data-id")
+  const userObj = {
+    first_name:$("#edit-first-name").val(),
+    last_name:$("#edit-last-name").val(),
+    user_name:$("#edit-username").val(),
+    password:$("#edit-password").val(),
+    email:$("#edit-email").val(),
+  }
   $.ajax({
     url:`/users/update/${accountId}`,
-    method: "PUT"
+    method: "PUT",
+    data: userObj
   }).then(data=>{
-    alert("deleted!");
+    alert("saved account!");
     location.href = `/user/owner/${id}`
   })
   console.log(" clicked save account")
