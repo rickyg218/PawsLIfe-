@@ -53,6 +53,11 @@ module.exports = function(sequelize, DataTypes) {
       onDelete: "cascade"
 
     });
+    // User.hasMany(models.Post, {
+    //   as: "Booker",
+    //   foreignKey: "BookerId",
+    //   onDelete: "cascade"
+    // });
   };
   console.table(User);
   return User;

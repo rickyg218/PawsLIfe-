@@ -72,7 +72,6 @@ router.post("/offer_posts/create", function(req,res) {
     range:req.body.range, 
     picture:req.body.picture, 
     service_type:req.body.service_type, 
-    // TODO: ask joe if ProviderId or UserId
     ProviderId:req.session.user.id,
   })
   .then(function(dbPost) {
@@ -200,21 +199,39 @@ router.put("/offer_posts/update/:id", function (req,res) {
 });
 
 // offer_posts DELETE, by post id.
-router.delete("/offer_posts/:id", function (req, res) {
-  db.Post
-    .destroy({
-      where: {
-        id: req.params.id,
-      },
-    })
-    .then(function (dbPosts) {
-      res.json(`destroyed the offering post with id of ${req.params.id}`);
-    }).catch(function(err) {
-      console.log(err);
-      res.status(500)
-    })
-    
-});
+//DELETE Post by Post id DESTROY
+  router.delete("/offer_posts/delete/:id", function (req, res) {
+    //protection if they aren't logged in
+    // if(!req.session.user){
+    //   return res.status(401).send("login first!")
+    // }else {
+    //   db.Post.findOne({
+    //     where: {
+    //       id:req.params.id
+    //     }
+    //   }).then(dbPost=>{
+    //     //if it is not the same user who created the Post protection
+    //     if(req.session.user.id!==dbPost.UserId){
+    //       return res.status(401).send("not your Post")
+    //     }else {
+    //       //if it is the user than delete
+          db.Post
+          .destroy({
+            where: {
+              id: req.params.id,
+            },
+          })
+          .then(function (data) {
+            res.json(` the Post with id of ${req.params.id} is gone`);
+          }).catch(function (err) {
+            console.log(err);
+            res.status(500)
+          })
+    //     }
+    //   })
+      
+    // }
+  });
 
 
 
@@ -302,21 +319,21 @@ router.put("/pets/update/:id", function (req,res) {
 });
 
 // //delete pet by id
-router.delete("/pets/:id", function (req, res) {
+router.delete("/pets/delete/:id", function (req, res) {
   //protection if they aren't logged in
-  if(!req.session.user){
-    return res.status(401).send("login first!")
-  }else {
-    db.Pet.findOne({
-      where: {
-        id:req.params.id
-      }
-    }).then(dbPet=>{
-      //if it is not the same user who created the pet protection
-      if(req.session.user.id!==dbPet.UserId){
-        return res.status(401).send("not your pet")
-      }else {
-        //if it is the user than delete
+  // if(!req.session.user){
+  //   return res.status(401).send("login first!")
+  // }else {
+  //   db.Pet.findOne({
+  //     where: {
+  //       id:req.params.id
+  //     }
+  //   }).then(dbPet=>{
+  //     //if it is not the same user who created the pet protection
+  //     if(req.session.user.id!==dbPet.UserId){
+  //       return res.status(401).send("not your pet")
+  //     }else {
+  //       //if it is the user than delete
         db.Pet
         .destroy({
           where: {
@@ -329,10 +346,10 @@ router.delete("/pets/:id", function (req, res) {
           console.log(err);
           res.status(500)
         })
-      }
-    })
+  //     }
+  //   })
     
-  }
+  // }
   
 
 });

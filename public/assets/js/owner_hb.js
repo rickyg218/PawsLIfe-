@@ -95,15 +95,15 @@ $("#add-cat-form").click(function(event){
     console.log(" clicked save pet")
   })
   //when the user clicks on submit, they will be redirected to their owner page
-  $("#delete-pet").click(function(event){
+  $(".delete-pet").click(function(event){
     event.preventDefault();
     const petId = $(this).attr("data-id")
     $.ajax({
-      url:`/pets/${petId}`,
+      url:`/pets/delete/${petId}`,
       method: "DELETE"
     }).then(data=>{
       alert(`deleted ${petId} pet!`);
-      window.location.reload();
+     location.reload();
     })
     console.log(" clicked delete pet")
   })
