@@ -107,4 +107,3 @@ $("#add-cat-form").click(function(event){
     })
     console.log(" clicked delete pet")
   })
-  
