@@ -49,6 +49,10 @@ module.exports = function(sequelize, DataTypes) {
           as: "Provider",
           foreignKey: "ProviderId",
           });
+        // Post.belongsTo(models.User,{
+        //   as: "Booker",
+        //   foreignKey: "BookerId",
+        //   });
       };
     return Post;
   };

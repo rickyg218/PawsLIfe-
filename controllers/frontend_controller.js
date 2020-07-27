@@ -3,6 +3,8 @@ var express = require("express");
 const router = express.Router();
 
 const db = require("../models");
+const { route } = require("./paws_controller");
+const { response } = require("express");
 // const { eq } = require("sequelize/types/lib/operators");
 
 
@@ -10,7 +12,10 @@ const db = require("../models");
 // main route welcome gets all posts plus user info
 router.get("/", function(req, res) {
   db.Post.findAll({
-    include:[{model:db.User, as:"Provider"}]
+    include:[
+      {model:db.User, as:"Provider"},
+      // {model:db.User, as:"Owner"}
+    ]
   }).then(userPosts=>{
     const userPostsJSON = userPosts.map(function(postObj){
       return postObj.toJSON();
@@ -23,8 +28,6 @@ router.get("/", function(req, res) {
   }).catch(function(err){
     res.status(500).json(err);
   });
-     
-    
 });
 
   
@@ -42,6 +45,12 @@ router.get("/", function(req, res) {
   router.get("/createaccount", function(req, res) {
     return res.render("createaccount");
   });
+
+  //logs you out of session
+  router.get("/loggout", (req,res)=>{
+    req.session.destroy();
+    res.send("logged out")
+  })
   
   //this route will need to include a :id at the end so it goes to the specific user page
   router.get("/user/professional", function(req, res) {
@@ -114,12 +123,30 @@ router.get("/", function(req, res) {
     }
   });
   
+//book an offer post 
+router.put("/offer_posts/:id/claimpost",(req,res)=>{
+  db.Post.update({
+      ProviderId: req.body.ProviderId
+  }, {
+      where: {
+          id: req.params.id
+      }
+  }).then(postData => {
+      res.json(postData)
+      // res.json({claimedBy:req.body.UserId})
+  }).catch(err => {
+      console.log(err);
+      res.status(500).end()
+  })
+})
+
+
 
 //API ROUTES 
 //all pets with users 
 router.get("/api/pets/users", function(req, res){
   db.Pet.findAll({
-    include:[db.User]
+    include:[{model:db.User, as:"Customer"}]
   }).then(pets=>{
     res.json(pets)
   });
@@ -129,7 +156,7 @@ router.get("/api/pets/users", function(req, res){
 //all posts with users 
 router.get("/api/posts/users", function(req, res) {
   db.Post.findAll({
-    include:[db.User]
+    include:[{model:db.User, as:"Provider"}]
   }).then(posts=>{
     res.json(posts)
   });

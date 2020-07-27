@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<script src="https://kit.fontawesome.com/956330d85a.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
 {{!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> --}}
 {{!-- <script
@@ -17,15 +18,15 @@
 
   {{!-- nav bar  --}}
   <nav class="nav-extended">
-    <div class="nav-wrapper">
-      <img src="../../../assets/images/paws_with_circle_touchup.png" alt="puppy paws" height="50px">
-      <a href="#" class="brand-logo">paws life</a>
+    <div class="nav-wrapper" id="navwrapper">
+      <img src="../../../assets/images/pawslifetransparency.png" style="margin-left:2rem; margin-top:1rem; margin-bottom:-1rem" alt="puppy wash" height="90px">
+      <a href="#" class="brand-logo" id="navphoto"><img src="../../../assets/images/pawslogoupdate.png" alt="" height="90px" srcset=""></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/signin">sign in</a></li>
-        <li><a href="/createaccount">create account</a></li>
-        <li><a href="/user/owner">my account</a></li>
-        <li><a href="/log out">log out</a></li>
-        <li><a href="/">home</a></li>
+        <li><a href="/signin"><i class="fas fa-paw"></i>sign in</a></li>
+        <li><a href="/createaccount"><i class="fas fa-pen-fancy"></i>create account</a></li>
+        <li><a href="/user/owner"><i class="fas fa-user-astronaut"></i>my account</a></li>
+        <li><a href="/log out" id="logout">log out</a></li>
+        <li><a href="/"><i class="fas fa-house-user"></i>home</a></li>
       </ul>
     </div>
     <div class="nav-content"></div>
@@ -33,15 +34,11 @@
     </div>
   </nav>
   
-  {{!-- logo --}}
-  <div class="container logo flex">
-    <div class="row">
-      <div class="col s12">
-        <img src="../../../assets/images/pawslifetransparency.png" alt="puppy wash" height="300px">
-      </div>
-    </div>
-  </div>
 
+  {{!-- <div id="petbanner">
+        <img src="../../../assets/images/pawslifetransparency.png" style="margin-left:2rem; margin-bottom:-2rem" alt="puppy wash" height="200px">
+  </div> --}}
+ 
 
  
   
@@ -78,7 +75,17 @@
     <div class="footer-copyright">
       <div class="container">
       © 2020 Copyright Text
-      <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+      <span class="right">
+        This project utilizes 
+        &nbsp;&nbsp;&nbsp;
+        <a class="right" href="https://www.npmjs.com/" target="_blank">
+        <i class="fab fa-npm"></i>&nbsp;&nbsp;&nbsp;
+        </a>
+        <a class="right" href="https://nodejs.org/en/" target="_blank">
+        <i class="fab fa-node"></i>&nbsp;&nbsp;&nbsp;
+         </a>
+        </span>
+      {{!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> --}}
       </div>
     </div>
   </footer>
@@ -87,6 +94,8 @@
   <script src="/assets/js/owner_hb.js"></script>
   <script src="/assets/js/professional_hb.js"></script>
   <script src="/assets/js/user_hb.js"></script>
+  
+ 
 </body>
 
 </HTML>

@@ -3,19 +3,21 @@
     <!-- pet professional or pet owner buttons and info divs -->
    
     <div class="row card">
-        <div class="col s9 l12 offset-s5">
+        <div class="col s9 l12">
              <ul class="tabs">
-                <li class="tab col s3"><a href= "/user/professional">professional</a></li>
-                <li class="tab col s3"><a href="/user/owner">pet owner</a></li>
-                <li class="tab col s3"><a href="/user/account-profile">view my profile</a></li>
+                 <li class="tab col s1"></li>
+                <li class="tab col s3"><a href= "/user/professional"><b>professional</b></a></li>
+                <li class="tab col s3"><a href="/user/owner"><b>pet owner</a></li></b>
+                <li class="tab col s3"><a href="/user/account-profile"><b>view my profile</b></a></li>
+                <li class="tab col l1"></li>
             </ul>
         </div>
     </div>
 
     <div class="row">
-            <h2>professional profile</h2>
+            <h1>professional profile</h2>
                 <div class="user-profile">
-                    <h3>welcome, {{first_name}} !</h3> 
+                    <h2>welcome, {{first_name}} !</h2> 
                 </div>
     </div>
    
@@ -24,8 +26,8 @@
         <h2>create a posting</h2>
         <ul>
             {{!-- choose for cat or dog  --}}
-            <button class="service-dog">for dogs</button>
-            <button class="service-cat">for cats</button>
+            <button class="service-dog"><i class="fas fa-dog"></i> for dogs </button>
+            <button class="service-cat"><i class="fas fa-cat"></i> for cats </button>
         </ul>
 
         {{!-- show either servicedog or servicecat handlebar  --}}
@@ -36,7 +38,7 @@
 
     {{!-- show professional active listings  --}}
     <div class="row active">
-        <h2>active postings</h2>
+        <h2>Jobs you've posted</h2>
         
             <div class="row" id="active-postings">
                 {{#each Provider}}
@@ -46,18 +48,18 @@
                                 <span class="card-title">service title: {{title}} </span>
                                 <div class="card-content">
                                     <ul>
-                                        <li>service text: {{title}} <button>edit</button></li>
-                                        <li>service type: {{service_type}} <button>edit</button></li>
-                                        <li>pet type: {{animal_type}}<button>edit</button></li>
-                                        <li>pet size: {{size_restrictions}} <button>edit</button></li>
-                                        <li>duration:{{duration}} <button>edit</button></li>
-                                        <li>cost: {{cost}}<button>edit</button></li>
+                                        <li>service text: {{title}} </li>
+                                        <li>service type: {{service_type}} </li>
+                                        <li>pet type: {{animal_type}}</li>
+                                        <li>pet size: {{size_restrictions}} </li>
+                                        <li>duration:{{duration}} </li>
+                                        <li>cost: {{cost}}</li>
                                     </ul>
+                                    
                                 </div>
                             </div>
                             <div class="card-action">
-                                <button data-id={{id}} id="save-posting">save posting</button>
-                                <button data-id={{id}} id="delete-posting">delete posting</button>
+                                <button data-id={{id}} class="delete-posting">delete posting</button>
                             </div>
                         </div>
                     </div>
@@ -68,7 +70,7 @@
     {{!-- show professional bookings --}}
     <div class="row booked">
         <h2>booked postings</h2>
-        <div class="booked-postings">this will have the booked listings displayed as cards in the users profile{{>booked-postings}}</div>
+        <div class="booked-postings">this will have the booked listings displayed as cards in the users profile</div>
         <br>
         <br>
         <br>
@@ -77,7 +79,7 @@
     {{!-- show professional  listing ratings  --}}
     <div class="row">
         <h2>listing ratings</h2>
-        <div class= "listing-ratings">view my pet ratings{{>listing-ratings}}</div>
+        <div class= "listing-ratings">view my pet ratings</div>
     </div>  
 </div>
     
