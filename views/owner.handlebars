@@ -44,18 +44,17 @@
                     <span class="card-title">name: {{first_name}}</span>
                     <div class="card-content">
                         <ul>
-                            <li>breed:{{breed}} <button class="right">edit</button></li>
-                            <li>size: {{size}}<button class="right">edit</button></li>
-                            <li>temperment: {{temperment}} <button class="right">edit</button></li>
-                            <li>special care: {{special_care}} <button class="right">edit</button></li>
-                            <li>pet_type: {{pet_type}} <button class="right">edit</button></li>
-                            <li>picture: {{picture}} <button class="right">edit</button></li>
-                            <li>age: {{age}} <button class="right">edit</button></li>
+                            <li>breed:{{breed}} </li>
+                            <li>size: {{size}}</li>
+                            <li>temperment: {{temperment}} </li>
+                            <li>special care: {{special_care}} </li>
+                            <li>pet_type: {{pet_type}} </li>
+                            <li>picture: {{picture}} </li>
+                            <li>age: {{age}} </li>
                         </ul>
                     </div>
                 </div>
                 <div class="card-action">
-                    <button data-id={{id}} id="save-pet">save pet</button>
                     <button data-id={{id}} id="delete-pet">delete pet</button>
                 </div>
             </div>
@@ -66,7 +65,7 @@
     {{!-- show pet  bookings  --}}
     <div class="row">
         <h2>pet bookings</h2>
-        <div class="pet-bookings">view my pet bookings{{>pet-bookings}}</div>
+        <div class="pet-bookings">view my pet bookings</div>
         <br>
         <br>
         <br>
@@ -75,6 +74,6 @@
     {{!-- pet ratings  --}}
     <div class="row">
         <h2>pet ratings</h2>
-        <div class="pet-ratings">view my pet ratings{{>pet-ratings}}</div>
+        <div class="pet-ratings">view my pet ratings</div>
     </div>
 </div>
