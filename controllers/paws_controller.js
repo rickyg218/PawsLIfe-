@@ -106,7 +106,7 @@ router.get("/offer_posts", function(req,res) {
 //TODO: working find posts within a range that match an animal type
 router.get("/offer_posts/:animal/:lat/:long", function(req,res){
   let latRange = [(parseFloat(req.params.lat)-0.100), (parseFloat(req.params.lat)+0.100)]
-  let longRange = [(parseFloat(req.params.long)-0.100), (parseFloat(req.params.long)+0.100)]
+  let longRange = [(parseFloat(req.params.long)-0.150), (parseFloat(req.params.long)+0.150)]
   
  
   db.Post.findAll(
