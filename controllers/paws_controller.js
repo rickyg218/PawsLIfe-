@@ -112,7 +112,7 @@ router.get("/offer_posts/:animal/:lat/:long", function(req,res){
     },
   )
     .then(function (dbPost) {
-      //console.log("this console logs the dbPost return from get by lat long", dbPost);
+      console.log("this console logs the dbPost return from get by lat long", dbPost);
       for (var i = 0; i < dbPost.length; i++){
            if ((req.params.lat == dbPost[i].Provider.lat) && (req.params.long == dbPost[i].Provider.long)) {
             dbPost[i].range = 0;

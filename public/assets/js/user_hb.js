@@ -89,6 +89,55 @@ $("#create-account").on("click", function(event){
     }
   
     console.log("User Obj: "+userObj);
+
+
+
+
+   
+    $("#find-service").on("click", function (event) {
+      event.preventDefault();
+
+      let latitude;
+      let longitude;
+     
+      $.ajax({
+        URL: "/offer_posts/:animal/:lat/:long",
+        method: "GET",
+      }).then(function (response) {
+        console.log(response);
+        for (var i = 0; i < response.offer_posts.length; i++) {
+          latitude = parseFloat(response.offer_posts[i].Provider.lat);
+          longitude = parseFloat(response.offer_posts[i].Provider.long);
+          // var range = parseFloat(response.offer_posts[i].range);
+       
+
+          var map = new google.maps.Map(document.getElementById('mapWindow'), {
+            zoom: 10,
+            center: new google.maps.LatLng(33.92, 151.25),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+          });
+
+          var infowindow = new google.maps.InfoWindow();
+
+          var marker, i;
+
+          for (i = 0; i < latLong.length; i++) {
+            marker = new google.maps.Marker({
+              position: new google.maps.LatLng(latitude, longitude),
+              map: map
+            });
+
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+              return function () {
+                infowindow.setContent(locations[i][0]);
+                infowindow.open(map, marker);
+              }
+            })(marker, i));
+          }
+        }
+      }) 
+      
+       
   
     $.ajax("/createaccount",{
       type:"POST",
@@ -103,11 +152,10 @@ $("#create-account").on("click", function(event){
       location.reload();
     })
   
-    console.log(" clicked create account")
+    Console.log(" clicked create account")
   });
   
 })
-
 
 //MAIN PAGE SEARCH
 //search on main page 
@@ -119,13 +167,3 @@ $(".material-icons").click(function(event){
     console.log(posts)
   })
 })
-
-  
-
-
-
-
-
-
-
-
