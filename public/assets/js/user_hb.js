@@ -1,3 +1,4 @@
+
 //EVENT LISTENERS
 //USER ACOUNTS
 
@@ -142,9 +143,31 @@ $(".claimPost").click(function(event){
   })
 })
 
+$(".search").on("click", function(event){
+  event.preventDefault();
 
+  let latitude;
+  let longitude;
 
-
+  $.ajax({
+    url: "https://ipapi.co/json/",
+    method: "GET",
+  }).then(function (response) {
+    latitude= response.latitude;
+    longitude= response.longitude;
+    const petId = $(this).attr("data-id")
+    $.ajax({
+      url:`/offer_posts/${petId}/${latitude}/${longitude}`,
+      method:"GET",
+    }).then(data=>{
+      console.log(data)
+      location.href = `/`;
+    }).catch(err=>{
+      console.log(err)
+      response.status(500).json(err)
+    })
+  })
+})
   
 
 
