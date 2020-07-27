@@ -14,7 +14,7 @@ router.get("/", function(req, res) {
   db.Post.findAll({
     include:[
       {model:db.User, as:"Provider"},
-      // {model:db.User, as:"Owner"}
+      {model:db.User, as:"Booker"}
     ]
   }).then(userPosts=>{
     const userPostsJSON = userPosts.map(function(postObj){

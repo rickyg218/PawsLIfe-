@@ -94,10 +94,10 @@
             </ul>
          </div>
          <div class="card-action">
-            {{#if OwnerId}}
-            <h3>Booked by: {{Owner.first_name}}</h3>
+            {{#if BookerId}}
+            <h3>Booked by: {{Booker.first_name}}</h3>
             {{/if}}
-            {{#unless OwnerId}}
+            {{#unless BookerId}}
                <button id="book-now" data-id={{id}}>Book Now!</button>
             {{/unless}}
          </div>
