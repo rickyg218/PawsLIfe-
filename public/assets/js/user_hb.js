@@ -124,26 +124,21 @@ $("#create-account").on("click", function (event) {
 
 //MAIN PAGE SEARCH
 //book a service 
-$(".claimPost").click(function (event) {
+/*$(".claimPost").click(function (event) {
   event.preventDefault();
   const postId = $(this).attr("data-id")
   console.log(postId)
   $.ajax({
     url: `/offer_posts/${postId}/claimpost`,
     method: "PUT",
-    data: {
-      ProviderId: req.session.user.id
-    }
+
   }).then(data => {
     console.log(data)
     location.href = `/`;
-  }).catch(err => {
-    console.log(err)
-    response.status(500).json(err)
   })
-})
+})*/
 
-$(".search").on("click", function (event) {
+/*$(".search").on("click", function (event) {
   event.preventDefault();
 
   let latitude;
@@ -162,11 +157,7 @@ $(".search").on("click", function (event) {
       method: "GET",
     }).then(data => {
       console.log(data)
-      var map = new google.maps.Map(document.getElementById("mapWindow"), {
-        zoom: 10,
-        center: new google.maps.LatLng(33.92, 151.25),
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      });
+
       var infowindow = new google.maps.InfoWindow();
       var marker, i;
       for (var i = 0; i < response.offer_posts.length; i++) {
@@ -184,12 +175,10 @@ $(".search").on("click", function (event) {
           infowindow.open(map, marker);
         }
       })(marker, i));
-    }).catch(err => {
-      console.log(err)
-      response.status(500).json(err)
     })
   })
-})
+})*/
+
 
 
 
