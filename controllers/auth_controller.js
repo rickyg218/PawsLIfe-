@@ -15,12 +15,13 @@ router.post("/createaccount", function(req, res) {
     user_name: req.body.user_name,
     password:req.body.password,
     email:req.body.email, 
-    lat: req.body.lat,
-    long: req.body.long
+    lat: parseFloat( req.body.lat),
+    long:parseFloat (req.body.long)
   }).then(function(dbUser) {
       console.log(dbUser);
       res.json(dbUser)
     }).catch(function(err){
+      console.log(err)
       res.status(500).json(err);
     });
     
@@ -80,7 +81,7 @@ router.post("/signin", (req,res)=>{
     db.Post.findAll({
       include:[
         {model:db.User, as:"Provider"},
-        // {model:db.User, as:"Owner"}
+        // {model:db.User, as:"Booker"}
       ]
     }).then(userPosts=>{
       const userPostsJSON = userPosts.map(function(postObj){

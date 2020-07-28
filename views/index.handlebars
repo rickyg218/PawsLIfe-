@@ -78,9 +78,10 @@
    <div class="row flex current-listings">
       <h2> current listings</h2>
       {{#each posts}}
-      <div class="col s12 m5 l3 card blue-grey darken-1 parent-user">
+
+      <div class="col s12 l3 card blue-grey darken-1 parent-user">
          <div class="card-content white-text">
-            <span class="card-title">{{title}}</span>
+            <span class="card-title">{{title}} <a href="/users/{{Provider.id}}">posted by: {{Provider.first_name}} {{Provider.last_name}}</a></span>
             <ul>
                <li>this service is for a: {{animal_type}}</li>
                <li>service type: {{service_type}}</li>
@@ -93,7 +94,12 @@
             </ul>
          </div>
          <div class="card-action">
-            <button data-id={{id}} id="book-now">Book Now!</button>
+            {{#if BookerId}}
+               <h3>Booked by: {{Booker.first_name}} {{Booker.last_name}}</h3>
+            {{/if}}
+            {{#unless BookerId}}
+               <button id="book-now" data-id={{id}}>Book Now!</button>
+            {{/unless}}
          </div>
       </div>
       {{/each}}
@@ -101,14 +107,16 @@
 </div>
 <script>
    function initMap() {
-  // The location of Uluru
-  var uluru = {lat: -25.344, lng: 131.036};
-  // The map, centered at Uluru
+  
+  var uluru = {lat: 47.606209, lng: -122.332069};
+  
   var map = new google.maps.Map(
-      document.getElementById('mapWindow'), {zoom: 4, center: uluru});
-  // The marker, positioned at Uluru
+      document.getElementById('mapWindow'), {zoom: 13, center: uluru});
+
   var marker = new google.maps.Marker({position: uluru, map: map});
    }
+
+   
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9k83loTwkEX28Ez2CA0pijP3HXyttslo&callback=initMap&libraries=&v=weekly" async defer></script>
 <script src="/assets/js/user_hb.js"></script>

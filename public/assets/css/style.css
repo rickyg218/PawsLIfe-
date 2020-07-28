@@ -69,10 +69,9 @@ label {
 .create-account {
     font-size: 40px;
 }
+
 /* links for professional and owner pages */
-li .pinklink {
-    font-size: 30px;
-}
+
 
 /* cards  */
 .parent-user{
@@ -171,10 +170,6 @@ div #catsearch {
     background-image: url("../images/multiprints.png");
     padding-bottom: 2vh;
 }
-/* .current-listings {
-    background-image: url("../images/multiprints.png");
-    padding-bottom: 2vh;
-} */
 
 a #navphoto {
     margin-bottom:5px;

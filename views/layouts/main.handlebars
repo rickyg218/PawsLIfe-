@@ -18,11 +18,19 @@
     <div class="nav-wrapper" id="navwrapper">
       <a href="#" class="brand-logo" id="navphoto"><img src="../../../assets/images/pawslogoupdate.png" alt="" height="80px" srcset=""></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
+<<<<<<< HEAD
         <li><a href="/signin"><i class="fas fa-paw"></i> sign in</a></li>
         <li><a href="/createaccount"><i class="fas fa-pen-fancy"></i> create account</a></li>
         <li><a href="/user/owner"><i class="fas fa-user-astronaut"></i> my account</a></li>
         <li><a href="/logout" id="logout"><i class="fa fa-unlock"></i> log out</a></li>
         <li><a href="/"><i class="fas fa-house-user"></i> home</a></li>
+=======
+        <li><a href="/signin"><i class="fas fa-paw"></i>sign in</a></li>
+        <li><a href="/createaccount"><i class="fas fa-pen-fancy"></i>create account</a></li>
+        <li><a href="/user/owner"><i class="fas fa-user-astronaut"></i>my account</a></li>
+        <li><a href="/logout" id="logout">log out</a></li>
+        <li><a href="/"><i class="fas fa-house-user"></i>home</a></li>
+>>>>>>> dev
       </ul>
     </div>
     <div class="nav-content"></div>
@@ -31,6 +39,7 @@
   </nav>
   
 
+<<<<<<< HEAD
   <div id="petbanner">
         <img class="hide-on-med-and-down" src="../../../assets/images/pawslifetransparency.png" style="" alt="puppy wash" height="300px">  
     </div>
@@ -38,6 +47,12 @@
       <img class="hide-on-med-and-up" src="../../../assets/images/pawslifetransparency.png" style="margin-top: -3rem;" alt="puppy wash" height="200px">
       </div>
   
+=======
+ <div id="petbanner">
+        <img src="../../../assets/images/pawslifetransparency.png" style="margin-left:2rem; margin-bottom:-2rem" alt="puppy wash" height="200px">
+  </div> 
+ 
+>>>>>>> dev
  
 
  
@@ -72,6 +87,22 @@
         </div>
       </div>
     </div>
+
+    {{!-- floating buttons navigation --}}
+    <div id="fixed-action-btn">
+      <a class="btn-floating btn-large red">
+        <i class="large material-icons">mode_edit</i>
+      </a>
+      <ul>
+        <li><a href="/signin" class="btn-floating red"><i class="material-icons">sign in</i></a></li>
+        <li><a href="/createaccount" class="btn-floating yellow darken-1"><i class="material-icons">create account</i></a></li>
+        <li><a href="/user/owner" class="btn-floating green"><i class="material-icons">my account</i></a></li>
+        <li><a href="/logout" class="btn-floating blue"><i class="material-icons">log out</i></a></li>
+        <li><a href="/" class="btn-floating blue"><i class="material-icons">home</i></a></li>
+      </ul>
+    </div>
+
+
     <div class="footer-copyright">
       <div class="container">
       © 2020 Copyright Text
@@ -89,10 +120,10 @@
       </div>
     </div>
   </footer>
-  
-  <script src="/assets/js/user_hb.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="/assets/js/owner_hb.js"></script>
   <script src="/assets/js/professional_hb.js"></script>
+  <script src="/assets/js/user_hb.js"></script>
   
   
  
