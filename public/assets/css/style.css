@@ -5,6 +5,7 @@ body {
     min-height: 100vh;
     flex-direction: column;
     background-color: #eee;
+    font-size: 28px;
 }
 
 main {
@@ -61,6 +62,14 @@ input[type="checkbox"]:not(:checked) {
     position: absolute;
     pointer-events: none;
 }
+
+label {
+    font-size:35px;
+}
+.create-account {
+    font-size: 40px;
+}
+
 
 /* cards  */
 .parent-user{
