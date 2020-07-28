@@ -31,7 +31,6 @@ $("#add-cat-form").click(function(event){
       size:$("#cat-size").val(),
       temperment:$("#cat-temperment").val(),
       age:$("#cat-age").val(),
-      picture:$("#cat-picture").val(),
     }
     $.ajax({
       url:'/pets/create',
@@ -62,7 +61,6 @@ $("#add-cat-form").click(function(event){
       size:$("#dog-size").val(),
       temperment:$("#dog-temperment").val(),
       age:$("#dog-age").val(),
-      picture:$("#dog-picture").val(),
     }
     $.ajax({
       url:`/pets/create`,
@@ -89,7 +87,7 @@ $("#add-cat-form").click(function(event){
       url:`/pets/update/${petId}`,
       method: "PUT"
     }).then(data=>{
-      alert(`saved ${petId} pet!`);
+      alert(`saved pet!`);
       window.location.reload();
     })
     console.log(" clicked save pet")
@@ -102,7 +100,7 @@ $("#add-cat-form").click(function(event){
       url:`/pets/delete/${petId}`,
       method: "DELETE"
     }).then(data=>{
-      alert(`deleted ${petId} pet!`);
+      alert(`deleted pet!`);
      location.reload();
     })
     console.log(" clicked delete pet")

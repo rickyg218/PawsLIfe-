@@ -5,7 +5,7 @@
 
 //signin.handlebars
 //when the user clicks on service cat, they will be redirected to the home page
-$("#sign-in").click(function (event) {
+$("#sign-in").click(function(event){
   event.preventDefault();
   const userObj = {
     user_name: $("#signinUsername").val(),
@@ -147,20 +147,28 @@ $("#create-account").on("click", function (event) {
 //book a service 
   //book a service
 
-$("#book-now").click(function (event) {
-  event.preventDefault();
-  const postId = $(this).attr("data-id");
+  $(".book-now").click(function(event){
 
-  console.log(postId);
-  $.ajax({
-    url: `/offer_posts/${postId}/bookpost`,
-    method: "PUT",
-  }).then((data) => {
-    console.log(data);
-    alert("booked!");
-    location.href = `/`;
-  });
-});
+    event.preventDefault();
+    const postId = $(this).attr("data-id")
+    
+    console.log(postId)
+    $.ajax({
+  
+      url:`/offer_posts/${postId}/bookpost`,
+      method:"PUT",
+      
+    }).then(data=>{
+  
+      console.log(data)
+      alert("booked!")
+      location.href = `/`;
+    }).catch(err=>{
+      console.log(err)
+    })
+  })
+
+
 //TODO:unify this search field, which means unifying button terminology, removing radio buttons to just describe the search.
 $("dog-search").on("click", function (event) {
   event.preventDefault();
@@ -217,10 +225,7 @@ $("dog-search").on("click", function (event) {
   });
 });
 
-//floating button navigation
-$(document).ready(function(){
-  $('#fixed-action-btn').floatingActionButton();
-});
+
 
 
 //TODO: note, there was a }) here, that looked like it belonged up by the end of the create account f(x).
