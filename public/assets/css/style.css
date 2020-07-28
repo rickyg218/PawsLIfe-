@@ -89,13 +89,21 @@ label {
     background-color: #eee ;
 }
 
+div .golden {
+    background-color: #8d683d;
+}
+
 .account-user{
     padding: 0%;
 }
 
 .professional-page{
     padding:10px;
-    background-color: white;
+    background-image: url("../images/spaw.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* background-color: white; */
     padding-bottom: 2vh;
 
 }
@@ -103,8 +111,11 @@ label {
 .owner-page{
   
     padding:10px;
-    /* background-image: url("../images/multiprints.png"); */
-    background-color: white;
+    background-image: url("../images/citycatskinny.png");
+    background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background-color: white; */
     padding-bottom: 2vh;
 
 }

@@ -72,16 +72,16 @@
     </div> 
 
     {{!-- show professional bookings --}}
-    <div class="row booked">
+    <div class="row booked flex center-align">
         <h2>Booked Listings</h2>
             <div class="booked-postings">
                {{#each Provider}}
                     {{#if BookerId}}
-                        <div class="col s12 m6">
-                            <div class="card blue-grey darken-1 parent-user">
+                        <div class="col s12 l6"> 
+                            <div class="card parent-user golden hoverable center-align mostly-customized-scrollbar">
                                 <div class="card-content white-text">
-                                    <span class="card-title">service title: {{title}} </span>
-                                    <div class="card-content">
+                                    <span class="card-title"><b> {{title}} </b></span>
+                                    <div class="card-content left-align">
                                         <ul>
                                             <li>service text: {{title}} </li>
                                             <li>service type: {{service_type}} </li>

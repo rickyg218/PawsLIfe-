@@ -75,11 +75,11 @@
 
 
    {{!-- shows current listings for view --}}
-   <div class="row flex current-listings">
-      <h2> current listings</h2>
+   <div class="row flex current-listings center-align">
+      <h2 class="left-align"> current listings</h2>
       {{#each posts}}
 
-      <div class="col s6 l4 card parent-user hoverable center-align mostly-customized-scrollbar" style="height: ;">
+      <div class="col s10 l5 card parent-user hoverable center-align mostly-customized-scrollbar" style="height: ;">
          <div class="card-content left-align">
             <span class="card-title center-align">{{title}} <a href="/users/{{Provider.id}}">posted by: {{Provider.first_name}} {{Provider.last_name}}</a></span>
             <ul>
