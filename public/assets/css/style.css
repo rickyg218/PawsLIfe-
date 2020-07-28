@@ -5,6 +5,7 @@ body {
     min-height: 100vh;
     flex-direction: column;
     background-color: #eee;
+    font-size: 28px;
 }
 
 main {
@@ -45,13 +46,6 @@ nav{
     display: none;
 }
 
-
-/* index page */
-.search-bar{
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-
 .current-listings{
     padding-left: 0px
 }
@@ -69,13 +63,34 @@ input[type="checkbox"]:not(:checked) {
     pointer-events: none;
 }
 
+label {
+    font-size:35px;
+}
+.create-account {
+    font-size: 40px;
+}
+
+/* links for professional and owner pages */
+
+
 /* cards  */
 .parent-user{
     display: inline-block;
-    height:40vh;
-    overflow:scroll;
+    height:45vh;
+    padding-right:5px;
+    overflow:auto;
+    border-top-left-radius: 5%;
+    border-bottom-left-radius: 5%;
+    border-top-right-radius: 1%;
+    border-bottom-right-radius: 1%;
+    border-right: 5px solid #1565c0;
     box-shadow: 4px 4px 6px;
-    margin: 0 10px; 
+    margin: 1px 10px; 
+    background-color: #eee ;
+}
+
+div .golden {
+    background-color: #8d683d;
 }
 
 .account-user{
@@ -83,11 +98,24 @@ input[type="checkbox"]:not(:checked) {
 }
 
 .professional-page{
+    padding:10px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
     background-color: white;
+    padding-bottom: 2vh;
+
 }
 
 .owner-page{
+  
+    padding:10px;
+    background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
     background-color: white;
+    padding-bottom: 2vh;
+
 }
 
 .account-profile-page{
@@ -105,9 +133,6 @@ input[type="checkbox"]:not(:checked) {
   border: 2px solid #4f90b3;
  
 }
- 
- 
- 
 [type="radio"]:checked + span:after,
 [type="radio"].with-gap:checked + span:after {
  
@@ -121,7 +146,7 @@ button #dog-search, #cat-search {
 
 div #dogsearch {
     display: flex;
-    padding-right: 50px;
+    padding-right: 10px;
     padding-left:75px;
     padding-bottom:20px;
     padding-top:28px;
@@ -131,23 +156,21 @@ div #dogsearch {
 div #catsearch {
     display: flex;
     padding: 25px;
-    padding-right: 0px;
     border-radius: 30%;
     border-right: 5px solid #1565c0;
-    padding-left:70px;
+    padding-left:50px;
 }
 
 #petbanner {
-    display:flex;
-    align-items: center;
-    flex-direction: row-reverse;
+    /* display:flex; */
+    /* align-items: center; */
+    /* flex-direction: row-reverse; */
     background-image: url("../images/petsquad.png");
     background-attachment: local;
-    background-size: fit;
+    background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
-    min-height: 40vh;
-    border-bottom: 5 px solid #1565c0;
+    min-height: 300px;
 }
 
 a #navphoto {
@@ -160,36 +183,30 @@ a #navphoto {
     background-image: url("../images/multiprints.png");
     padding-bottom: 2vh;
 }
-.current-listings {
-    background-image: url("../images/multiprints.png");
-    padding-bottom: 2vh;
-}
 
 a #navphoto {
-    min-height: 100px;
     margin-bottom:5px;
+    z-index: 99;
 }
 
 .nav-wrapper a {
-    margin-top: 25px;
+    margin-top: 0px;
+    padding-bottom: 5px;
 }
 
-/* div .professional-page {
- padding: 10px;
- background-image: url(".assets/images/multiprints.png");
- padding-bottom: 2vh;
+nav .nav-extended {
+    min-height: 100px;
 }
 
-div .owner-page {
-    padding:10px;
-    background-image: url(".assets/images/multiprints.png");
-    padding-bottom: 2vh;
-} */
 
-button .pawbtn {
+button .add-cat .add-dog {
     border-radius: 50%;
+    background-color: #1565c0;
 }
 
-div .petcard {
-    border-right: 5px solid #1565c0;
-}
+.mostly-customized-scrollbar::-webkit-scrollbar {
+    width: 10px;
+    height: 8px;
+    background-color: #1565c0; /* or add it to the track */
+  }
+
