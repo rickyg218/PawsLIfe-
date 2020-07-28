@@ -22,7 +22,7 @@
         <li><a href="/signin"><i class="fas fa-paw"></i>sign in</a></li>
         <li><a href="/createaccount"><i class="fas fa-pen-fancy"></i>create account</a></li>
         <li><a href="/user/owner"><i class="fas fa-user-astronaut"></i>my account</a></li>
-        <li><a href="/log out" id="logout">log out</a></li>
+        <li><a href="/logout" id="logout">log out</a></li>
         <li><a href="/"><i class="fas fa-house-user"></i>home</a></li>
       </ul>
     </div>
@@ -32,9 +32,10 @@
   </nav>
   
 
-  {{!-- <div id="petbanner">
+ <div id="petbanner">
         <img src="../../../assets/images/pawslifetransparency.png" style="margin-left:2rem; margin-bottom:-2rem" alt="puppy wash" height="200px">
-  </div> --}}
+  </div> 
+ 
  
 
  
@@ -69,6 +70,22 @@
         </div>
       </div>
     </div>
+
+    {{!-- floating buttons navigation --}}
+    <div id="fixed-action-btn">
+      <a class="btn-floating btn-large red">
+        <i class="large material-icons">mode_edit</i>
+      </a>
+      <ul>
+        <li><a href="/signin" class="btn-floating red"><i class="material-icons">sign in</i></a></li>
+        <li><a href="/createaccount" class="btn-floating yellow darken-1"><i class="material-icons">create account</i></a></li>
+        <li><a href="/user/owner" class="btn-floating green"><i class="material-icons">my account</i></a></li>
+        <li><a href="/logout" class="btn-floating blue"><i class="material-icons">log out</i></a></li>
+        <li><a href="/" class="btn-floating blue"><i class="material-icons">home</i></a></li>
+      </ul>
+    </div>
+
+
     <div class="footer-copyright">
       <div class="container">
       © 2020 Copyright Text

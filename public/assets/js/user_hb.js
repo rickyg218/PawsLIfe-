@@ -120,6 +120,7 @@ $("#create-account").on("click", function (event) {
   });
 
 
+//rickybranch inclusion, left commented
 // $(".claimPost").click(function (event) {
 //   event.preventDefault();
 //   const postId = $(this).attr("data-id")
@@ -133,6 +134,32 @@ $("#create-account").on("click", function (event) {
 //     location.href = `/`;
 //   })
 // })
+  
+//dev branch,
+//kept this instead. we can clean this code later, 
+//but I wanted to leave both versions handy after this afternoon.
+//MAIN PAGE SEARCH
+//book a service 
+
+$("#book-now").click(function(event){
+
+  event.preventDefault();
+  const postId = $(this).attr("data-id")
+  
+  console.log(postId)
+  $.ajax({
+
+    url:`/offer_posts/${postId}/bookpost`,
+    method:"PUT",
+    
+  }).then(data=>{
+
+    console.log(data)
+    alert("booked!")
+    location.href = `/`;
+  })
+})*/
+
 
   $("dog-search").on("click", function (event) {
   event.preventDefault();
@@ -182,7 +209,10 @@ $("#create-account").on("click", function (event) {
 })
 
 
-
+//floating button navigation
+$(document).ready(function(){
+  $('#fixed-action-btn').floatingActionButton();
+});
 
 
 

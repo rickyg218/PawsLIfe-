@@ -14,7 +14,7 @@ router.get("/", function(req, res) {
   db.Post.findAll({
     include:[
       {model:db.User, as:"Provider"},
-      // {model:db.User, as:"Owner"}
+      {model:db.User, as:"Booker"}
     ]
   }).then(userPosts=>{
     const userPostsJSON = userPosts.map(function(postObj){
@@ -61,7 +61,10 @@ router.get("/", function(req, res) {
         where:{
           id:req.session.user.id
         },
-        include: [{model:db.Post, as:"Provider"}]
+        include: [
+          {model:db.Post, as:"Provider"},
+          {model:db.Post, as:"Booker"}
+        ]
          
       }).then(userObj=>{
         // res.json(userObj)
@@ -124,16 +127,16 @@ router.get("/", function(req, res) {
   });
   
 //book an offer post 
-router.put("/offer_posts/:id/claimpost",(req,res)=>{
+router.put("/offer_posts/:id/bookpost",(req,res)=>{
   db.Post.update({
-      ProviderId: req.body.ProviderId
+      BookerId: req.session.user.id
   }, {
       where: {
           id: req.params.id
       }
   }).then(postData => {
-      res.json(postData)
-      // res.json({claimedBy:req.body.UserId})
+      // res.json(postData)
+      res.json({claimedBy:req.session.user.id})
   }).catch(err => {
       console.log(err);
       res.status(500).end()
