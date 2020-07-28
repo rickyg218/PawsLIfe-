@@ -90,7 +90,14 @@ router.get("/", function(req, res) {
         include: [
           {
             model:db.Pet, as:"Customer"
-          }
+          },
+          {
+            model:db.Post, as:"Booker"
+          },
+          {
+            model:db.Post, as:"Provider"
+          },
+
         ]
          
       }).then(userProfile=>{
