@@ -21,8 +21,9 @@ router.get("/users/:id", function(req, res) {
     ]
   }).then(function(dbUser) {
     console.log(dbUser);
-    res.json( dbUser)
-    // return res.render("owner")
+    const userJSON = dbUser.toJSON();
+    //  res.json( dbUser)
+    return res.render("owner", userJSON)
   }).catch(function(err){
     console.log(err)
     res.status(500).json(err);

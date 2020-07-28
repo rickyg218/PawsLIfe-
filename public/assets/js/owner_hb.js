@@ -87,7 +87,7 @@ $("#add-cat-form").click(function(event){
       url:`/pets/update/${petId}`,
       method: "PUT"
     }).then(data=>{
-      alert(`saved ${petId} pet!`);
+      alert(`saved pet!`);
       window.location.reload();
     })
     console.log(" clicked save pet")
@@ -100,7 +100,7 @@ $("#add-cat-form").click(function(event){
       url:`/pets/delete/${petId}`,
       method: "DELETE"
     }).then(data=>{
-      alert(`deleted ${petId} pet!`);
+      alert(`deleted pet!`);
      location.reload();
     })
     console.log(" clicked delete pet")

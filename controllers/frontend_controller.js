@@ -159,7 +159,7 @@ router.get("/api/pets/users", function(req, res){
 //all posts with users 
 router.get("/api/posts/users", function(req, res) {
   db.Post.findAll({
-    include:[{model:db.User, as:"Provider"}]
+    include:[{model:db.User, as:"Provider"},{model:db.User, as:"Owner"}]
   }).then(posts=>{
     res.json(posts)
   });
