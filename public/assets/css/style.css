@@ -186,3 +186,8 @@ button .pawbtn {
 div .petcard {
     border-right: 5px solid #1565c0;
 }
+
+#mapWindow{
+height: 500px;
+}
+

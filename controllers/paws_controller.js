@@ -105,6 +105,8 @@ router.get("/offer_posts", function(req,res) {
 
 //TODO: working find posts within a range that match an animal type
 router.get("/offer_posts/:animal/:lat/:long", function(req,res){
+  console.log ( req.params.animal,req.params.lat,req.params.long);
+  
   let latRange = [(parseFloat(req.params.lat)-0.100), (parseFloat(req.params.lat)+0.100)]
   let longRange = [(parseFloat(req.params.long)-0.150), (parseFloat(req.params.long)+0.150)]
   console.log(req.params.lat + " " + req.params.long);
@@ -125,7 +127,8 @@ router.get("/offer_posts/:animal/:lat/:long", function(req,res){
     },
   )
     .then(function (dbPost) {
-      //console.log("this console logs the dbPost return from get by lat long", dbPost);
+      console.log(dbPost)
+      console.log("this console logs the dbPost return from get by lat long", dbPost);
       for (var i = 0; i < dbPost.length; i++){
            if ((req.params.lat == dbPost[i].Provider.lat) && (req.params.long == dbPost[i].Provider.long)) {
             dbPost[i].range = 0;
@@ -146,7 +149,8 @@ router.get("/offer_posts/:animal/:lat/:long", function(req,res){
             dbPost[i].range = dist.toFixed(2);
          }	
       } 
-      let hbrsObj = { offer_posts: dbPost }  
+      let hbrsObj = { offer_posts: dbPost } 
+ 
       return res.json(hbrsObj);
     })
     .catch(function (err) {
