@@ -158,7 +158,7 @@ router.get("/offer_posts/:animal/:lat/:long", function(req,res){
     });
 })
 //offer_posts select by animal
-router.get("/offer_posts/:animal", function(req,res){
+/*router.get("/offer_posts/:animal", function(req,res){
   //service passed by clicking on "cat" or "dog" button
 
   console.log(req.params.animal);
@@ -180,7 +180,7 @@ router.get("/offer_posts/:animal", function(req,res){
     .catch(function (err) {
       res.status(500).json(err);
     });
-})
+})*/
 
 
 // // offer_posts UPDATE, by post id. 
