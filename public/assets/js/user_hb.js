@@ -147,20 +147,28 @@ $("#create-account").on("click", function (event) {
 //book a service 
   //book a service
 
-$("#book-now").click(function (event) {
-  event.preventDefault();
-  const postId = $(this).attr("data-id");
+  $(".book-now").click(function(event){
 
-  console.log(postId);
-  $.ajax({
-    url: `/offer_posts/${postId}/bookpost`,
-    method: "PUT",
-  }).then((data) => {
-    console.log(data);
-    alert("booked!");
-    location.href = `/`;
-  });
-});
+    event.preventDefault();
+    const postId = $(this).attr("data-id")
+    
+    console.log(postId)
+    $.ajax({
+  
+      url:`/offer_posts/${postId}/bookpost`,
+      method:"PUT",
+      
+    }).then(data=>{
+  
+      console.log(data)
+      alert("booked!")
+      location.href = `/`;
+    }).catch(err=>{
+      console.log(err)
+    })
+  })
+
+
 //TODO:unify this search field, which means unifying button terminology, removing radio buttons to just describe the search.
 $("dog-search").on("click", function (event) {
   event.preventDefault();
