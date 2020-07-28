@@ -184,6 +184,12 @@ div #catsearch {
     min-height: 300px;
 }
 
+a #navphoto {
+    margin-bottom:5px;
+    z-index: 99;
+}
+
+
 .current-listings {
     background-image: url("../images/multiprints.png");
     padding-bottom: 2vh;
@@ -218,3 +224,12 @@ button .add-cat .add-dog {
   #mapWindow{
       height: 400px;
   }
+/* side nav bar */
+.side-nav-menu{
+
+color: #4a6690;
+}
+
+.side-nav-menu a:hover{
+background-color: yellow;
+}

@@ -6,11 +6,10 @@
   <meta charset="UTF-8">
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  {{!-- font awesome kit  --}}
   <script src="https://kit.fontawesome.com/956330d85a.js" crossorigin="anonymous"></script>
-
+  {{!-- style sheet  --}}
   <link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  
 </head>
 
 <body>
@@ -33,6 +32,26 @@
     </div>
   </nav>
 
+  {{!-- sliding nav bar  --}}
+  <ul id="slide-out" class="sidenav">
+      <li><div class="user-view">
+        <br>
+        <br>
+      <div class="background">
+        <img src="../../../assets/images/pawslogoupdate.png" width="300px">
+      </div>
+      </div></li>
+      <li><a href="/"><i class="fas fa-house-user"></i> home</a></li>
+        <li><div class="divider"></div></li>
+      <li><a href="/signin"><i class="fas fa-paw"></i> sign in</a></li>
+        <li><div class="divider"></div></li>
+      <li><a href="/createaccount"><i class="fas fa-pen-fancy"></i> create account</a></li>
+        <li><div class="divider"></div></li>
+      <li><a href="/user/owner"><i class="fas fa-user-astronaut"></i> my account</a></li>
+        <li><div class="divider"></div></li>
+      <li><a href="/logout" id="logout"><i class="fa fa-unlock"></i> log out</a></li>
+  </ul>
+  <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="side-nav-menu">menu</i></a>
 
   <div>
     <div class="row">
@@ -76,28 +95,13 @@
         <div class="col l4  s12">
           <h5 class="white-text">linkedin</h5>
           <ul>
-            <li><a class="grey-text text-lighten-3" href="#!">Evan</a></li>
+            <li><a class="grey-text text-lighten-3" href="https://www.linkedin.com/in/evan-pacholski-7910481ab/" target="_blank">Evan</a></li>
             <li><a class="grey-text text-lighten-3" href="#!">Michael</a></li>
             <li><a class="grey-text text-lighten-3" href="#!">Nicole</a></li>
             <li><a class="grey-text text-lighten-3" href="#!">Ricky</a></li>
           </ul>
         </div>
       </div>
-    </div>
-
-    {{!-- floating buttons navigation --}}
-    <div id="fixed-action-btn">
-      <a class="btn-floating btn-large red">
-        <i class="large material-icons">mode_edit</i>
-      </a>
-      <ul>
-        <li><a href="/signin" class="btn-floating red"><i class="material-icons">sign in</i></a></li>
-        <li><a href="/createaccount" class="btn-floating yellow darken-1"><i class="material-icons">create
-              account</i></a></li>
-        <li><a href="/user/owner" class="btn-floating green"><i class="material-icons">my account</i></a></li>
-        <li><a href="/logout" class="btn-floating blue"><i class="material-icons">log out</i></a></li>
-        <li><a href="/" class="btn-floating blue"><i class="material-icons">home</i></a></li>
-      </ul>
     </div>
 
 
@@ -118,11 +122,21 @@
       </div>
     </div>
   </footer>
+  {{!-- jquery  --}}
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  {{!-- materialize jquery  --}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  {{!-- linked in javascript files  --}}
   <script src="/assets/js/owner_hb.js"></script>
   <script src="/assets/js/professional_hb.js"></script>
   <script src="/assets/js/user_hb.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9k83loTwkEX28Ez2CA0pijP3HXyttslo&callback=initMap&libraries=&v=weekly" async defer></script>
+  {{!-- javascript for side bar nav --}}
+  <script>
+    $(document).ready(function(){
+      $('.sidenav').sidenav();
+    });
+  </script>
 
 
 

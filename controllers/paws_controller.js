@@ -21,8 +21,9 @@ router.get("/users/:id", function(req, res) {
     ]
   }).then(function(dbUser) {
     console.log(dbUser);
-    res.json( dbUser)
-    // return res.render("owner")
+    const userJSON = dbUser.toJSON();
+    //  res.json( dbUser)
+    return res.render("owner", userJSON)
   }).catch(function(err){
     console.log(err)
     res.status(500).json(err);
@@ -77,7 +78,6 @@ router.post("/offer_posts/create", function(req,res) {
     size_restrictions:req.body.size_restrictions,
     duration:req.body.duration, 
     range:req.body.range, 
-    picture:req.body.picture, 
     service_type:req.body.service_type, 
     ProviderId:req.session.user.id,
   })
@@ -195,7 +195,6 @@ router.put("/offer_posts/update/:id", function (req,res) {
     range: req.body.range,
     cost: req.body.cost,
     service_type: req.body.service_type,
-    pictures: req.body.pictures,
   },
   {where: {
     id: req.params.id
@@ -246,8 +245,6 @@ router.post("/pets/create", function(req,res) {
       size:req.body.size,  
       temperment:req.body.temperment,  
       age:req.body.age,  
-      picture:req.body.picture,  
-      // TODO: ask joe if CustomerId or UserId 
       CustomerId:req.session.user.id,
 
   }).then(function(dbPet) {
@@ -296,7 +293,6 @@ router.put("/pets/update/:id", function (req,res) {
     size: req.body.size,
     temperment:req.body.temperment,
     age: req.body.age,
-    picture: req.body.picture
   },
   {where: {
     id: req.params.id

@@ -27,11 +27,6 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false,
  
       },
-      picture: {
-        type:DataTypes.STRING,
-        allowNull: true,
-
-      },
       service_type: {
         type:DataTypes.STRING,
         allowNull: false,
