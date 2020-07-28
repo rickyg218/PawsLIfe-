@@ -1,5 +1,4 @@
 <div class="container">
-  <hr>
   <br>
    <div class="row">
       {{!-- cat search form --}}
@@ -80,7 +79,7 @@
       <h2> current listings</h2>
       {{#each posts}}
 
-      <div class="col s6 l4 card parent-user hoverable center-align mostly-customized-scrollbar">
+      <div class="col s6 l4 card parent-user hoverable center-align mostly-customized-scrollbar" style="height: ;">
          <div class="card-content left-align">
             <span class="card-title center-align">{{title}} <a href="/users/{{Provider.id}}">posted by: {{Provider.first_name}} {{Provider.last_name}}</a></span>
             <ul>
