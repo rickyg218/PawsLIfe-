@@ -85,8 +85,8 @@ label {
     border-bottom-right-radius: 1%;
     border-right: 5px solid #1565c0;
     box-shadow: 4px 4px 6px;
-    margin: 1px 10px; 
-    background-color: #eee ;
+    margin: 10px 15px; 
+    background-color: #f1efe4 ;
 }
 
 div .golden {
@@ -144,18 +144,29 @@ button #dog-search, #cat-search {
     background-color: #1565c0;
 }
 
-div #dogsearch {
+.petflex {
+    /* TODO: play around with this */
     display: flex;
+    justify-content: space-between;
+    flex-wrap:wrap;
+}
+div #dogsearch {
+    /* display: flex;
     padding-right: 10px;
     padding-left:75px;
     padding-bottom:20px;
     padding-top:28px;
     border-radius: 30%;
+    border-left: 5px solid #1565c0; */
+    display: flex;
+    padding: 30px;
+    border-radius: 30%;
     border-left: 5px solid #1565c0;
+    padding-left:50px;
 }
 div #catsearch {
     display: flex;
-    padding: 25px;
+    padding: 30px;
     border-radius: 30%;
     border-right: 5px solid #1565c0;
     padding-left:50px;
@@ -210,6 +221,9 @@ button .add-cat .add-dog {
     background-color: #1565c0; /* or add it to the track */
   }
 
+  #mapWindow{
+      height: 400px;
+  }
 /* side nav bar */
 .side-nav-menu{
 
