@@ -215,3 +215,6 @@ button .add-cat .add-dog {
     background-color: #1565c0; /* or add it to the track */
   }
 
+  #mapWindow{
+      height: 400px;
+  }

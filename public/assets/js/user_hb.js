@@ -90,6 +90,7 @@ $("#create-account").on("click", function (event) {
     url: "https://ipapi.co/json/",
     method: "GET",
   }).then(function (response) {
+    console.log(response);
     latitude = parseFloat(response.latitude);
     longitude = parseFloat(response.longitude);
     console.log("response from location ajax", response);
@@ -163,7 +164,8 @@ $("#book-now").click(function (event) {
 });
 
 //TODO:unify this search field, which means unifying button terminology, removing radio buttons to just describe the search.
-$("dog-search").on("click", function (event) {
+$(".pet-search").on("click", function (event) {
+  console.log("Hello inside dog-search");
   event.preventDefault();
   //TODO: define the "animal" that gets sent, by grabbing data-id of button handy?
   //TODO: are we grabbing query parameters to send them off? right now first query doesn't retrieve those being passed in. 
@@ -171,16 +173,19 @@ $("dog-search").on("click", function (event) {
   //TODO: build url comprised of set animal, lat, long, this one can't do a get without them, right?
   let latitude;
   let longitude;
+  // let animaltype = "cat"
   let animaltype = $(this).attr("data-id");
 
 
   $.ajax({
-    // URL: "/offer_posts/:animal/:lat/:long",
-    URL: "https://ipapi.co/json/",
+    url: "https://ipapi.co/json/",
     method: "GET",
-  }).then(function (response) {
-    latitude = response.latitude;
-    longitude = response.longitude;
+  }).then(function (locRes) {
+    console.log(locRes);
+
+    latitude = locRes.latitude;
+    longitude = locRes.longitude;
+   
     // const petId = $(this).attr("data-id");
     // console.log(petId);
     $.ajax({
@@ -188,16 +193,16 @@ $("dog-search").on("click", function (event) {
       url: `/offer_posts/${animaltype}/${latitude}/${longitude}`,
       method: "GET",
     }).then((data) => {
-      console.log(data);
-
+      console.log(data.offer_posts);
+      var uluru = {lat: 47.606209, lng: -122.332069};
       var infowindow = new google.maps.InfoWindow();
-
+ var map = new google.maps.Map( document.getElementById("mapWindow"),{zoom:13,center: uluru})
       var marker, i;
 
-      for (i = 0; i < latLong.length; i++) {
+      for (i = 0; i < data.offer_posts.length; i++) {
         marker = new google.maps.Marker({
-          position: new google.maps.LatLng(latitude, longitude),
           map: map,
+          position: new google.maps.LatLng(data.offer_posts[i].Provider.lat, data.offer_posts[i].Provider.long),
         });
 
         google.maps.event.addListener(
@@ -205,22 +210,23 @@ $("dog-search").on("click", function (event) {
           "click",
           (function (marker, i) {
             return function () {
-              infowindow.setContent(locations[i][0]);
+              infowindow.setContent(data.offer_posts[i].text);
               infowindow.open(map, marker);
             };
           })(marker, i)
         );
       }
-      google.maps.event.addListener(
-        marker,
-        "click",
-        (function (marker, i) {
-          return function () {
-            infowindow.setContent(locations[i][0]);
-            infowindow.open(map, marker);
-          };
-        })(marker, i)
-      );
+      //TODO: redundant, remove on final cleanup.
+      // google.maps.event.addListener(
+      //   marker,
+      //   "click",
+      //   (function (marker, i) {
+      //     return function () {
+      //       infowindow.setContent(locations[i][0]);
+      //       infowindow.open(map, marker);
+      //     };
+      //   })(marker, i)
+      // );
     });
   });
 });
