@@ -1,27 +1,15 @@
 <div class="container">
   <br>
-   <div class="row">
+   <div class="row petflex">
       {{!-- cat search form --}}
-      <div class="col s10 m5 offset-s1 catsearch hoverable center-align search" id="catsearch">
+      <div class="flex col s10 m7 l5 offset-s1 catsearch hoverable center-align search" id="catsearch">
          <form action="#">
             <div class="row center-align">
                <p>
                <img src="./assets/images/catrunning.png" alt="running cat shadow" height="150px" title="Shadow kitty" />
                </p>
             Feline Friendly Services
-               <p>
-                  <label>
-                     <input name="group1" type="radio" checked />
-                     <span>Search close to home</span>
-                  </label>
-               </p>
-                {{!-- TODO: comment this out if radio buttons unneccessary.  --}}
-               <p>
-                  <label>
-                     <input name="group1" type="radio" />
-                     <span>Search near me right now</span>
-                  </label>
-               </p>
+            <br>
             find
             <button class="btn-floating btn-large waves-effect waves-light blue darken-3 pet-search" type="submit" value="submit" data-id="cat" id="cat-search">
                <img style="margin-top:10px" src="./assets/images/catpawpink_zrY_icon.ico" />
@@ -33,7 +21,7 @@
       {{!-- spacer --}}
       <div class="col m1"></div>  
       {{!-- dog search form --}}
-      <div class="col s10 m5 offset-l1 dogsearch hoverable center-align search" id="dogsearch">
+      <div class="flex col s10 m7 l5 offset-l1 dogsearch hoverable center-align search" id="dogsearch">
          <form action="#">
             <div class="row">
                <p>
@@ -43,20 +31,7 @@
 
             
             Puppy Pals Services
-            {{!-- TODO: comment this out if radio buttons unneccessary.  --}}
-               <p>
-                  <label>
-                     <input name="group2" type="radio" checked />
-                     <span>Search close to home</span>
-                  </label>
-               </p>
-               <p>
-                  <label>
-                     <input name="group2" type="radio" />
-                     <span>Search near me right now</span>
-                  </label>
-               </p>
-           
+            <br>
             get  
             <button class="btn-floating btn-large waves-effect waves-light blue darken-3 pet-search" type="submit" value="submit" data-id="dog" id="dog-search">
                <img style="margin-top:10px" src="./assets/images/browndogpaw_2cu_icon.ico" />

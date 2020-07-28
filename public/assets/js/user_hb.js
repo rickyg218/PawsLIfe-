@@ -161,23 +161,31 @@ $("#book-now").click(function (event) {
     location.href = `/`;
   });
 });
+
 //TODO:unify this search field, which means unifying button terminology, removing radio buttons to just describe the search.
 $("dog-search").on("click", function (event) {
   event.preventDefault();
-
+  //TODO: define the "animal" that gets sent, by grabbing data-id of button handy?
+  //TODO: are we grabbing query parameters to send them off? right now first query doesn't retrieve those being passed in. 
+  //TODO: do we need to 
+  //TODO: build url comprised of set animal, lat, long, this one can't do a get without them, right?
   let latitude;
   let longitude;
+  let animaltype = $(this).attr("data-id");
+
 
   $.ajax({
-    URL: "/offer_posts/:animal/:lat/:long",
+    // URL: "/offer_posts/:animal/:lat/:long",
+    URL: "https://ipapi.co/json/",
     method: "GET",
   }).then(function (response) {
     latitude = response.latitude;
     longitude = response.longitude;
-    const petId = $(this).attr("data-id");
-    console.log(petId);
+    // const petId = $(this).attr("data-id");
+    // console.log(petId);
     $.ajax({
-      url: `/offer_posts/dog/${latitude}/${longitude}`,
+      // url: `/offer_posts/dog/${latitude}/${longitude}`,
+      url: `/offer_posts/${animaltype}/${latitude}/${longitude}`,
       method: "GET",
     }).then((data) => {
       console.log(data);
