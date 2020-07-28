@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row center-align">
             <h1>professional profile</h2>
                 <div class="user-profile">
                     <h2>welcome, {{first_name}} !</h2> 
@@ -22,7 +22,7 @@
     </div>
    
     <!-- CREATE AN OFFER  -->
-    <div class="row create-listing">
+    <div class="row create-listing center-align">
         <h2>create a posting</h2>
         <ul>
             {{!-- choose for cat or dog  --}}
@@ -39,12 +39,12 @@
     {{!-- show professional active listings  --}}
     <div class="row active">
         <h2>Active Listings You've Posted</h2> 
-            <div class="row" id="active-postings">
+            <div class="row center-align" id="active-postings">
                 {{#each Provider}} 
                     {{#if BookerId}}
                     {{/if}}
                     {{#unless BookerId}}
-                        <div class="col s12 m6">
+                        <div class="col s12">
                             <div class="card parent-user hoverable center-align mostly-customized-scrollbar">
                                 <div class="card-content">
                                     <span class="card-title"><b><u>{{title}}</u></b> </span>

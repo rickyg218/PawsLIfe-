@@ -76,16 +76,16 @@ label {
 /* cards  */
 .parent-user{
     display: inline-block;
-    height:38vh;
+    height:45vh;
     padding-right:5px;
     overflow:auto;
     border-top-left-radius: 5%;
     border-bottom-left-radius: 5%;
-    border-top-right-radius: 2%;
-    border-bottom-right-radius: 2%;
+    border-top-right-radius: 1%;
+    border-bottom-right-radius: 1%;
     border-right: 5px solid #1565c0;
     box-shadow: 4px 4px 6px;
-    margin: 0 10px; 
+    margin: 1px 10px; 
     background-color: #eee ;
 }
 
@@ -153,16 +153,15 @@ div #catsearch {
 }
 
 #petbanner {
-    display:flex;
-    align-items: center;
-    flex-direction: row-reverse;
-    background-image: url("../images/offsetpawsquad.png");
+    /* display:flex; */
+    /* align-items: center; */
+    /* flex-direction: row-reverse; */
+    background-image: url("../images/petsquad.png");
     background-attachment: local;
-    background-size: fit;
+    background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
-    min-height: 40vh;
-    border-bottom: 5 px solid #1565c0;
+    min-height: 300px;
 }
 
 .current-listings {
