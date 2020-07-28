@@ -69,7 +69,10 @@ label {
 .create-account {
     font-size: 40px;
 }
-
+/* links for professional and owner pages */
+li .pinklink {
+    font-size: 30px;
+}
 
 /* cards  */
 .parent-user{
@@ -77,13 +80,14 @@ label {
     height:38vh;
     padding-right:5px;
     overflow:auto;
-    border-top-left-radius: 20%;
-    border-bottom-left-radius: 30%;
-    border-top-right-radius: 10%;
-    border-bottom-right-radius: 10%;
+    border-top-left-radius: 5%;
+    border-bottom-left-radius: 5%;
+    border-top-right-radius: 2%;
+    border-bottom-right-radius: 2%;
     border-right: 5px solid #1565c0;
     box-shadow: 4px 4px 6px;
     margin: 0 10px; 
+    background-color: #eee ;
 }
 
 .account-user{
@@ -187,15 +191,13 @@ nav .nav-extended {
 }
 
 
-
-
 button .add-cat .add-dog {
     border-radius: 50%;
     background-color: #1565c0;
 }
 
 .mostly-customized-scrollbar::-webkit-scrollbar {
-    width: 5px;
+    width: 10px;
     height: 8px;
     background-color: #1565c0; /* or add it to the track */
   }
