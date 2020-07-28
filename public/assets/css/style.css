@@ -210,3 +210,12 @@ button .add-cat .add-dog {
     background-color: #1565c0; /* or add it to the track */
   }
 
+/* side nav bar */
+.side-nav-menu{
+
+color: #4a6690;
+}
+
+.side-nav-menu a:hover{
+background-color: yellow;
+}
