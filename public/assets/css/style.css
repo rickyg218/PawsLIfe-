@@ -137,7 +137,7 @@ button #dog-search, #cat-search {
 
 div #dogsearch {
     display: flex;
-    padding-right: 50px;
+    padding-right: 10px;
     padding-left:75px;
     padding-bottom:20px;
     padding-top:28px;
@@ -147,10 +147,9 @@ div #dogsearch {
 div #catsearch {
     display: flex;
     padding: 25px;
-    padding-right: 0px;
     border-radius: 30%;
     border-right: 5px solid #1565c0;
-    padding-left:70px;
+    padding-left:50px;
 }
 
 #petbanner {

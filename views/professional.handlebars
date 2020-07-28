@@ -40,47 +40,29 @@
     <div class="row active">
         <h2>Active Listings You've Posted</h2> 
             <div class="row" id="active-postings">
-<<<<<<< HEAD
-                {{#each Provider}}
-                    <div class="col s12 m6">
-                        <div class="card parent-user hoverable center-align mostly-customized-scrollbar">
-                            <div class="card-content">
-                                <span class="card-title">service: <br> {{title}} </span>
-                                <div class="card-content left-align">
-                                    <ul>
-                                        <li><span style="font-weight:bold;">Service Description: </span> {{title}} </li>
-                                        <li><span style="font-weight:bold;">service type: </span>{{service_type}} </li>
-                                        <li><span style="font-weight:bold;">pet type: </span> {{animal_type}}</li>
-                                        <li><span style="font-weight:bold;">pet size: </span>{{size_restrictions}} </li>
-                                        <li><span style="font-weight:bold;">duration: </span>{{duration}} </li>
-                                        <li><span style="font-weight:bold;">cost: </span>{{cost}}</li>
-                                    </ul>
-                                    
-=======
                 {{#each Provider}} 
                     {{#if BookerId}}
                     {{/if}}
                     {{#unless BookerId}}
                         <div class="col s12 m6">
-                            <div class="card blue-grey darken-1 parent-user">
-                                <div class="card-content white-text">
-                                    <span class="card-title">service title: {{title}} </span>
-                                    <div class="card-content">
+                            <div class="card parent-user hoverable center-align mostly-customized-scrollbar">
+                                <div class="card-content">
+                                    <span class="card-title"><b><u>{{title}}</u></b> </span>
+                                    <div class="card-content left-align">
                                         <ul>
-                                            <li>booked by: {{Booker.first_name}}</li>
-                                            <li>service text: {{text}} </li>
-                                            <li>service type: {{service_type}} </li>
-                                            <li>pet type: {{animal_type}}</li>
-                                            <li>pet size: {{size_restrictions}} </li>
-                                            <li>duration:{{duration}} </li>
-                                            <li>cost: ${{cost}}</li>
+                                            <li><b>booked by:</b> {{Booker.first_name}}</li>
+                                            <li><b>service text:</b> {{text}} </li>
+                                            <li><b>service type:</b> {{service_type}} </li>
+                                            <li><b>pet type:</b> {{animal_type}}</li>
+                                            <li><b>pet size:</b> {{size_restrictions}} </li>
+                                            <li><b>duration:</b>{{duration}} </li>
+                                            <li><b>cost:</b> ${{cost}}</li>
                                         </ul>
                                         
                                     </div>
                                 </div>
                                 <div class="card-action">
                                     <button data-id={{id}} class="delete-posting">delete posting</button>
->>>>>>> dev
                                 </div>
                             </div>
                         </div>
