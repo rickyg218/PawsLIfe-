@@ -6,22 +6,22 @@
 
 //signin.handlebars
 //when the user clicks on service cat, they will be redirected to the home page
-$("#sign-in").click(function (event) {
+$("#sign-in").click(function(event){
   event.preventDefault();
   const userObj = {
-    user_name: $("#signinUsername").val(),
-    password: $("#signinPassword").val(),
+    user_name:$("#signinUsername").val(),
+    password:$("#signinPassword").val(),
   }
-  console.log("User Obj: " + userObj);
+  console.log("User Obj: "+userObj);
 
-  $.ajax("/signin", {
-    type: "POST",
-    data: userObj
-  }).done(data => {
+  $.ajax("/signin",{
+    type:"POST",
+    data:userObj
+  }).done(data=>{
     alert("welcome back!");
     location.href = '/'
     console.log(data)
-  }).fail(function (err) {
+  }).fail(function(err){
     console.log(err);
     alert("check your username or password!")
     location.reload();
@@ -124,27 +124,26 @@ $("#create-account").on("click", function (event) {
 
 //MAIN PAGE SEARCH
 //book a service 
-
 $("#book-now").click(function(event){
-
   event.preventDefault();
   const postId = $(this).attr("data-id")
   
   console.log(postId)
   $.ajax({
-
     url:`/offer_posts/${postId}/bookpost`,
     method:"PUT",
     
   }).then(data=>{
-
     console.log(data)
     alert("booked!")
     location.href = `/`;
+  }).catch(err => {
+    console.log(err)
+    response.status(500).json(err)
   })
-})*/
+})
 
-/*$(".search").on("click", function (event) {
+$(".search").on("click", function (event) {
   event.preventDefault();
 
   let latitude;
@@ -163,7 +162,11 @@ $("#book-now").click(function(event){
       method: "GET",
     }).then(data => {
       console.log(data)
-
+      var map = new google.maps.Map(document.getElementById("mapWindow"), {
+        zoom: 10,
+        center: new google.maps.LatLng(33.92, 151.25),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      });
       var infowindow = new google.maps.InfoWindow();
       var marker, i;
       for (var i = 0; i < response.offer_posts.length; i++) {
@@ -181,14 +184,16 @@ $("#book-now").click(function(event){
           infowindow.open(map, marker);
         }
       })(marker, i));
+    }).catch(err => {
+      console.log(err)
+      response.status(500).json(err)
     })
   })
-})*/
-
+})
 
 //floating button navigation
 $(document).ready(function(){
-  $('#fixed-action-btn').floatingActionButton();
+  $('.fixed-action-btn').floatingActionButton();
 });
 
 
