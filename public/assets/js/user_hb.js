@@ -196,7 +196,7 @@ $(".pet-search").on("click", function (event) {
       method: "GET",
     }).then((data) => {
       console.log(data.offer_posts);
-      var uluru = {lat: 47.606209, lng: -122.332069};
+      var uluru = {lat: latitude, lng: longitude};
       var infowindow = new google.maps.InfoWindow();
  var map = new google.maps.Map( document.getElementById("mapWindow"),{zoom:13,center: uluru})
       var marker, i;
