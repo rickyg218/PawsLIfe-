@@ -106,8 +106,8 @@ router.get("/offer_posts", function(req,res) {
 //TODO: working find posts within a range that match an animal type
 router.get("/offer_posts/:animal/:lat/:long", function(req,res){
   let latRange = [(parseFloat(req.params.lat)-0.100), (parseFloat(req.params.lat)+0.100)]
-  let longRange = [(parseFloat(req.params.long)-0.100), (parseFloat(req.params.long)+0.100)]
-  
+  let longRange = [(parseFloat(req.params.long)-0.150), (parseFloat(req.params.long)+0.150)]
+  console.log(req.params.lat + " " + req.params.long);
  
   db.Post.findAll(
     {
@@ -154,7 +154,7 @@ router.get("/offer_posts/:animal/:lat/:long", function(req,res){
     });
 })
 //offer_posts select by animal
-router.get("/offer_posts/:animal", function(req,res){
+/*router.get("/offer_posts/:animal", function(req,res){
   //service passed by clicking on "cat" or "dog" button
 
   console.log(req.params.animal);
@@ -176,7 +176,7 @@ router.get("/offer_posts/:animal", function(req,res){
     .catch(function (err) {
       res.status(500).json(err);
     });
-})
+})*/
 
 
 // // offer_posts UPDATE, by post id. 
