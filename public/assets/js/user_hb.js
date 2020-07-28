@@ -217,10 +217,7 @@ $("dog-search").on("click", function (event) {
   });
 });
 
-//floating button navigation
-$(document).ready(function(){
-  $('.fixed-action-btn').floatingActionButton();
-});
+
 
 
 //TODO: note, there was a }) here, that looked like it belonged up by the end of the create account f(x).
