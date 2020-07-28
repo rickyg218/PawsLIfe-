@@ -12,8 +12,8 @@
         </div>
     </div>
 
-    <div class="row">
-        <h1>owner profile</h1>
+    <div class="row center-align">
+        <h1>Owner Profile</h1>
         <div class="user-profile">
             <h2>welcome, {{first_name}} !</h2>
         </div>
@@ -22,35 +22,38 @@
 
 
     {{!--CREATE A PET --}}
-    <div class="row create-pet">
-        <h2>add a pet</h2>
+    <div class="row center-align create-pet">
+        <h2>New Pet in your family?</h2>
         <ul>
             {{!-- choose for cat or dog  --}}
-            <button class="add-dog"><i class="fas fa-dog"></i>dogs</button>
-            <button class="add-cat"><i class="fas fa-cat"></i>cats</button>
+            <button class="waves-effect waves-light btn-large blue darken-3 add-dog"><i class="fas fa-dog"></i>  dog</button>
+            <button class="waves-effect waves-light btn-large blue darken-3 add-cat"><i class="fas fa-cat"></i>  cat</button>
         </ul>
 
         {{!-- show either addcat or adddog handlebar  --}}
         <div class="col s12" id="info-add">{{>addcat}}</div>
         <div class="col s12" id="info-add">{{>adddog}}</div>
     </div>
+
+
     {{!-- show pet family for owner --}}
     <div class="row pets">
         <h2>pet family</h2>
         <div class="row" id="pet-family">
             {{#each Customer}}
-            <div class="col s12 l4 card parent-user petcard">
-                <div class="card-stacked">
-                    <span class="card-title">name: {{first_name}}</span>
-                    <div class="card-content">
+            <div class="col s1 hide-on-large-only"></div>
+            <div class="col s10 l4 card parent-user hoverable center-align mostly-customized-scrollbar">
+                <div class="card-stacked ">
+                    <span class="card-title" style="font-size: 30px; font-weight: bold;"><b> {{first_name}} </b></span>
+                    <div class="card-content left-align">
                         <ul>
-                            <li>breed:{{breed}} </li>
-                            <li>size: {{size}}</li>
-                            <li>temperment: {{temperment}} </li>
-                            <li>special care: {{special_care}} </li>
-                            <li>pet_type: {{pet_type}} </li>
-                            <li>picture: {{picture}} </li>
-                            <li>age: {{age}} </li>
+                            <li><span style="font-weight:bold;">breed: </span>{{breed}} </li>
+                            <li><span style="font-weight:bold;">size: </span> {{size}}</li>
+                            <li><span style="font-weight:bold;">temperment: </span> {{temperment}} </li>
+                            <li><span style="font-weight:bold;">special care: </span> {{special_care}} </li>
+                            <li><span style="font-weight:bold;">pet_type: </span> {{pet_type}} </li>
+                            <li><span style="font-weight:bold;">picture: </span>{{picture}} </li>
+                            <li><span style="font-weight:bold;">age: </span> {{age}} </li>
                         </ul>
                     </div>
                 </div>
@@ -59,6 +62,7 @@
                 </div>
             </div>
             {{/each}}
+
         </div>
 
 

@@ -1,9 +1,8 @@
 <div class="container">
-  <hr>
   <br>
    <div class="row">
       {{!-- cat search form --}}
-      <div class="col s10 m5 offset-s1 catsearch hoverable right-align search" id="catsearch">
+      <div class="col s10 m5 offset-s1 catsearch hoverable center-align search" id="catsearch">
          <form action="#">
             <div class="row center-align">
                <p>
@@ -16,6 +15,7 @@
                      <span>Search close to home</span>
                   </label>
                </p>
+                {{!-- TODO: comment this out if radio buttons unneccessary.  --}}
                <p>
                   <label>
                      <input name="group1" type="radio" />
@@ -23,7 +23,7 @@
                   </label>
                </p>
             find
-            <button class="btn-floating btn-large waves-effect waves-light blue darken-3" type="submit" value="submit" data-id="cat" id="cat-search">
+            <button class="btn-floating btn-large waves-effect waves-light blue darken-3 pet-search" type="submit" value="submit" data-id="cat" id="cat-search">
                <img style="margin-top:10px" src="./assets/images/catpawpink_zrY_icon.ico" />
             </button>
             meow
@@ -42,8 +42,8 @@
                </p>
 
             
-            Canine Companion Services
-            
+            Puppy Pals Services
+            {{!-- TODO: comment this out if radio buttons unneccessary.  --}}
                <p>
                   <label>
                      <input name="group2" type="radio" checked />
@@ -58,7 +58,7 @@
                </p>
            
             get  
-            <button class="btn-floating btn-large waves-effect waves-light blue darken-3 " type="submit" value="submit" data-id="dog" id="dog-search">
+            <button class="btn-floating btn-large waves-effect waves-light blue darken-3 pet-search" type="submit" value="submit" data-id="dog" id="dog-search">
                <img style="margin-top:10px" src="./assets/images/browndogpaw_2cu_icon.ico" />
             </button>
             'em!
@@ -75,22 +75,22 @@
 
 
    {{!-- shows current listings for view --}}
-   <div class="row flex current-listings">
-      <h2> current listings</h2>
+   <div class="row flex current-listings center-align">
+      <h2 class="left-align"> current listings</h2>
       {{#each posts}}
 
-      <div class="col s12 l3 card blue-grey darken-1 parent-user">
-         <div class="card-content white-text">
-            <span class="card-title">{{title}} <a href="/users/{{Provider.id}}">posted by: {{Provider.first_name}} {{Provider.last_name}}</a></span>
+      <div class="col s10 l5 card parent-user hoverable center-align mostly-customized-scrollbar" style="height: ;">
+         <div class="card-content left-align">
+            <span class="card-title center-align">{{title}} <a href="/users/{{Provider.id}}">posted by: {{Provider.first_name}} {{Provider.last_name}}</a></span>
             <ul>
-               <li>this service is for a: {{animal_type}}</li>
-               <li>service type: {{service_type}}</li>
-               <li>about this service: {{text}}</li>
-               <li>accomodating: {{size_restrictions}}</li>
-               <li>duration: {{duration}}</li>
-               <li>location range: {{range}}</li>
-               <li>picture: {{picture}}</li>
-               <li>cost: ${{cost}}</li>
+               <li><b>for:</b> {{animal_type}}s</li>
+               <li><b>service type:</b> {{service_type}}</li>
+               <li><b>about this service:</b> {{text}}</li>
+               <li><b>accomodating:</b> {{size_restrictions}}</li>
+               <li><b>duration:</b> {{duration}}</li>
+               <li><b>location range:</b> {{range}}</li>
+               <li></b>picture:</b> {{picture}}</li>
+               <li></b>cost:</b> ${{cost}}</li>
             </ul>
          </div>
          <div class="card-action">
