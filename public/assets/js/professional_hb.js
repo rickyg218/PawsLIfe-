@@ -29,7 +29,6 @@ $("#service-cat-form").click(function(event){
       size_restrictions:$("#cat-size-restrictions").val(),
       duration:$("#cat-duration").val(),
       range:$("#cat-range").val(),
-      picture:$("#cat-picture").val(),
       service_type:$("#cat-service-type").val(),
       cost:$("#cat-cost").val(),
     }
@@ -60,7 +59,6 @@ $("#service-cat-form").click(function(event){
       size_restrictions:$("#dog-size-restrictions").val(),
       duration:$("#dog-duration").val(),
       range:$("#dog-range").val(),
-      picture:$("#dog-picture").val(),
       service_type:$("#dog-service-type").val(),
       cost:$("#dog-cost").val(),
     }

@@ -31,7 +31,6 @@ $("#add-cat-form").click(function(event){
       size:$("#cat-size").val(),
       temperment:$("#cat-temperment").val(),
       age:$("#cat-age").val(),
-      picture:$("#cat-picture").val(),
     }
     $.ajax({
       url:'/pets/create',
@@ -62,7 +61,6 @@ $("#add-cat-form").click(function(event){
       size:$("#dog-size").val(),
       temperment:$("#dog-temperment").val(),
       age:$("#dog-age").val(),
-      picture:$("#dog-picture").val(),
     }
     $.ajax({
       url:`/pets/create`,
