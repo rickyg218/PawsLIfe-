@@ -99,11 +99,10 @@ div .golden {
 
 .professional-page{
     padding:10px;
-    background-image: url("../images/spaw.png");
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
-    /* background-color: white; */
+    background-color: white;
     padding-bottom: 2vh;
 
 }
@@ -111,11 +110,10 @@ div .golden {
 .owner-page{
   
     padding:10px;
-    background-image: url("../images/citycatskinny.png");
     background-position: bottom;
     background-size: cover;
     background-repeat: no-repeat;
-    /* background-color: white; */
+    background-color: white;
     padding-bottom: 2vh;
 
 }

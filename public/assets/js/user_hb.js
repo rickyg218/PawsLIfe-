@@ -141,8 +141,6 @@ $("#create-account").on("click", function (event) {
 
   //dev branch,
   //kept this instead. we can clean this code later,
-//kept this instead. we can clean this code later, 
-  //kept this instead. we can clean this code later,
   //but I wanted to leave both versions handy after this afternoon.
   //MAIN PAGE SEARCH
   //book a service
