@@ -191,7 +191,10 @@ $(".search").on("click", function (event) {
   })
 })
 
-
+//floating button navigation
+$(document).ready(function(){
+  $('#fixed-action-btn').floatingActionButton();
+});
 
 
 
