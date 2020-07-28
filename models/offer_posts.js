@@ -27,11 +27,6 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false,
  
       },
-      picture: {
-        type:DataTypes.STRING,
-        allowNull: true,
-
-      },
       service_type: {
         type:DataTypes.STRING,
         allowNull: false,
@@ -48,6 +43,10 @@ module.exports = function(sequelize, DataTypes) {
         Post.belongsTo(models.User,{
           as: "Provider",
           foreignKey: "ProviderId",
+          });
+        Post.belongsTo(models.User,{
+          as: "Booker",
+          foreignKey: "BookerId",
           });
       };
     return Post;

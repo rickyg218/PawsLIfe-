@@ -1,48 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>paws life</title>
   <meta charset="UTF-8">
   <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-<link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  {{!-- font awesome kit  --}}
+  <script src="https://kit.fontawesome.com/956330d85a.js" crossorigin="anonymous"></script>
+  {{!-- style sheet  --}}
+  <link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
 </head>
 
 <body>
 
   {{!-- nav bar  --}}
   <nav class="nav-extended">
-    <div class="nav-wrapper">
-      <img src="../../../assets/images/paws_with_circle_touchup.png" alt="puppy paws" height="50px">
-      <a href="#" class="brand-logo">paws life</a>
+    <div class="nav-wrapper" id="navwrapper">
+      <a href="#" class="brand-logo" id="navphoto"><img src="../../../assets/images/pawslogoupdate.png" alt=""
+          height="80px" srcset=""></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/signin">sign in</a></li>
-        <li><a href="/createaccount">create account</a></li>
-        <li><a href="/user/owner">my account</a></li>
-        <li><a href="/log out">log out</a></li>
-        <li><a href="/">home</a></li>
+        <li><a href="/signin"><i class="fas fa-paw"></i> sign in</a></li>
+        <li><a href="/createaccount"><i class="fas fa-pen-fancy"></i> create account</a></li>
+        <li><a href="/user/owner"><i class="fas fa-user-astronaut"></i> my account</a></li>
+        <li><a href="/logout" id="logout"><i class="fa fa-unlock"></i> log out</a></li>
+        <li><a href="/"><i class="fas fa-house-user"></i> home</a></li>
       </ul>
     </div>
     <div class="nav-content"></div>
-      <h4></h4>
+    <h4></h4>
     </div>
   </nav>
-  
-  {{!-- logo --}}
-  <div class="container logo flex">
+
+  {{!-- sliding nav bar  --}}
+  <ul id="slide-out" class="sidenav">
+      <li><div class="user-view">
+        <br>
+        <br>
+      <div class="background">
+        <img src="../../../assets/images/pawslogoupdate.png" width="300px">
+      </div>
+      </div></li>
+      <li><a href="/"><i class="fas fa-house-user"></i> home</a></li>
+        <li><div class="divider"></div></li>
+      <li><a href="/signin"><i class="fas fa-paw"></i> sign in</a></li>
+        <li><div class="divider"></div></li>
+      <li><a href="/createaccount"><i class="fas fa-pen-fancy"></i> create account</a></li>
+        <li><div class="divider"></div></li>
+      <li><a href="/user/owner"><i class="fas fa-user-astronaut"></i> my account</a></li>
+        <li><div class="divider"></div></li>
+      <li><a href="/logout" id="logout"><i class="fa fa-unlock"></i> log out</a></li>
+  </ul>
+  <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="side-nav-menu">menu</i></a>
+
+  <div>
     <div class="row">
-      <div class="col s12">
-        <img src="../../../assets/images/pawslifetransparency.png" alt="puppy wash" height="300px">
+      <div class="col s12 l8"  id="petbanner">
+        {{!-- <img src="../../../assets/images/petsquad.png" style="" alt="puppy wash" height="300px"> --}}
+      </div>
+      <div class="col l3">
+        <img class="hide-on-med-and-down" src="../../../assets/images/pawslifetransparency.png" style="margin-top: 0.5rem;"
+          alt="puppy wash" height="300px">
       </div>
     </div>
+  <hr>
+  </div>
+  <div class="row">
+    <img class="hide-on-large-only" src="../../../assets/images/pawslifetransparency.png" style="margin-top: -10rem; margin-bottom: -5rem;"
+      alt="puppy wash" height="200px">
   </div>
 
 
- 
-  
-  {{{ body }}} 
 
-{{!-- footer  --}}
+
+  {{{ body }}}
+
+  {{!-- footer  --}}
   <footer class="page-footer">
     <div class="container">
       <div class="row">
@@ -62,7 +95,7 @@
         <div class="col l4  s12">
           <h5 class="white-text">linkedin</h5>
           <ul>
-            <li><a class="grey-text text-lighten-3" href="#!">Evan</a></li>
+            <li><a class="grey-text text-lighten-3" href="https://www.linkedin.com/in/evan-pacholski-7910481ab/" target="_blank">Evan</a></li>
             <li><a class="grey-text text-lighten-3" href="#!">Michael</a></li>
             <li><a class="grey-text text-lighten-3" href="#!">Nicole</a></li>
             <li><a class="grey-text text-lighten-3" href="#!">Ricky</a></li>
@@ -70,20 +103,43 @@
         </div>
       </div>
     </div>
+
+
     <div class="footer-copyright">
       <div class="container">
-      © 2020 Copyright Text
-      <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        © 2020 Copyright Text
+        <span class="right">
+          This project utilizes
+          &nbsp;&nbsp;&nbsp;
+          <a class="right" href="https://www.npmjs.com/" target="_blank">
+            <i class="fab fa-npm"></i>&nbsp;&nbsp;&nbsp;
+          </a>
+          <a class="right" href="https://nodejs.org/en/" target="_blank">
+            <i class="fab fa-node"></i>&nbsp;&nbsp;&nbsp;
+          </a>
+        </span>
+        {{!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> --}}
       </div>
     </div>
   </footer>
+  {{!-- jquery  --}}
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  {{!-- <script src="/assets/js/script.js"></script> --}}
+  {{!-- materialize jquery  --}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  {{!-- linked in javascript files  --}}
   <script src="/assets/js/owner_hb.js"></script>
   <script src="/assets/js/professional_hb.js"></script>
   <script src="/assets/js/user_hb.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9k83loTwkEX28Ez2CA0pijP3HXyttslo&callback=initMap&libraries=&v=weekly" async defer></script>
+  {{!-- javascript for side bar nav --}}
+  <script>
+    $(document).ready(function(){
+      $('.sidenav').sidenav();
+    });
+  </script>
+
+
+
 </body>
 
-</HTML>
-
-
+</html>

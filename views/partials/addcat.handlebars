@@ -17,14 +17,14 @@
         <br>
 
         {{!-- cat size --}}
-        <form>
-            <label for="cat-size">cat size</label>
-                <input list="cat-size" name="cat-size" id="cat-size">
-                <datalist id="cat-size">
-                    <option value="petit kitty (0-15lbs)">
-                    <option value="medium kitty (15lbs-25lbs)">
-                    <option value="large kitty (25lbs-40lbs)">
-                </datalist>  
+        <form >
+        <label for="cat-size">what is the size of your cat</label>
+            <input list="cat-size-list" name="cat-size-list" id="cat-size">
+            <datalist id="cat-size-list">
+                <option value="petit kitty (0-15lbs)">
+                <option value="medium kitty (15lbs-25lbs)">
+                <option value="large kitty (25lbs-40lbs)">
+            </datalist>    
         </form>
         <br>
 
@@ -38,8 +38,8 @@
         {{!-- cat temperment --}}  
         <form>
             <label for="cat-temperment">cat temperment</label>
-                <input list="cat-temperment" name="cat-temperment" id="cat-temperment">
-                <datalist id="cat-temperment">
+                <input list="cat-temperment-list" name="cat-temperment-list" id="cat-temperment">
+                <datalist id="cat-temperment-list">
                     <option value="friendly">
                     <option value="aggressive">
                     <option value="calm">
@@ -52,13 +52,6 @@
         <form >
             <label for="cat-care">are there any special care items for your pet?</label>
                 <input type="text" name="cat-care" id="cat-care" placeholder="special care"> 
-        </form>
-        <br>
-
-        {{!-- cat picture --}}
-        <form >
-            <label for="cat-picture">upload your picture here!</label>
-                <input type="text" name="cat-picture" id="cat-picture" placeholder="upload here"> 
         </form>
         <br>
 

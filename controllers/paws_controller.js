@@ -12,10 +12,18 @@ const { Op } = require("sequelize");
 // //get user by id 
 router.get("/users/:id", function(req, res) {
   db.User.findOne({
-    where: {id: req.params.id}
+    where: {
+      id: req.params.id
+    },
+    include: [
+      {model:db.Pet, as:"Customer"},
+      {model:db.Post, as:"Provider"}
+    ]
   }).then(function(dbUser) {
     console.log(dbUser);
-    res.json( dbUser)
+    const userJSON = dbUser.toJSON();
+    //  res.json( dbUser)
+    return res.render("owner", userJSON)
   }).catch(function(err){
     console.log(err)
     res.status(500).json(err);
@@ -24,7 +32,14 @@ router.get("/users/:id", function(req, res) {
 
 // update user by id 
 router.put("/users/update/:id", function(req, res) {
-  db.User.update(req.body,
+  
+  db.User.update(
+    {
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      user_name: req.body.user_name,
+      email: req.body.email,
+    },
   {
     where: {
       id: req.params.id
@@ -63,9 +78,7 @@ router.post("/offer_posts/create", function(req,res) {
     size_restrictions:req.body.size_restrictions,
     duration:req.body.duration, 
     range:req.body.range, 
-    picture:req.body.picture, 
     service_type:req.body.service_type, 
-    // TODO: ask joe if ProviderId or UserId
     ProviderId:req.session.user.id,
   })
   .then(function(dbPost) {
@@ -92,9 +105,11 @@ router.get("/offer_posts", function(req,res) {
 
 //TODO: working find posts within a range that match an animal type
 router.get("/offer_posts/:animal/:lat/:long", function(req,res){
-  let latRange = [(parseFloat(req.params.lat)-0.100), (parseFloat(req.params.lat)+0.100)]
-  let longRange = [(parseFloat(req.params.long)-0.100), (parseFloat(req.params.long)+0.100)]
+  console.log ( req.params.animal,req.params.lat,req.params.long);
   
+  let latRange = [(parseFloat(req.params.lat)-0.900), (parseFloat(req.params.lat)+0.900)]
+  let longRange = [(parseFloat(req.params.long)-0.90), (parseFloat(req.params.long)+0.90)]
+  console.log(req.params.lat + " " + req.params.long);
  
   db.Post.findAll(
     {
@@ -112,7 +127,8 @@ router.get("/offer_posts/:animal/:lat/:long", function(req,res){
     },
   )
     .then(function (dbPost) {
-      //console.log("this console logs the dbPost return from get by lat long", dbPost);
+      console.log(dbPost)
+      console.log("this console logs the dbPost return from get by lat long", dbPost);
       for (var i = 0; i < dbPost.length; i++){
            if ((req.params.lat == dbPost[i].Provider.lat) && (req.params.long == dbPost[i].Provider.long)) {
             dbPost[i].range = 0;
@@ -133,7 +149,8 @@ router.get("/offer_posts/:animal/:lat/:long", function(req,res){
             dbPost[i].range = dist.toFixed(2);
          }	
       } 
-      let hbrsObj = { offer_posts: dbPost }  
+      let hbrsObj = { offer_posts: dbPost } 
+ 
       return res.json(hbrsObj);
     })
     .catch(function (err) {
@@ -141,7 +158,7 @@ router.get("/offer_posts/:animal/:lat/:long", function(req,res){
     });
 })
 //offer_posts select by animal
-router.get("/offer_posts/:animal", function(req,res){
+/*router.get("/offer_posts/:animal", function(req,res){
   //service passed by clicking on "cat" or "dog" button
 
   console.log(req.params.animal);
@@ -163,7 +180,7 @@ router.get("/offer_posts/:animal", function(req,res){
     .catch(function (err) {
       res.status(500).json(err);
     });
-})
+})*/
 
 
 // // offer_posts UPDATE, by post id. 
@@ -178,7 +195,6 @@ router.put("/offer_posts/update/:id", function (req,res) {
     range: req.body.range,
     cost: req.body.cost,
     service_type: req.body.service_type,
-    pictures: req.body.pictures,
   },
   {where: {
     id: req.params.id
@@ -193,21 +209,21 @@ router.put("/offer_posts/update/:id", function (req,res) {
 });
 
 // offer_posts DELETE, by post id.
-router.delete("/offer_posts/:id", function (req, res) {
-  db.Post
-    .destroy({
-      where: {
-        id: req.params.id,
-      },
+//DELETE Post by Post id DESTROY
+  router.delete("/offer_posts/delete/:id", function (req, res) {
+    db.Post.destroy({
+        where: {
+          id: req.params.id,
+        },
+    }).then(function (data) {
+        res.json(` the Post with id of ${req.params.id} is gone`);
+    }).catch(function (err) {
+        console.log(err);
+        res.status(500)
     })
-    .then(function (dbPosts) {
-      res.json(`destroyed the offering post with id of ${req.params.id}`);
-    }).catch(function(err) {
-      console.log(err);
-      res.status(500)
-    })
-    
-});
+  });
+
+
 
 // //=========================HERE ENDS THE ROUTES FOR THE OFFER POSTS ==============
 
@@ -229,8 +245,6 @@ router.post("/pets/create", function(req,res) {
       size:req.body.size,  
       temperment:req.body.temperment,  
       age:req.body.age,  
-      picture:req.body.picture,  
-      // TODO: ask joe if CustomerId or UserId 
       CustomerId:req.session.user.id,
 
   }).then(function(dbPet) {
@@ -279,7 +293,6 @@ router.put("/pets/update/:id", function (req,res) {
     size: req.body.size,
     temperment:req.body.temperment,
     age: req.body.age,
-    picture: req.body.picture
   },
   {where: {
     id: req.params.id
@@ -293,38 +306,21 @@ router.put("/pets/update/:id", function (req,res) {
 });
 
 // //delete pet by id
-router.delete("/pets/:id", function (req, res) {
-  //protection if they aren't logged in
-  if(!req.session.user){
-    return res.status(401).send("login first!")
-  }else {
-    db.Pet.findOne({
+router.delete("/pets/delete/:id", function (req, res) {
+  db.Pet
+    .destroy({
       where: {
-        id:req.params.id
-      }
-    }).then(dbPet=>{
-      //if it is not the same user who created the pet protection
-      if(req.session.user.id!==dbPet.UserId){
-        return res.status(401).send("not your pet")
-      }else {
-        //if it is the user than delete
-        db.Pet
-        .destroy({
-          where: {
-            id: req.params.id,
-          },
-        })
-        .then(function (data) {
-          res.json(` the pet with id of ${req.params.id} is gone`);
-        }).catch(function (err) {
-          console.log(err);
-          res.status(500)
-        })
-      }
+        id: req.params.id,
+      },
     })
-    
-  }
-  
+    .then(function (data) {
+      res.json(` the pet with id of ${req.params.id} is gone`);
+    }).catch(function (err) {
+      console.log(err);
+      res.status(500)
+    })
+
+
 
 });
 

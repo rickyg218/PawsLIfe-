@@ -29,7 +29,6 @@ $("#service-cat-form").click(function(event){
       size_restrictions:$("#cat-size-restrictions").val(),
       duration:$("#cat-duration").val(),
       range:$("#cat-range").val(),
-      picture:$("#cat-picture").val(),
       service_type:$("#cat-service-type").val(),
       cost:$("#cat-cost").val(),
     }
@@ -60,7 +59,6 @@ $("#service-cat-form").click(function(event){
       size_restrictions:$("#dog-size-restrictions").val(),
       duration:$("#dog-duration").val(),
       range:$("#dog-range").val(),
-      picture:$("#dog-picture").val(),
       service_type:$("#dog-service-type").val(),
       cost:$("#dog-cost").val(),
     }
@@ -96,15 +94,15 @@ $("#service-cat-form").click(function(event){
     console.log(" clicked save posting")
   })
   //when the user clicks on submit, they will be redirected to their professional page 
-  $("#delete-posting").click(function(event){
+  $(".delete-posting").click(function(event){
     event.preventDefault();
     const postingId = $(this).attr("data-id")
     $.ajax({
-      url:`/offer_posts/${postingId}`,
+      url:`/offer_posts/delete/${postingId}`,
       method: "DELETE"
     }).then(data=>{
-      alert(`saved ${postingId} posting!`);
-      location.href = `/user/professional/${id}`
+      alert(`deleted ${postingId} posting!`);
+      location.reload();
     })
     console.log(" clicked delete posting")
   })

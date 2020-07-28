@@ -31,7 +31,6 @@ $("#add-cat-form").click(function(event){
       size:$("#cat-size").val(),
       temperment:$("#cat-temperment").val(),
       age:$("#cat-age").val(),
-      picture:$("#cat-picture").val(),
     }
     $.ajax({
       url:'/pets/create',
@@ -62,7 +61,6 @@ $("#add-cat-form").click(function(event){
       size:$("#dog-size").val(),
       temperment:$("#dog-temperment").val(),
       age:$("#dog-age").val(),
-      picture:$("#dog-picture").val(),
     }
     $.ajax({
       url:`/pets/create`,
@@ -89,22 +87,21 @@ $("#add-cat-form").click(function(event){
       url:`/pets/update/${petId}`,
       method: "PUT"
     }).then(data=>{
-      alert(`saved ${petId} pet!`);
+      alert(`saved pet!`);
       window.location.reload();
     })
     console.log(" clicked save pet")
   })
   //when the user clicks on submit, they will be redirected to their owner page
-  $("#delete-pet").click(function(event){
+  $(".delete-pet").click(function(event){
     event.preventDefault();
     const petId = $(this).attr("data-id")
     $.ajax({
-      url:`/pets/${petId}`,
+      url:`/pets/delete/${petId}`,
       method: "DELETE"
     }).then(data=>{
-      alert(`deleted ${petId} pet!`);
-      window.location.reload();
+      alert(`deleted pet!`);
+     location.reload();
     })
     console.log(" clicked delete pet")
   })
-  

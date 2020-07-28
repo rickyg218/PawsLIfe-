@@ -1,33 +1,55 @@
 <div class="account-profile-page container">
     <!-- pet professional or pet owner buttons and info divs -->
+  
     <div class="row card">
-        <div class="col s9 l12 offset-s5">
-            <ul class="tabs">
-                <li class="tab col s3"><a href= "/user/professional">professional</a></li>
-                <li class="tab col s3"><a href="/user/owner" >pet owner</a></li>
-                <li class="tab col s3"><a href="/user/account-profile">view my profile</a></li>
-            </ul> 
+        <div class="col s9 l12">
+             <ul class="tabs">
+                 <li class="tab col s1"></li>
+                <li class="tab col s3"><a href= "/user/professional"><b>professional</b></a></li>
+                <li class="tab col s3"><a href="/user/owner"><b>pet owner</a></li></b>
+                <li class="tab col s3"><a href="/user/account-profile"><b>view my profile</b></a></li>
+                <li class="tab col l1"></li>
+            </ul>
         </div>
-    </div> 
+    </div>
     
     <div class="row">
-            <h2>account profile</h2>
-                <div class="user-profile">
-                    <h3>welcome, {{first_name}} !</h3> 
+            <h1 class="center-align  ">account profile</h1>
+                <div class="user-profile center-align">
+                    <h2>welcome, {{first_name}} !</h2> 
+                    <h2>first name: {{last_name}}</h2>
+                    <h2>username: {{user-name}}</h2>
+                    <h2>email: {{email}}</h2>
+                    <h2>last name: {{last_name}}</h2>
                 </div>
     </div> 
   
     
     <div class="row account-user">
-        <div class="col s12 l6 user-card" >
+        <div class="col s12  user-card " >
             <div class="card blue-grey darken-1">
                 <div class="card-content white-text">
-                    <span class="card-title">name: {{first_name}} {{last_name}}</span>
+                    <span class="card-title"> edit {{first_name}} {{last_name}}'s account</span>
                     <div class="card-content">
-                        <ul>
-                            <li>username: {{user_name}}<button>edit</button></li>
-                            <li>email: {{email}}<button>edit</button></li>
-                        </ul>
+                        
+                        <form>
+                            <label for="edit-first-name">edit first name</label>
+                                <input type="text" name="edit-first-name" id="edit-first-name" placeholder="first name">
+                        </form>
+                            
+                        <form>
+                            <label for="edit-last-name">edit last name</label>
+                                <input type="text" name="edit-last-name" id="edit-last-name" placeholder="last name">
+                        </form>
+                        <form>
+                            <label for="edit-username">edit username</label>
+                                <input type="text" name="edit-username" id="edit-username" placeholder="username">
+                        </form>
+                        <form>
+                            <label for="edit-email">edit email</label>
+                                <input type="text" name="edit-email" id="edit-email" placeholder="email">
+                        </form>
+                        
                     </div>
                 </div>
                 <div class="card-action">

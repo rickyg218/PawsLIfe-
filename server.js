@@ -1,7 +1,6 @@
 var express = require("express");
 const session = require("express-session");
 require("dotenv").config();
-
 var db = require("./models");
 
 var app = express();
@@ -54,3 +53,5 @@ db.sequelize.sync({ force: false }).then(function() {
   });
 
 });
+
+

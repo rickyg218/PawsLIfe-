@@ -18,8 +18,8 @@
         {{!-- dog size --}}
         <form >
         <label for="dog-size">choose a dog size</label>
-            <input list="dog-size" name="dog-size" id="dog-size">
-            <datalist id="dog-size">
+            <input list="dog-size-list" name="dog-size-list" id="dog-size">
+            <datalist id="dog-size-list">
                 <option value="petit pup (0-15lbs)">
                 <option value="medium pup (15lbs-25lbs)">
                 <option value="large pup (25lbs-40lbs)">
@@ -39,8 +39,8 @@
         {{!-- dog temperment --}}  
         <form>
             <label for="dog-temperment">dog temperment</label>
-                <input list="dog-temperment" name="dog-temperment" id="dog-temperment">
-                <datalist id="dog-temperment">
+                <input list="dog-temperment-list" name="dog-temperment-list" id="dog-temperment">
+                <datalist id="dog-temperment-list">
                     <option value="friendly">
                     <option value="aggressive">
                     <option value="calm">
@@ -53,13 +53,6 @@
         <form >
             <label for="dog-care">are there any special care items for your pet?</label>
                 <input type="text" name="dog-care" id="dog-care" placeholder="special care"> 
-        </form>
-        <br>
-
-        {{!-- dog picture  --}}
-        <form >
-            <label for="dog-picture">are there any special care items for your pet?</label>
-                <input type="text" name="dog-picture" id="dog-picture" placeholder="upload here"> 
         </form>
         <br>
 
