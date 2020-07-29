@@ -62,8 +62,37 @@
                 </div>
             </div>
             {{/each}}
-
         </div>
+    </div>
+
+
+
+    <div class="row bookings-for-pets">
+        <h2>bookings for your pets</h2>
+        <div class="row" id="bookings-for-pets">
+            {{#each Booker}}
+                <div class="col s1 hide-on-large-only"></div>
+                <div class="col s10 l4 card parent-user hoverable center-align mostly-customized-scrollbar">
+                    <div class="card-stacked ">
+                        <span class="card-title" style="font-size: 30px; font-weight: bold;"><b> {{first_name}} </b></span>
+                        <div class="card-content left-align">
+                            <ul>
+                                <li><b>service text:</b> {{text}} </li>
+                                <li><b>service type:</b> {{service_type}} </li>
+                                <li><b>pet type:</b> {{animal_type}}</li>
+                                <li><b>pet size:</b> {{size_restrictions}} </li>
+                                <li><b>duration:</b>{{duration}} </li>
+                                <li><b>cost:</b> ${{cost}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <button data-id={{id}} class="delete-pet">delete pet</button>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
 
 
     
