@@ -224,12 +224,18 @@ button .add-cat .add-dog {
   #mapWindow{
       height: 400px;
   }
+
+
 /* side nav bar */
 .side-nav-menu{
-
+margin: 25px;
 color: #4a6690;
 }
 
-.side-nav-menu a:hover{
+a .side-nav-menu :hover{
 background-color: yellow;
+}
+
+.side-nav-text{
+    font-size: 20px;
 }

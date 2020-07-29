@@ -79,6 +79,7 @@ router.post("/offer_posts/create", function(req,res) {
     duration:req.body.duration, 
     range:req.body.range, 
     service_type:req.body.service_type, 
+    cost:req.body.cost, 
     ProviderId:req.session.user.id,
   })
   .then(function(dbPost) {
