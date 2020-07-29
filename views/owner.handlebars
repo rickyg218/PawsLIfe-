@@ -12,18 +12,16 @@
         </div>
     </div>
 
-    <div class="row center-align">
-        <h1>Owner Profile</h1>
-        <div class="user-profile">
-            <h2>welcome, {{first_name}} !</h2>
-        </div>
+    <div class="user-profile">
+            <h2><b>welcome, {{first_name}}</b> !</h2>
+            <h2>owner profile</h2> 
     </div>
 
 
 
     {{!--CREATE A PET --}}
     <div class="row center-align create-pet">
-        <h2>New Pet in your family?</h2>
+        <h1>new pet in your family?</h1>
         <ul>
             {{!-- choose for cat or dog  --}}
             <button class="waves-effect waves-light btn-large blue darken-3 add-dog"><i class="fas fa-dog"></i>  dog</button>
@@ -38,13 +36,14 @@
 
     {{!-- show pet family for owner --}}
     <div class="row pets">
-        <h2>pet family</h2>
+        <h2><b>pet family</b></h2>
         <div class="row" id="pet-family">
             {{#each Customer}}
             <div class="col s1 hide-on-large-only"></div>
             <div class="col s10 l4 card parent-user hoverable center-align mostly-customized-scrollbar">
                 <div class="card-stacked ">
                     <span class="card-title" style="font-size: 30px; font-weight: bold;"><b> {{first_name}} </b></span>
+                    <img src="../../../assets/images/petbowl.png" alt="food bowl" width="100px">
                     <div class="card-content left-align">
                         <ul>
                             <li><span style="font-weight:bold;">breed: </span>{{breed}} </li>
@@ -67,11 +66,11 @@
 
 
     <div class="row bookings-for-pets">
-        <h2>bookings for your pets</h2>
+        <h2><b>bookings for your pets</b></h2>
         <div class="row" id="bookings-for-pets">
             {{#each Booker}}
                 <div class="col s1 hide-on-large-only"></div>
-                <div class="col s10 l4 card parent-user hoverable center-align mostly-customized-scrollbar">
+                <div class=" card parent-user hoverable center-align mostly-customized-scrollbar col s12 m12 l6">
                     <div class="card-stacked ">
                         <span class="card-title" style="font-size: 30px; font-weight: bold;"><b> {{first_name}} </b></span>
                         <div class="card-content left-align">
@@ -82,6 +81,8 @@
                                 <li><b>pet size:</b> {{size_restrictions}} </li>
                                 <li><b>duration:</b>{{duration}} </li>
                                 <li><b>cost:</b> {{cost}}</li>
+                                <li><b>contact the provider:</b> {{Provider.email}}</li>
+                                
                             </ul>
                         </div>
                     </div>

@@ -76,9 +76,11 @@ label {
 /* cards  */
 .parent-user{
     display: inline-block;
-    height:45vh;
+    max-height: 400px;
+    justify-content: space-evenly;
     padding-right:5px;
-    overflow:auto;
+    word-wrap: break-word;
+    overflow-y: auto;
     border-top-left-radius: 5%;
     border-bottom-left-radius: 5%;
     border-top-right-radius: 1%;
@@ -221,22 +223,28 @@ button .add-cat .add-dog {
     background-color: #1565c0; /* or add it to the track */
   }
 
-  #mapWindow{
-      height: 400px;
-  }
+#mapWindow{
+    height: 400px;
+}
 
 
 /* side nav bar */
 .side-nav-menu{
-margin: 35px;
-color: #4a6690;
+    margin: 35px;
+    color: #4a6690;
 
 }
 
 a .side-nav-menu :hover{
-background-color: yellow;
+    background-color: yellow;
 }
 
 .side-nav-text{
     font-size: 20px;
+}
+
+/* cards */
+.user-account-profile{
+    background-color: #f1efe4 ;
+    padding:20px;
 }
