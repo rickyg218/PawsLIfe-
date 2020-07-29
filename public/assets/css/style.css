@@ -17,6 +17,10 @@ main {
     font-size:20px;
 }
 
+.bottomlink {
+    font-size: 20px;
+}
+
 /* headers */
 h2{
     font-size: 30px;
@@ -195,8 +199,6 @@ nav .nav-extended {
     min-height: 100px;
 }
 
-/*  */
-/*  */
 button .add-dog {
     border-top-right-radius: 35%;
     display: inline-block;
@@ -227,8 +229,7 @@ button.add-dog:focus {
 button.add-dog:active {
     transform: scale(1.05);
 }
-/*  */
-/*  */
+
 button .service-dog {
     border-top-right-radius: 35%;
     display: inline-block;
@@ -327,7 +328,7 @@ button.add-cat:active {
 .mostly-customized-scrollbar::-webkit-scrollbar {
     width: 10px;
     height: 8px;
-    background-color: #1565c0; /* or add it to the track */
+    background-color: #1565c0;
   }
 
   #mapWindow{
