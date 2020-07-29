@@ -144,11 +144,7 @@ router.get("/offer_posts/:animal/:lat/:long", function(req,res){
             dist = dist * 180/Math.PI;
             dist = dist * 60 * 1.1515;
             dbPost[i].range = dist.toFixed(2);
-            $.ajax({
-              url: `/offer_posts/${dbPost[i]}/${dbPost[i].id}`,
-               method: "PUT",
             
-              })
          }	
       } 
       let hbrsObj = { offer_posts: dbPost } 
