@@ -39,7 +39,7 @@ $("#add-cat-form").click(function(event){
     }).done(data=>{
       alert("POSTED new cat!");
       console.log(data)
-      location.href = "/"
+      location.reload();
     }).fail(function(err){
       console(err);
       alert("something went wrong");
@@ -68,7 +68,7 @@ $("#add-cat-form").click(function(event){
       data: dogObj
     }).then(data=>{
       alert("POSTED new dog !");
-      location.href = "/"
+      location.reload();
     }).fail(function(err){
       console.log(err);
       alert("something went wrong");

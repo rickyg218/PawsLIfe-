@@ -228,8 +228,9 @@ button .add-cat .add-dog {
 
 /* side nav bar */
 .side-nav-menu{
-margin: 25px;
+margin: 35px;
 color: #4a6690;
+
 }
 
 a .side-nav-menu :hover{
