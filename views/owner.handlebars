@@ -52,7 +52,6 @@
                             <li><span style="font-weight:bold;">temperment: </span> {{temperment}} </li>
                             <li><span style="font-weight:bold;">special care: </span> {{special_care}} </li>
                             <li><span style="font-weight:bold;">pet_type: </span> {{pet_type}} </li>
-                            <li><span style="font-weight:bold;">picture: </span>{{picture}} </li>
                             <li><span style="font-weight:bold;">age: </span> {{age}} </li>
                         </ul>
                     </div>
@@ -77,7 +76,7 @@
                         <span class="card-title" style="font-size: 30px; font-weight: bold;"><b> {{first_name}} </b></span>
                         <div class="card-content left-align">
                             <ul>
-                                <li><b>service text:</b> {{text}} </li>
+                                <li><b>about service:</b> {{text}} </li>
                                 <li><b>service type:</b> {{service_type}} </li>
                                 <li><b>pet type:</b> {{animal_type}}</li>
                                 <li><b>pet size:</b> {{size_restrictions}} </li>
@@ -86,9 +85,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="card-action">
-                        <button data-id={{id}} class="delete-pet">delete pet</button>
-                    </div>
+                  
                 </div>
             {{/each}}
         </div>
