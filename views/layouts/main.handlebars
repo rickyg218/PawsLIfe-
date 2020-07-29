@@ -34,40 +34,49 @@
 
   {{!-- sliding nav bar  --}}
   <ul id="slide-out" class="sidenav">
-      <li><div class="user-view">
+    <li>
+      <div class="user-view">
         <br>
         <br>
-      <div class="background">
-        <img src="../../../assets/images/pawslogoupdate.png" width="300px">
+        <div class="background">
+          <img src="../../../assets/images/pawslogoupdate.png" width="300px">
+        </div>
       </div>
-      </div></li>
-      <li><a href="/"><i class="fas fa-house-user"></i> home</a></li>
-        <li><div class="divider"></div></li>
-      <li><a href="/signin"><i class="fas fa-paw"></i> sign in</a></li>
-        <li><div class="divider"></div></li>
-      <li><a href="/createaccount"><i class="fas fa-pen-fancy"></i> create account</a></li>
-        <li><div class="divider"></div></li>
-      <li><a href="/user/owner"><i class="fas fa-user-astronaut"></i> my account</a></li>
-        <li><div class="divider"></div></li>
-      <li><a href="/logout" id="logout"><i class="fa fa-unlock"></i> log out</a></li>
+    </li>
+    <li><a href="/"><i class="fas fa-house-user"></i> home</a></li>
+    <li>
+      <div class="divider"></div>
+    </li>
+    <li><a href="/signin"><i class="fas fa-paw"></i> sign in</a></li>
+    <li>
+      <div class="divider"></div>
+    </li>
+    <li><a href="/createaccount"><i class="fas fa-pen-fancy"></i> create account</a></li>
+    <li>
+      <div class="divider"></div>
+    </li>
+    <li><a href="/user/owner"><i class="fas fa-user-astronaut"></i> my account</a></li>
+    <li>
+      <div class="divider"></div>
+    </li>
+    <li><a href="/logout" id="logout"><i class="fa fa-unlock"></i> log out</a></li>
   </ul>
-  <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="side-nav-menu">menu</i></a>
+  <a href="#" data-target="slide-out" class="sidenav-trigger side-nav-text"><i class="side-nav-menu">menu</i></a>
 
   <div>
     <div class="row">
-      <div class="col s12 l8"  id="petbanner">
-        {{!-- <img src="../../../assets/images/petsquad.png" style="" alt="puppy wash" height="300px"> --}}
+      <div class="col s12 l8" id="petbanner">
       </div>
       <div class="col l3">
-        <img class="hide-on-med-and-down" src="../../../assets/images/pawslifetransparency.png" style="margin-top: 0.5rem;"
-          alt="puppy wash" height="300px">
+        <img class="hide-on-med-and-down" src="../../../assets/images/pawslifetransparency.png"
+          style="margin-top: 0.5rem;" alt="puppy wash" height="300px">
       </div>
     </div>
-  <hr>
+    <hr>
   </div>
   <div class="row">
-    <img class="hide-on-large-only" src="../../../assets/images/pawslifetransparency.png" style="margin-top: -10rem; margin-bottom: -5rem;"
-      alt="puppy wash" height="200px">
+    <img class="hide-on-large-only" src="../../../assets/images/pawslifetransparency.png"
+      style="margin-top: -10rem; margin-bottom: -5rem;" alt="puppy wash" height="200px">
   </div>
 
 
@@ -79,28 +88,31 @@
   <footer class="page-footer">
     <div class="container">
       <div class="row">
-        <div class="col l4 s12">
-          <h5 class="white-text">paws life</h5>
-          <p class="grey-text text-lighten-4">we paws life so you don't have to.</p>
+        <div class="col s12 l6">
+          <img src="../../../assets/images/pawslogoupdate.png" height="55px" alt="PawslifeLogo">
+          <span class="grey-text text-lighten-4">we paws life so you don't have to.</span>
         </div>
-        <div class="col l4  s12">
-          <h5 class="white-text">git hub</h5>
-          <ul>
-            <li><a class="grey-text text-lighten-3" href="#!">Evan</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Michael</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Nicole</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Ricky</a></li>
-          </ul>
+
+        <div class="col l3 s6 flex center-align">
+          <h5 class="white-text"><i class="fab fa-github-alt"></i> Github</h5>
+            <a class="grey-text text-lighten-3 bottomlink" href="https://github.com/epachols" target="_blank">Evan</a>
+            <a class="grey-text text-lighten-3 bottomlink" href="https://github.com/rettus-code" target="_blank">Michael</a>
+            <a class="grey-text text-lighten-3 bottomlink" href="https://github.com/nicoleremy95" target="_blank">Nicole</a>
+            <a class="grey-text text-lighten-3 bottomlink" href="https://github.com/rickyg218" target="_blank">Ricky</a>
         </div>
-        <div class="col l4  s12">
-          <h5 class="white-text">linkedin</h5>
-          <ul>
-            <li><a class="grey-text text-lighten-3" href="https://www.linkedin.com/in/evan-pacholski-7910481ab/" target="_blank">Evan</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Michael</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Nicole</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Ricky</a></li>
-          </ul>
+
+        <div class="col l3 s6 flex center-align">
+          <h5 class="white-text"><i class="fab fa-linkedin"></i> Linkedin</h5>
+          <a class="grey-text text-lighten-3 bottomlink" href="https://www.linkedin.com/in/evan-pacholski-7910481ab/"
+            target="_blank">Evan</a>
+          <a class="grey-text text-lighten-3 bottomlink" href="https://www.linkedin.com/in/michael-rettus-23680b150/"
+            target="_blank">Michael</a>
+          <a class="grey-text text-lighten-3 bottomlink" href="https://www.linkedin.com/in/nicole-remy-190202166/"
+            target="_blank">Nicole</a>
+          <a class="grey-text text-lighten-3 bottomlink" href="https://www.linkedin.com/in/enrique-garcia-30353715a/"
+            target="_blank">Ricky</a>
         </div>
+
       </div>
     </div>
 
@@ -109,7 +121,7 @@
       <div class="container">
         © 2020 Copyright Text
         <span class="right">
-          This project utilizes
+          This site utilizes
           &nbsp;&nbsp;&nbsp;
           <a class="right" href="https://www.npmjs.com/" target="_blank">
             <i class="fab fa-npm"></i>&nbsp;&nbsp;&nbsp;
@@ -118,7 +130,6 @@
             <i class="fab fa-node"></i>&nbsp;&nbsp;&nbsp;
           </a>
         </span>
-        {{!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> --}}
       </div>
     </div>
   </footer>
@@ -130,10 +141,12 @@
   <script src="/assets/js/owner_hb.js"></script>
   <script src="/assets/js/professional_hb.js"></script>
   <script src="/assets/js/user_hb.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9k83loTwkEX28Ez2CA0pijP3HXyttslo&callback=initMap&libraries=&v=weekly" async defer></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9k83loTwkEX28Ez2CA0pijP3HXyttslo&callback=initMap&libraries=&v=weekly"
+    async defer></script>
   {{!-- javascript for side bar nav --}}
   <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
       $('.sidenav').sidenav();
     });
   </script>

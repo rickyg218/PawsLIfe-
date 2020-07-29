@@ -27,7 +27,7 @@ $("#add-cat-form").click(function(event){
       first_name:$("#cat-name").val(),
       special_care:$("#cat-care").val(),
       pet_type:"cat",
-      breed:$("#breed").val(),
+      breed:$("#cat-breed").val(),
       size:$("#cat-size").val(),
       temperment:$("#cat-temperment").val(),
       age:$("#cat-age").val(),
@@ -39,7 +39,7 @@ $("#add-cat-form").click(function(event){
     }).done(data=>{
       alert("POSTED new cat!");
       console.log(data)
-      location.href = "/"
+      location.reload();
     }).fail(function(err){
       console(err);
       alert("something went wrong");
@@ -57,7 +57,7 @@ $("#add-cat-form").click(function(event){
       first_name:$("#dog-name").val(),
       special_care:$("#dog-care").val(),
       pet_type:"dog",
-      breed:$("#breed").val(),
+      breed:$("#dog-breed").val(),
       size:$("#dog-size").val(),
       temperment:$("#dog-temperment").val(),
       age:$("#dog-age").val(),
@@ -68,7 +68,7 @@ $("#add-cat-form").click(function(event){
       data: dogObj
     }).then(data=>{
       alert("POSTED new dog !");
-      location.href = "/"
+      location.reload();
     }).fail(function(err){
       console.log(err);
       alert("something went wrong");

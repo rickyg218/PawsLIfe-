@@ -23,7 +23,7 @@ router.get("/users/:id", function(req, res) {
     console.log(dbUser);
     const userJSON = dbUser.toJSON();
     //  res.json( dbUser)
-    return res.render("owner", userJSON)
+    return res.render("professional", userJSON)
   }).catch(function(err){
     console.log(err)
     res.status(500).json(err);
@@ -79,6 +79,7 @@ router.post("/offer_posts/create", function(req,res) {
     duration:req.body.duration, 
     range:req.body.range, 
     service_type:req.body.service_type, 
+    cost:req.body.cost, 
     ProviderId:req.session.user.id,
   })
   .then(function(dbPost) {
@@ -105,11 +106,11 @@ router.get("/offer_posts", function(req,res) {
 
 //TODO: working find posts within a range that match an animal type
 router.get("/offer_posts/:animal/:lat/:long", function(req,res){
-  console.log ( req.params.animal,req.params.lat,req.params.long);
+  
   
   let latRange = [(parseFloat(req.params.lat)-0.900), (parseFloat(req.params.lat)+0.900)]
   let longRange = [(parseFloat(req.params.long)-0.90), (parseFloat(req.params.long)+0.90)]
-  console.log(req.params.lat + " " + req.params.long);
+  
  
   db.Post.findAll(
     {
@@ -125,14 +126,11 @@ router.get("/offer_posts/:animal/:lat/:long", function(req,res){
       ],
       where: { animal_type: req.params.animal },
     },
-  )
-    .then(function (dbPost) {
-      console.log(dbPost)
-      console.log("this console logs the dbPost return from get by lat long", dbPost);
-      for (var i = 0; i < dbPost.length; i++){
+  ).then(function (dbPost) {
+
+       for (var i = 0; i < dbPost.length; i++){
            if ((req.params.lat == dbPost[i].Provider.lat) && (req.params.long == dbPost[i].Provider.long)) {
             dbPost[i].range = 0;
-            console.log("we got it");
           }
          else {
             var radlat1 = Math.PI * req.params.lat/180;
@@ -147,10 +145,10 @@ router.get("/offer_posts/:animal/:lat/:long", function(req,res){
             dist = dist * 180/Math.PI;
             dist = dist * 60 * 1.1515;
             dbPost[i].range = dist.toFixed(2);
+            
          }	
       } 
       let hbrsObj = { offer_posts: dbPost } 
- 
       return res.json(hbrsObj);
     })
     .catch(function (err) {

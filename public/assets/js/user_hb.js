@@ -196,7 +196,7 @@ $(".pet-search").on("click", function (event) {
       method: "GET",
     }).then((data) => {
       console.log(data.offer_posts);
-      var uluru = {lat: 47.606209, lng: -122.332069};
+      var uluru = {lat: latitude, lng: longitude};
       var infowindow = new google.maps.InfoWindow();
  var map = new google.maps.Map( document.getElementById("mapWindow"),{zoom:13,center: uluru})
       var marker, i;
@@ -212,7 +212,7 @@ $(".pet-search").on("click", function (event) {
           "click",
           (function (marker, i) {
             return function () {
-              infowindow.setContent(data.offer_posts[i].text);
+              infowindow.setContent(data.offer_posts[i].text + " Distance from you "+data.offer_posts[i].range +" miles");
               infowindow.open(map, marker);
             };
           })(marker, i)
