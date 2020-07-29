@@ -89,10 +89,6 @@ label {
     background-color: #f1efe4 ;
 }
 
-div .golden {
-    background-color: #8d683d;
-}
-
 .account-user{
     padding: 0%;
 }
@@ -151,13 +147,6 @@ button #dog-search, #cat-search {
     flex-wrap:wrap;
 }
 div #dogsearch {
-    /* display: flex;
-    padding-right: 10px;
-    padding-left:75px;
-    padding-bottom:20px;
-    padding-top:28px;
-    border-radius: 30%;
-    border-left: 5px solid #1565c0; */
     display: flex;
     padding: 30px;
     border-radius: 30%;
@@ -173,9 +162,6 @@ div #catsearch {
 }
 
 #petbanner {
-    /* display:flex; */
-    /* align-items: center; */
-    /* flex-direction: row-reverse; */
     background-image: url("../images/petsquad.png");
     background-attachment: local;
     background-size: cover;
@@ -188,7 +174,6 @@ a #navphoto {
     margin-bottom:5px;
     z-index: 99;
 }
-
 
 .current-listings {
     background-image: url("../images/multiprints.png");
@@ -210,9 +195,67 @@ nav .nav-extended {
 }
 
 
-button .add-cat .add-dog {
-    border-radius: 50%;
-    background-color: #1565c0;
+button .add-dog, .service-dog {
+    border-top-right-radius: 35%;
+    display: inline-block;
+    border: none;
+    padding: 2rem 3rem;
+    margin: 0;
+    text-decoration: none;
+    background-color: #43200e;
+    color: #ffffff;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, 
+                    transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+button .add-dog, .service-dog:hover,
+button .add-dog, .service-dog:focus {
+    background: #947635;
+}
+    
+button .add-dog, .service-dog:focus {
+    outline: 1px solid #fff;
+    outline-offset: 1px;
+}
+
+button .add-dog, .service-dog:active {
+    transform: scale(1.05);
+}
+
+button .add-cat, .service-cat {
+border-top-right-radius: 35%;
+display: inline-block;
+border: none;
+padding: 2rem 3rem;
+margin: 0;
+text-decoration: none;
+background-color: #b57067;
+color: #ffffff;
+font-size: 1rem;
+cursor: pointer;
+text-align: center;
+transition: background 250ms ease-in-out, 
+                transform 150ms ease;
+-webkit-appearance: none;
+-moz-appearance: none;
+}
+    
+button .add-cat, .service-cat:hover,
+button .add-cat, .service-cat:focus {
+    background: #e2cdc6;
+}
+    
+button .add-cat, .service-cat:focus {
+    outline: 1px solid #fff;
+    outline-offset: 1px;
+}
+
+button .add-cat, .service-cat:active {
+    transform: scale(1.05);
 }
 
 .mostly-customized-scrollbar::-webkit-scrollbar {
