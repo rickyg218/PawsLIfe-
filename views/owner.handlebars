@@ -22,11 +22,10 @@
     {{!--CREATE A PET --}}
     <div class="row center-align create-pet">
         <h1>new pet in your family?</h1>
-        <ul>
             {{!-- choose for cat or dog  --}}
-            <button class="waves-effect waves-light btn-large blue darken-3 add-dog"><i class="fas fa-dog"></i>  dog</button>
-            <button class="waves-effect waves-light btn-large blue darken-3 add-cat"><i class="fas fa-cat"></i>  cat</button>
-        </ul>
+            <button class="add-cat" id="add-cat"><i class="fas fa-cat"></i> add cat</button>
+            <button class="add-dog" id="add-dog"><i class="fas fa-dog"></i> add dog</button>
+        
 
         {{!-- show either addcat or adddog handlebar  --}}
         <div class="col s12" id="info-add">{{>addcat}}</div>
@@ -92,7 +91,8 @@
         </div>
     </div>
 
-
+    </div>
+</div>
     
 
 
