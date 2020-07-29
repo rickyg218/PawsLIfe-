@@ -23,7 +23,7 @@ router.get("/users/:id", function(req, res) {
     console.log(dbUser);
     const userJSON = dbUser.toJSON();
     //  res.json( dbUser)
-    return res.render("owner", userJSON)
+    return res.render("professional", userJSON)
   }).catch(function(err){
     console.log(err)
     res.status(500).json(err);
