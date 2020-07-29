@@ -14,6 +14,7 @@ main {
 
 .page-footer{
     background-color: #EAA82A;
+    font-size:20px;
 }
 
 /* headers */
@@ -194,8 +195,9 @@ nav .nav-extended {
     min-height: 100px;
 }
 
-
-button .add-dog, .service-dog {
+/*  */
+/*  */
+button .add-dog {
     border-top-right-radius: 35%;
     display: inline-block;
     border: none;
@@ -212,21 +214,53 @@ button .add-dog, .service-dog {
     -webkit-appearance: none;
     -moz-appearance: none;
 }
-button .add-dog, .service-dog:hover,
-button .add-dog, .service-dog:focus {
+button.add-dog:hover,
+button.add-dog:focus {
     background: #947635;
 }
     
-button .add-dog, .service-dog:focus {
+button.add-dog:focus {
     outline: 1px solid #fff;
     outline-offset: 1px;
 }
 
-button .add-dog, .service-dog:active {
+button.add-dog:active {
+    transform: scale(1.05);
+}
+/*  */
+/*  */
+button .service-dog {
+    border-top-right-radius: 35%;
+    display: inline-block;
+    border: none;
+    padding: 2rem 3rem;
+    margin: 0;
+    text-decoration: none;
+    background-color: #43200e;
+    color: #ffffff;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, 
+                    transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+button.service-dog:hover,
+button.service-dog:focus {
+    background: #947635;
+}
+    
+button.service-dog:focus {
+    outline: 1px solid #fff;
+    outline-offset: 1px;
+}
+
+button.service-dog:active {
     transform: scale(1.05);
 }
 
-button .add-cat, .service-cat {
+button .service-cat {
 border-top-right-radius: 35%;
 display: inline-block;
 border: none;
@@ -244,17 +278,49 @@ transition: background 250ms ease-in-out,
 -moz-appearance: none;
 }
     
-button .add-cat, .service-cat:hover,
-button .add-cat, .service-cat:focus {
+button.service-cat:hover,
+button.service-cat:focus {
     background: #e2cdc6;
 }
     
-button .add-cat, .service-cat:focus {
+button.service-cat:focus {
     outline: 1px solid #fff;
     outline-offset: 1px;
 }
 
-button .add-cat, .service-cat:active {
+button.service-cat:active {
+    transform: scale(1.05);
+}
+
+button .add-cat {
+border-top-right-radius: 35%;
+display: inline-block;
+border: none;
+padding: 2rem 3rem;
+margin: 0;
+text-decoration: none;
+background: #b57067;
+color: #ffffff;
+font-size: 1rem;
+cursor: pointer;
+text-align: center;
+transition: background 250ms ease-in-out, 
+                transform 150ms ease;
+-webkit-appearance: none;
+-moz-appearance: none;
+}
+    
+button.add-cat:hover,
+button.add-cat:focus {
+    background: #e2cdc6;
+}
+    
+button.add-cat:focus {
+    outline: 1px solid #fff;
+    outline-offset: 1px;
+}
+
+button.add-cat:active {
     transform: scale(1.05);
 }
 
