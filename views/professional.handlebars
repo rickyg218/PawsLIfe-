@@ -24,11 +24,11 @@
     <!-- CREATE AN OFFER  -->
     <div class="row create-listing center-align">
         <h2>create a posting</h2>
-        <ul>
+        
             {{!-- choose for cat or dog  --}}
-            <button class="service-dog white-text waves-effect waves-light btn-large blue darken-3"><i class="fas fa-dog"></i> for dogs </button>
-            <button class="service-cat white-text waves-effect waves-light btn-large blue darken-3"><i class="fas fa-cat"></i> for cats </button>
-        </ul>
+            <button class="service-dog"><i class="fas fa-dog"></i> for dogs </button>
+            <button class="service-cat"><i class="fas fa-cat"></i> for cats </button>
+        
 
         {{!-- show either servicedog or servicecat handlebar  --}}
         <div class= "col s12" id="info-service">{{>servicedog}}</div>
@@ -78,8 +78,8 @@
                {{#each Provider}}
                     {{#if BookerId}}
                         <div class="col s12 l6"> 
-                            <div class="card parent-user golden hoverable center-align mostly-customized-scrollbar">
-                                <div class="card-content white-text">
+                            <div class="card parent-user hoverable center-align mostly-customized-scrollbar">
+                                <div class="card-content">
                                     <span class="card-title"><b> {{title}} </b></span>
                                     <div class="card-content left-align">
                                         <ul>
@@ -105,5 +105,5 @@
             </div>
                 
     </div>
-
+</div>
 
