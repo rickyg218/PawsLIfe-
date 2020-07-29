@@ -54,9 +54,10 @@
       <h2 class="left-align"> current listings</h2>
       {{#each posts}}
 
-      <div class="col s10 l5 card parent-user hoverable center-align mostly-customized-scrollbar" style="height: ;">
+      <div class="col s12 m12 l6 card parent-user hoverable center-align mostly-customized-scrollbar" style="height: ;">
          <div class="card-content left-align">
-            <span class="card-title center-align">{{title}} <a href="/users/{{Provider.id}}">posted by: {{Provider.first_name}} {{Provider.last_name}}</a></span>
+            <span class="card-title center-align"style="font-size: 30px; font-weight: bold;"><b>{{title}}</b></span>
+            posted by: <a href="/users/{{Provider.id}}">  {{Provider.first_name}} {{Provider.last_name}}</a>
             <ul>
                <li><b>for:</b> {{animal_type}}s</li>
                <li><b>service type:</b> {{service_type}}</li>
@@ -64,8 +65,7 @@
                <li><b>accomodating:</b> {{size_restrictions}}</li>
                <li><b>duration:</b> {{duration}}</li>
                <li><b>location range:</b> {{range}}</li>
-               <li></b>picture:</b> {{picture}}</li>
-               <li></b>cost:</b> ${{cost}}</li>
+               <li><b>cost:</b> {{cost}}</li>
             </ul>
          </div>
          <div class="card-action">

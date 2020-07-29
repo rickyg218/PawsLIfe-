@@ -38,7 +38,7 @@ $("#service-cat-form").click(function(event){
       data: catServiceObj
     }).then(data=>{
       alert("POSTED cat service!");
-      location.href = "/"
+      location.reload();
     }).fail(function(err){
       console(err);
       alert("something went wrong");
@@ -68,7 +68,7 @@ $("#service-cat-form").click(function(event){
       data: dogServiceObj
     }).then(data=>{
       alert("POSTED dog service!");
-      location.href = "/"
+      location.reload();
     }).fail(function(err){
       console.log(err);
       alert("something went wrong");

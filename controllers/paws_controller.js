@@ -23,7 +23,7 @@ router.get("/users/:id", function(req, res) {
     console.log(dbUser);
     const userJSON = dbUser.toJSON();
     //  res.json( dbUser)
-    return res.render("owner", userJSON)
+    return res.render("professional", userJSON)
   }).catch(function(err){
     console.log(err)
     res.status(500).json(err);
@@ -79,6 +79,7 @@ router.post("/offer_posts/create", function(req,res) {
     duration:req.body.duration, 
     range:req.body.range, 
     service_type:req.body.service_type, 
+    cost:req.body.cost, 
     ProviderId:req.session.user.id,
   })
   .then(function(dbPost) {

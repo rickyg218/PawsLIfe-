@@ -14,17 +14,15 @@
         </div>
     </div>
 
-    <div class="row center-align">
-            <h1>professional profile</h2>
-                <div class="user-profile">
-                    <h2>welcome, {{first_name}} !</h2> 
-                </div>
+    <div class="user-profile">
+        <h2><b>welcome, {{first_name}} </b>!</h2>
+        <h2>professional profile</h2> 
     </div>
+    
    
     <!-- CREATE AN OFFER  -->
     <div class="row create-listing center-align">
-        <h2>create a posting</h2>
-        
+        <h1>create a posting</h1>
             {{!-- choose for cat or dog  --}}
             <button class="service-dog"><i class="fas fa-dog"></i> for dogs </button>
             <button class="service-cat"><i class="fas fa-cat"></i> for cats </button>
@@ -38,25 +36,24 @@
 
     {{!-- show professional active listings  --}}
     <div class="row active ">
-        <h2>Active Listings You've Posted</h2> 
+        <h2><b>active listings you've posted</b></h2> 
             <div class="row center-align" id="active-postings">
                 {{#each Provider}} 
                     {{#if BookerId}}
                     {{/if}}
                     {{#unless BookerId}}
-                        <div class="col s12">
-                            <div class="card parent-user hoverable center-align mostly-customized-scrollbar">
+                        <div >
+                            <div class="card parent-user hoverable center-align mostly-customized-scrollbar col s12 m6 l6">
                                 <div class="card-content">
-                                    <span class="card-title"><b><u>{{title}}</u></b> </span>
+                                    <span class="card-title" style="font-size: 30px; font-weight: bold;"><b>{{title}}</b> </span>
                                     <div class="card-content left-align">
                                         <ul>
-                                            <li><b>booked by:</b> {{Booker.first_name}}</li>
-                                            <li><b>service text:</b> {{text}} </li>
+                                            <li class=""><b>about service:</b> {{text}} </li>
                                             <li><b>service type:</b> {{service_type}} </li>
                                             <li><b>pet type:</b> {{animal_type}}</li>
                                             <li><b>pet size:</b> {{size_restrictions}} </li>
                                             <li><b>duration:</b>{{duration}} </li>
-                                            <li><b>cost:</b> ${{cost}}</li>
+                                            <li><b>cost:</b> {{cost}}</li>
                                         </ul>
                                         
                                     </div>
@@ -73,7 +70,7 @@
 
     {{!-- show professional bookings --}}
     <div class="row booked ">
-        <h2>Booked Listings</h2>
+        <h2><b>booked listings</b></h2>
             <div class="booked-postings">
                {{#each Provider}}
                     {{#if BookerId}}
@@ -93,17 +90,14 @@
                                         
                                     </div>
                                 </div>
-                                <div class="card-action">
-                                    <button data-id={{id}} class="delete-posting">delete posting</button>
-                                </div>
                             </div>
-                        </div>
+                        
                     {{/if}}
                     {{#unless BookerId}}
                     {{/unless}}
                 {{/each}}
-            </div>
-                
+            </div>       
+        </div>
     </div>
 </div>
 

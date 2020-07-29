@@ -4,7 +4,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-color: #eee;
+    background-color: white;
     font-size: 28px;
 }
 
@@ -81,9 +81,11 @@ label {
 /* cards  */
 .parent-user{
     display: inline-block;
-    height:45vh;
+    max-height: 400px;
+    justify-content: space-evenly;
     padding-right:5px;
-    overflow:auto;
+    word-wrap: break-word;
+    overflow-y: auto;
     border-top-left-radius: 5%;
     border-bottom-left-radius: 5%;
     border-top-right-radius: 1%;
@@ -331,15 +333,28 @@ button.add-cat:active {
     background-color: #1565c0;
   }
 
-  #mapWindow{
-      height: 400px;
-  }
-/* side nav bar */
-.side-nav-menu{
-
-color: #4a6690;
+#mapWindow{
+    height: 400px;
 }
 
-.side-nav-menu a:hover{
-background-color: yellow;
+
+/* side nav bar */
+.side-nav-menu{
+    margin: 35px;
+    color: #4a6690;
+
+}
+
+a .side-nav-menu :hover{
+    background-color: yellow;
+}
+
+.side-nav-text{
+    font-size: 20px;
+}
+
+/* cards */
+.user-account-profile{
+    background-color: #f1efe4 ;
+    padding:20px;
 }
