@@ -212,7 +212,7 @@ $(".pet-search").on("click", function (event) {
           "click",
           (function (marker, i) {
             return function () {
-              infowindow.setContent(data.offer_posts[i].text + " Distance from you "+data.offer_posts[i].range +"miles");
+              infowindow.setContent(data.offer_posts[i].text + " Distance from you "+data.offer_posts[i].range +" miles");
               infowindow.open(map, marker);
             };
           })(marker, i)
