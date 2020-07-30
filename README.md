@@ -5,17 +5,19 @@ We Paws Life So You Don't Have To
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 ### Description
-This application is a social community website of pet owners and pet service providers. This app allows the user to create pets to add to their pet family as an owner and also create pet service listings as a provider.
+This application is a social community website of pet owners and pet service providers. Pawslife gives the user the ability to create an account as a pet owner of a dog or cat, and or a pet provider for dogs or cats. As an owner, a user can keep track of all of their pets for which they can book provider services. As a provider, a user can post pet care services for other members of pawslife to book. 
+
+For css styling, we used materialize. For user authentication we used bcrypt and dotenv. In order to attach location data to the users account upon creation and render services on the map, we used ipapi and google maps 
 
 This application uses full user authenication. When the user clicks on my account, if they have logged in, they will be able to view their account. Once they are done on their page, they can logout at any time. Everything the user does is attached to their user session id. 
 
 This application has full CRUD for user accounts and CRD for pets and posts. 
 
-Upon coming to our page, the user can view the main homepage which includes current pet service listings. The user can click on the cat or dog option to view pet services near them that they can book. When the user clicks on the pins, it shows the name of the booking. 
+Upon coming to our page, the user can view the main homepage which includes current pet service listings. The user can click on the cat or dog option to view pet services near them that they can book on our map. When the user clicks on the pins in the map, it shows the name of the booking. 
 
-To use any of the other functionality, the user must create an account or log in. Once they have logged in, the user can also go to any of the current listings and book a listing by clicking book now in the card. From there the user can go to my account and create, read, and delete pets and or provider posts. If the user creates a provider post, it will show up on the homepage with a book now button. Once the booking has been booked, the button will go away and the user can see who booked it. 
+To use any of the other functionality, the user must create an account or log in. Once they have logged in, the user can also go to any of the current listings and book a listing by clicking book now. From there the user can go to my account and create, read, and delete pets and or provider posts. If the user creates a provider post, it will show up on the homepage with a book now button. Once the booking has been booked, the button will go away and the user can see who booked it. 
 
-When the user goes to their account page and click view account, they have the option to update and delete their accounts which have a cascade effect that deletes all of their respective posts and pets. 
+When the user goes to their account page and click view account, they have the option to update and delete their accounts, the latter of which have a cascade effect that deletes all of their respective posts and pets. 
 
 This application is deployed to Heroku.
 
